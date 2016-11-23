@@ -3,6 +3,9 @@ extends layout
 block content
   H1= title
   form(method='post' action='/')
-    input(type='text' name='name')
-    textarea(lang='is' type='text' name='comment')
-    button(type='submit') TJÁNING
+    div
+      input(type='text' name='name')
+    div
+      textarea(lang='is' type='text' name='comment' rows='10' cols='30')
+    div
+      button(type='submit') TJÁNING
