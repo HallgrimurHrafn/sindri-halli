@@ -6,7 +6,7 @@ const dbop = require('./db.js')
 
 function index(req, res) {
   res.render('index', {
-    title: 'basice',
+    title: 'basic',
   });
 }
 
