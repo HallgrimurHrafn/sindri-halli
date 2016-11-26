@@ -11,7 +11,7 @@ const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(req, res) {
   const sub = req.body.sub;
-  db.any(); // select, where sub=sub.
+  db.any('SELECT * FROM threads WHERE sub = %1', sub); // select, where sub=sub.
   return;
 }
 
@@ -55,15 +55,14 @@ function newThread(req, res, date) {
 
    // insert og svo viljum við fá þráðin
   db.none('INSERT INTO comments (title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
-  .then(() => {
+    .then((data) => {
     // þurfum að searcha ID.
-    getThread();  // faum þráðinn og bls 0 for now.
+      getThread();  // faum þráðinn og bls 0 for now.
     // success;
-  })
-  .catch((error) => {
-    // error;
-  });
-  return;
+    })
+    .catch((error) => {
+      res.render('error', { title: 'oohh shiet', error });
+    });
 }
 
 // nýtt komment er búið til
@@ -81,9 +80,8 @@ function newComment(req, res) {
       // success;
     })
     .catch((error) => {
-      // error;
+      res.render('error', { title: 'oohh shiet', error });
     });
-  return;
 }
 
 // sækir 10 nýlegast modified þræðina.
@@ -116,5 +114,6 @@ router.get('/newthread', createThread);
 // router.post('/', index);
 router.get('/threadID=*', getThread);
 router.post('/threadID=*', newComment);
+router.post('/', getSub);
 
 module.exports = router;
