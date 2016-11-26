@@ -29,7 +29,7 @@ function getThread(req, res) {
           res.render('thread', {
             // thread,
             // comments,
-            threads: thread,
+            thread,
             comments: comment,
           });
         })
