@@ -43,7 +43,11 @@ function getThread(req, res) {
 }
 
 // nýr þráður er búinn til.
-function newThread(title, name, date, sub, paragraph) {
+function newThread(req, res, date) {
+  const title = req.body.title;
+  const name = req.body.name;
+  const paragraph = req.body.paragraph
+  const sub = req.body.sub;
   db.none()  // insert og svo viljum við fá þráðin
   .then(() => {
     // þurfum að searcha ID.
@@ -89,7 +93,8 @@ function index(req, res) {
 
 
 router.get('/', index);
-router.get('/', newThread);
+router.post('/newthread', newThread);
+router.get('/newthread', "TO BE DEFINED"t;
 // router.post('/', index);
 router.get('/threadID=*', getThread);
 
