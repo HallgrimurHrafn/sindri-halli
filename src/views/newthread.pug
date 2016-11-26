@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  form(method='post' action='/')
+    div
+      input(type='text' name='name')
+    div
+      input(type='text' name='title')
+    div
+      textarea(lang='is' type='text' name='comment' rows='10' cols='30')
+    div
+      button(type='submit') TJÁNING

@@ -1,11 +1,9 @@
 extends layout
 
 block content
-  H1= title
-  form(method='post' action='/')
+  h1= title
+
+  each thread in threads
     div
-      input(type='text' name='name')
-    div
-      textarea(lang='is' type='text' name='comment' rows='10' cols='30')
-    div
-      button(type='submit') TJÁNING
+      -id = '/' + thread.id
+      a(href=id) tread.name
