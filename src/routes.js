@@ -54,7 +54,7 @@ function newThread(req, res) {
   threadID = threadID[1];
 
    // insert og svo viljum við fá þráðin
-  db.none('INSERT into comments (title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
+  db.none('INSERT into comments(title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
     .then(() => {
     // þurfum að searcha ID.
       getThread(req, res);  // faum þráðinn og bls 0 for now.
