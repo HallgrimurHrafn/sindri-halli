@@ -26,7 +26,7 @@ function getThread(req, res) {
       // fáum öll kommentin. innan við page.
       db.any('SELECT * FROM comments WHERE threadID = $1', threadID)
         .then((comment) => {
-          res.render('index', {
+          res.render('thread', {
             // thread,
             // comments,
             threads: thread,
