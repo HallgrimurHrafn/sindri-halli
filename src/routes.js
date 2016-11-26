@@ -4,7 +4,7 @@ const pgp = require('pg-promise')();
 
 const router = express.Router();
 const env = process.env.DATABASE_URL;
-const db = pgp(env || 'postgres://:@localhost/test');
+const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
@@ -109,7 +109,7 @@ function index(req, res) {
 
 router.get('/', index);
 router.post('/newthread', newThread);
-router.get('/newthread', 'TO BE DEFINED');
+router.get('/newthread', index);
 // router.post('/', index);
 router.get('/threadID=*', getThread);
 
