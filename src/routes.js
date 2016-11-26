@@ -50,7 +50,13 @@ function newThread(req, res) {
   const sub = req.body.sub;
 
    // insert og svo viljum við fá þráðin
-  db.none('insert into threads (title, name, paragraph, sub) values ($1, $2, $3, $4)', [title, name, paragraph, sub])
+  const Nthread = {
+    title,
+    name,
+    paragraph,
+    sub,
+  };
+  db.none('INSERT INTO threads(title, name, paragraph, sub) VALUES (${title}, ${name}, ${paragraph}, ${sub})', Nthread)
     .then((data) => {
     // þurfum að searcha ID.
       res.render('stringify', { data });
