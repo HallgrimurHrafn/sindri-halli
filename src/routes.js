@@ -48,13 +48,9 @@ function newThread(req, res) {
   const name = req.body.name;
   const paragraph = req.body.paragraph;
   const sub = req.body.sub;
-  const x = req.url;
-  const re = /[=]/;
-  let threadID = x.split(re);
-  threadID = threadID[1];
 
    // insert og svo viljum við fá þráðin
-  db.one('insert into comments(title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5) returning id', [title, name, paragraph, sub, threadID])
+  db.one('insert into comments(title, name, paragraph, sub) values ($1, $2, $3, $4, $5) returning id', [title, name, paragraph, sub])
     .then((data) => {
     // þurfum að searcha ID.
       res.render('stringify', { data });
