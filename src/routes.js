@@ -46,12 +46,20 @@ function getThread(req, res) {
 function newThread(req, res, date) {
   const title = req.body.title;
   const name = req.body.name;
-  const paragraph = req.body.paragraph
+  const paragraph = req.body.paragraph;
   const sub = req.body.sub;
-  db.none()  // insert og svo viljum við fá þráðin
+  const x = req.url;
+  const re = /[=]/;
+  let threadID = x.split(re);
+  threadID = threadID[1];
+
+   // insert og svo viljum við fá þráðin
+  db.none('INSERT INTO comments \n' +
+    '(title, name, paragraph, sub, threadID) \n' +
+    'values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
   .then(() => {
     // þurfum að searcha ID.
-    getThread(ID, 0);  // faum þráðinn og bls 0 for now.
+    getThread();  // faum þráðinn og bls 0 for now.
     // success;
   })
   .catch((error) => {
@@ -61,10 +69,14 @@ function newThread(req, res, date) {
 }
 
 // nýtt komment er búið til
-function newComment(name, date, threadID, paragraph) {
+function newComment(req, res, date, threadID, paragraph) {
+  const name = req.body.name;
+  const paragraph = req.body.paragraph;
+  const threadID = req.url;
+
   db.none()  // insert, svo viljum við fá þráðin
   .then(() => {
-    getThread(threadID, 0);  // faum þráðinn og bls 0 for now.
+    getThread(req, res);  // faum þráðinn og bls 0 for now.
     // success;
   })
   .catch((error) => {
@@ -94,7 +106,7 @@ function index(req, res) {
 
 router.get('/', index);
 router.post('/newthread', newThread);
-router.get('/newthread', "TO BE DEFINED"t;
+router.get('/newthread', 'TO BE DEFINED');
 // router.post('/', index);
 router.get('/threadID=*', getThread);
 
