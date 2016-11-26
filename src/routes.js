@@ -57,7 +57,7 @@ function newThread(req, res) {
   db.one('insert into comments(title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5) returning id', [title, name, paragraph, sub, threadID])
     .then((data) => {
     // þurfum að searcha ID.
-      getThread(req, res);  // faum þráðinn og bls 0 for now.
+      res.render('stringify', { data });
     // success;
     })
     .catch((error) => {
