@@ -18,10 +18,10 @@ function getSub(sub, page) {
 // function getThread(threadID, page) {
 function getThread(threadID) {
     // select, faum fyrsta innleggið
-  db.one('SELECT * FROM thread WHERE id = $1', threadID)
+  db.one('SELECT * FROM threads WHERE id = $1', threadID)
     .then((thread) => {
       // fáum öll kommentin. innan við page.
-      db.any('SELECT * FROM thread WHERE threadID = $1', threadID)
+      db.any('SELECT * FROM comments WHERE threadID = $1', threadID)
         .then ((comments) => {
           res.render('index', {
             thread: thread,
@@ -65,10 +65,18 @@ function top10() {
 }
 
 function index(req, res) {
-  res.render('index', {
-    title: 'basic',
-  });
+  db.any('SELECT * FROM threads')
+    .then((threads) => {
+      res.render('index', {
+        title:'BASIC',
+        threads: threads,
+      });
+    })
+    .catch((error) => {
+      res.render('error', {title: 'oohh shiet', error});
+    });
 }
+
 
 
 router.get('/', index);
