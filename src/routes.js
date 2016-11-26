@@ -43,7 +43,7 @@ function getThread(req, res) {
 }
 
 // nýr þráður er búinn til.
-function newThread(req, res, date) {
+function newThread(req, res) {
   const title = req.body.title;
   const name = req.body.name;
   const paragraph = req.body.paragraph;
@@ -57,7 +57,7 @@ function newThread(req, res, date) {
   db.none('INSERT INTO comments (title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
     .then((data) => {
     // þurfum að searcha ID.
-      getThread();  // faum þráðinn og bls 0 for now.
+      getThread(req, res);  // faum þráðinn og bls 0 for now.
     // success;
     })
     .catch((error) => {
