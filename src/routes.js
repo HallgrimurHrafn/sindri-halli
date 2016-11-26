@@ -1,3 +1,4 @@
+/* eslint max-len: ["error", { "ignoreStrings": true }]*/
 /* routes hér */
 const express = require('express');
 const pgp = require('pg-promise')();
@@ -8,7 +9,8 @@ const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
-function getSub(sub, page) {
+function getSub(req, res) {
+  const sub = req.body.sub;
   db.any(); // select, where sub=sub.
   return;
 }
@@ -52,9 +54,7 @@ function newThread(req, res, date) {
   threadID = threadID[1];
 
    // insert og svo viljum við fá þráðin
-  db.none('INSERT INTO comments \n' +
-    '(title, name, paragraph, sub, threadID) \n' +
-    'values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
+  db.none('INSERT INTO comments (title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
   .then(() => {
     // þurfum að searcha ID.
     getThread();  // faum þráðinn og bls 0 for now.
@@ -75,14 +75,14 @@ function newComment(req, res) {
   let threadID = x.split(re);
   threadID = threadID[1];
 
-  db.none()  // insert, svo viljum við fá þráðin
-  .then(() => {
-    getThread(req, res);  // faum þráðinn og bls 0 for now.
-    // success;
-  })
-  .catch((error) => {
-    // error;
-  });
+  db.none('INSERT ')  // insert, svo viljum við fá þráðin
+    .then(() => {
+      getThread(req, res);  // faum þráðinn og bls 0 for now.
+      // success;
+    })
+    .catch((error) => {
+      // error;
+    });
   return;
 }
 
