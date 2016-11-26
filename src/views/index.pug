@@ -3,7 +3,11 @@ extends layout
 block content
   h1= title
 
-  each  in 
+  div.newThread
+    a(href='/newThread')
+      button(type='submit' name='writeThread')
+
+  each  in
     div
       -id = '/threadid=' + thread.ID
       a(href=id) tread.name
