@@ -1,18 +1,18 @@
 extends layout
 
-h1.title = thread.name
-div.OP
-  p.OPtext = thread.paragraph
+  h1.title = thread.name
+  div.OP
+    p.OPtext = thread.paragraph
 
-each comment in comments
-  div.comment
-    p.text = comment.text
+  each comment in comments
+    div.comment
+      p.text = comment.text
 
-h3 Tjáðu þig um málið hér.
-form(method='post' action='/comment')
-  div
-    input(type='text' name='name')
-  div
-    textarea(lang='is' type='text' name='comment' rows='10' cols='30')
-  div
-    button(type='submit') Comment
+  h3 Tjáðu þig um málið hér.
+  form(method='post' action='/comment')
+    div
+      input(type='text' name='name')
+    div
+      textarea(lang='is' type='text' name='comment' rows='10' cols='30')
+    div
+      button(type='submit') Comment
