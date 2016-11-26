@@ -7,12 +7,13 @@ block content
 
   each comment in comments
     div.comment
+      p.username= comment.name
       p.text= comment.text
   br
 
   h3 Tjáðu þig um málið hér.
   -id = '/threadid=' + thread.id
-  form(method='post' action='id')
+  form(method='post' action=id)
     div
       input(
         type='text'
