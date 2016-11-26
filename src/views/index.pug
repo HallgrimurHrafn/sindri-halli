@@ -9,5 +9,5 @@ block content
 
   each thread in threads
     div
-      -id = '/threadid=' + thread.ID
+      -id = '/threadid=' + JSON.stringify(thread.id)
       a(href=id) thread.name
