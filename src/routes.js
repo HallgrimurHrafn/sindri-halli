@@ -4,7 +4,7 @@ const pgp = require('pg-promise')();
 
 const router = express.Router();
 const env = process.env.DATABASE_URL;
-const db = pgp(env);
+const db = pgp(env || 'postgres://:@localhost/test');
 
 
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
