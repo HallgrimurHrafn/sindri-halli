@@ -107,9 +107,14 @@ function index(req, res) {
 }
 
 
+function createThread(req, res) {
+  res.render('newthread');
+}
+
+
 router.get('/', index);
 router.post('/newthread', newThread);
-router.get('/newthread', index);
+router.get('/newthread', createThread);
 // router.post('/', index);
 router.get('/threadID=*', getThread);
 
