@@ -25,12 +25,10 @@ function getThread(req, res) {
     .then((thread) => {
       // fáum öll kommentin. innan við page.
       db.any('SELECT * FROM comments WHERE threadID = $1', threadID)
-        .then((comment) => {
+        .then((comments) => {
           res.render('thread', {
-            // thread,
-            // comments,
             thread,
-            comments: comment,
+            comments,
           });
         })
         .catch((error) => {
@@ -117,5 +115,6 @@ router.post('/newthread', newThread);
 router.get('/newthread', createThread);
 // router.post('/', index);
 router.get('/threadID=*', getThread);
+router.post('/threadID=*', newComment);
 
 module.exports = router;

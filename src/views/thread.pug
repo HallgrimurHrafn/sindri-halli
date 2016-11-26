@@ -10,7 +10,8 @@ block content
       p.text= comment.text
 
   h3 Tjáðu þig um málið hér.
-  form(method='post' action='/comment')
+  -id = '/threadid=' + thread.id
+  form(method='post' action='id')
     div
       input(type='text' name='name')
     div
