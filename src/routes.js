@@ -69,10 +69,13 @@ function newThread(req, res, date) {
 }
 
 // nýtt komment er búið til
-function newComment(req, res, date, threadID, paragraph) {
+function newComment(req, res) {
   const name = req.body.name;
   const paragraph = req.body.paragraph;
-  const threadID = req.url;
+  const x = req.url;
+  const re = /[=]/;
+  let threadID = x.split(re);
+  threadID = threadID[1];
 
   db.none()  // insert, svo viljum við fá þráðin
   .then(() => {
