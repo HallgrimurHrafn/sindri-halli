@@ -7,7 +7,6 @@ const env = process.env.DATABASE_URL;
 const db = pgp(env);
 
 
-
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(sub, page) {
   db.any(); // select, where sub=sub.
@@ -16,20 +15,31 @@ function getSub(sub, page) {
 
 // sækir þráðin með kommentum þessarar blaðsíðu
 // function getThread(threadID, page) {
-function getThread(threadID) {
+function getThread(req, res) {
+  const x = req.url;
+  const re = /[=]/;
+  let threadID = x.split(re);
+  threadID = threadID[1];
     // select, faum fyrsta innleggið
   db.one('SELECT * FROM threads WHERE id = $1', threadID)
     .then((thread) => {
       // fáum öll kommentin. innan við page.
       db.any('SELECT * FROM comments WHERE threadID = $1', threadID)
-        .then ((comments) => {
+        .then((comment) => {
           res.render('index', {
-            thread: thread,
-            comments: comments,
+            // thread,
+            // comments,
+            threads: thread,
+            comments: comment,
           });
-          }
         })
-    }
+        .catch((error) => {
+          res.render('error', { title: 'oohh shiet', error });
+        });
+    })
+    .catch((error) => {
+      res.render('error', { title: 'oohh shiet', error });
+    });
 }
 
 // nýr þráður er búinn til.
@@ -66,21 +76,21 @@ function top10() {
 
 function index(req, res) {
   db.any('SELECT * FROM threads')
-    .then((threads) => {
+    .then((thread) => {
       res.render('index', {
-        title:'BASIC',
-        threads: threads,
+        title: 'BASIC',
+        threads: thread,
       });
     })
     .catch((error) => {
-      res.render('error', {title: 'oohh shiet', error});
+      res.render('error', { title: 'oohh shiet', error });
     });
 }
 
 
-
 router.get('/', index);
+router.get('/', newThread);
 // router.post('/', index);
-router.get('/threadID=*', getThread)
+router.get('/threadID=*', getThread);
 
 module.exports = router;
