@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  h1.title = thread.name
+  h1.title= thread.name
   div.OP
-    p.OPtext = thread.paragraph
+    p.OPtext= thread.paragraph
 
   each comment in comments
     div.comment
-      p.text = comment.text
+      p.text= comment.text
 
   h3 Tjáðu þig um málið hér.
   form(method='post' action='/comment')
