@@ -49,22 +49,17 @@ function newThread(req, res) {
   const paragraph = req.body.paragraph;
   const sub = req.body.sub;
 
-   // insert og svo viljum við fá þráðin
-  const Nthread = {
-    title,
-    name,
-    paragraph,
-    sub,
-  };
-  db.none('INSERT INTO threads(title, name, paragraph, sub) VALUES (${title}, ${name}, ${paragraph}, ${sub})', Nthread)
-    .then((data) => {
-    // þurfum að searcha ID.
-      res.render('stringify', { data });
-    // success;
-    })
-    .catch((error) => {
-      res.render('error', { title: 'oohh shiet', error });
-    });
+  // insert og svo viljum við fá þráðin
+  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4)';
+  db.none(str, [name, paragraph, title, sub])
+    // .then((data) => {
+    // // þurfum að searcha ID.
+    //   res.render('stringify', { data });
+    // // success;
+    // })
+    // .catch((error) => {
+    //   res.render('error', { title: 'oohh shiet', error });
+    // });
 }
 
 // nýtt komment er búið til
