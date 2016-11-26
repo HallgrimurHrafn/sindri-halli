@@ -12,5 +12,5 @@ CREATE TABLE comments (
   threadID int NOT NULL references threads(id),
   name varchar(64),
   paragraph text,
-  date timestamp with time zone not null default current_timestamp,
+  date timestamp with time zone not null default current_timestamp
 );
