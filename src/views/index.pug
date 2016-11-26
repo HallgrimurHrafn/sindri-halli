@@ -8,17 +8,22 @@ block content
       button(type='submit' name='writeThread') New Thread
 
   table
-  each thread in threads
-    div
-      //- -id = '/threadid=' + JSON.stringify(thread.id)
-      -id = '/threadid=' + thread.id
-      -x = ''
-      each letter in thread.date
-        if letter != '+'
-          -x+= letter
-        else
-          -break
-      p= thread.name
-      a(href=id)= thread.title
-      p= thread.date
-      hr
+    thead
+      tr
+        th User
+        th Title
+        th Date
+    tbody
+      each thread in threads
+        -id = '/threadid=' + thread.id
+        -x = ''
+        each letter in thread.date
+          if letter != '+'
+            -x+= letter
+          else
+            -break
+        tr
+          td= thread.name
+          td
+            a(href=id)= thread.title
+          td
