@@ -11,6 +11,13 @@ block content
     div
       //- -id = '/threadid=' + JSON.stringify(thread.id)
       -id = '/threadid=' + thread.id
+      -x = ''
+      each letter in thread.date
+        if letter != '+'
+          -x+= letter
+        else
+          -break
       p= thread.name
       a(href=id)= thread.title
       p= thread.date
+      hr
