@@ -54,20 +54,11 @@ function newThread(req, res) {
   threadID = threadID[1];
 
    // insert og svo viljum við fá þráðin
-  db.none('insert into comments(title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
-    .then(() => {
-    // success;
+  db.one('insert into comments(title, name, paragraph, sub, threadID) values ($1, $2, $3, $4, $5)', [title, name, paragraph, sub, threadID])
+    .then((data) => {
     // þurfum að searcha ID.
-      db.any('SELECT * FROM threads')
-        .then((thread) => {
-          res.render('index', {
-            title: 'BASIC',
-            threads: thread,
-          });
-        })
-        .catch((error) => {
-          res.render('error', { title: 'oohh shiet', error });
-        });
+      getThread(req, res);  // faum þráðinn og bls 0 for now.
+    // success;
     })
     .catch((error) => {
       res.render('error', { title: 'oohh shiet', error });
