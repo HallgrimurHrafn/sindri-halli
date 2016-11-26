@@ -92,11 +92,6 @@ function top10() {
 function index(req, res) {
   db.any('SELECT * FROM threads')
     .then((thread) => {
-      const re = /[+]/;
-      for (const t of thread) {
-        t.date = t.date.split(re);
-        t.date = t.date[0];
-      }
       res.render('index', {
         title: 'BASIC',
         threads: thread,
