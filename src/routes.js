@@ -81,5 +81,6 @@ function index(req, res) {
 
 router.get('/', index);
 // router.post('/', index);
+router.get('/threadID=*', getThread)
 
 module.exports = router;
