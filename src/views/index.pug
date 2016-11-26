@@ -7,6 +7,7 @@ block content
     a(href='/newThread')
       button(type='submit' name='writeThread') New Thread
 
+  table
   each thread in threads
     div
       //- -id = '/threadid=' + JSON.stringify(thread.id)
