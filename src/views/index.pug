@@ -18,14 +18,8 @@ block content
     tbody
       each thread in threads
         -id = '/threadid=' + thread.id
-        -x = ''
-        each letter in thread.date
-          if letter != '+'
-            -x = x + letter
-          else
-            -break
         tr
           td= thread.name
           td
             a(href=id)= thread.title
-          td= x
+          td= thread.date
