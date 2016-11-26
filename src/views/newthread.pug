@@ -5,10 +5,16 @@ block content
 
   form(method='post' action='/')
     div
-      input(type='text' name='name')
+      input(type='text' maxlength='64' name='name')
     div
-      input(type='text' name='title')
+      input(type='text' maxlength='100' name='title')
     div
-      textarea(lang='is' type='text' name='comment' rows='10' cols='30')
+      textarea(lang='is' maxlength='10000' type='text' name='paragraph' rows='10' cols='30')
+    div
+      select(name='sub')
+        option(value='Schemes') Schemes
+        option(value='Party') Party
+        option(value='Tech') Tech
+        option(value='Videogames') Videogames
     div
       button(type='submit') TJÁNING
