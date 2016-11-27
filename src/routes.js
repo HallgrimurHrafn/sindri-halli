@@ -10,8 +10,8 @@ const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 // tekur inn thread id og skilar fjolda paragrapha
 function pageNum(id) {
-  let str = 'SELECT COUNT(*) FROM';
-  str = str.concat('(SELECT id FROM threads WHERE id = $1 UNION');
+  let str = 'SELECT COUNT(*) FROM ';
+  str = str.concat('(SELECT id FROM threads WHERE id = $1 UNION ');
   str = str.concat('SELECT id FROM comments WHERE threadid = $1) AS test');
   return db.one(str, id);
 }
