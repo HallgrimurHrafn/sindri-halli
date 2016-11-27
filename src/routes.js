@@ -12,7 +12,6 @@ const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 function getSub(req, res) {
   const sub = req.body.sub;
   db.any('SELECT * FROM threads WHERE sub = $1', sub); // select, where sub=sub.
-  return;
 }
 
 // sækir þráðin með kommentum þessarar blaðsíðu
