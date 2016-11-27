@@ -18,7 +18,7 @@ block content
         th Date
     tbody
       each thread in threads
-        -id = '/threadid=' + thread.id
+        -id = '/threadid=' + thread.id + '=page=0'
         tr
           td= thread.name
           td

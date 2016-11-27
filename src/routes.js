@@ -27,15 +27,15 @@ function getSub(req, res) {
 
 // ef linkurinn er rangur innan marka logum vid.
 // annars sendum vid a forsidu.
-function getThreadPrep(req, res) {
-  let x = req.url;
-  const re = /[=/]/;
-  x = x.split(re);
+function getThreadPrep(req, res, x) {
   const threadID = parseInt(x[2], 10);
+  const page = parseInt(x[4], 10);
   if (!isNaN(threadID)) {
-    let str = x[0].concat(x[1]).concat('=');
-    str = str.concat(threadID);
-    res.redirect(str);
+    if (!isNaN(page)) {
+      let str = x[0].concat(x[1]).concat('=').concat(threadID).concat('=');
+      str = str.concat(x[3]).concat('=').concat(page);
+      res.redirect(str);
+    }
   } else {
     res.redirect('/');
   }
@@ -45,17 +45,17 @@ function getThreadPrep(req, res) {
 // function getThread(threadID, page) {
 function getThread(req, res) {
   let x = req.url;
-  const re = /[=/]/;
+  const re = /[=]/;
   x = x.split(re);
   const threadID = x[2];
-  if (isNaN(threadID)) {
-    getThreadPrep(req, res);
-  }
-    // select, faum fyrsta innleggið
-  db.one('SELECT * FROM threads WHERE id = $1', threadID)
-    .then((thread) => {
-      // fáum öll kommentin. innan við page.
-      db.any('SELECT * FROM comments WHERE threadID = $1', threadID)
+  const page = x[4];
+  if (!isNaN(threadID)) {
+    if (isNaN(page)) {
+      // select, faum fyrsta innleggið
+      db.one('SELECT * FROM threads WHERE id = $1', threadID)
+      .then((thread) => {
+        // fáum öll kommentin. innan við page.
+        db.any('SELECT * FROM comments WHERE threadID = $1', threadID)
         .then((comments) => {
           res.render('thread', {
             thread,
@@ -65,10 +65,16 @@ function getThread(req, res) {
         .catch((error) => {
           res.render('error', { title: 'oohh shiet', error });
         });
-    })
-    .catch((error) => {
-      res.render('error', { title: 'oohh shiet', error });
-    });
+      })
+      .catch((error) => {
+        res.render('error', { title: 'oohh shiet', error });
+      });
+    } else {
+      getThreadPrep(req, res, x);
+    }
+  } else {
+    getThreadPrep(req, res, x);
+  }
 }
 
 
@@ -148,9 +154,10 @@ function nolink(req, res) {
 }
 
 router.get('/', index);
+router.post('/', DirectToSub);
 router.post('/newthread', newThread);
 router.get('/newthread', createThread);
-router.get('/threadID=*', getThread);
+router.get('/threadID=*/page=*', getThread);
 router.post('/threadID=*', newComment);
 router.get('/cat=*', getSub);
 
