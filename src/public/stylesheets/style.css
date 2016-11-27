@@ -7,9 +7,9 @@ html {
 }
 body {
   min-height: 100%;
-  background: -webkit-linear-gradient(rgba(251,238,152,1) 300px, rgba(254, 247, 206,1) 50%);
-  background: -o-linear-gradient(rgba(251,238,152,1) 300px, rgba(254, 247, 206,1) 50%);
-  background: linear-gradient(rgba(251,238,152,1) 300px, rgba(254, 247, 206,1) 50%);
+  background: -webkit-linear-gradient(rgba(251,238,152,1) 300px, rgba(254, 247, 206,1) 70%);
+  background: -o-linear-gradient(rgba(251,238,152,1) 300px, rgba(254, 247, 206,1) 70%);
+  background: linear-gradient(rgba(251,238,152,1) 300px, rgba(254, 247, 206,1) 70%);
 }
 
 header {
