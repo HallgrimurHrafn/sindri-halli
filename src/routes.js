@@ -49,7 +49,7 @@ function newThread(req, res) {
   const sub = req.body.sub;
 
   // insert og svo viljum við fá þráðin
-  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4) return id';
+  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4)';
   db.none(str, [name, paragraph, title, sub])
     .then(() => {
     // þurfum að searcha ID.
@@ -81,9 +81,9 @@ function newComment(req, res) {
 }
 
 // sækir 10 nýlegast modified þræðina.
-function top10() {
-  return;
-}
+// function top10() {
+//   return;
+// }
 
 function index(req, res) {
   db.any('SELECT * FROM threads')
