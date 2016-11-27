@@ -2,9 +2,10 @@ extends layout
 
 block content
   h1.title= thread.title
-  h3.OPname= thread.name
-  div.OP
-    p.OPtext= thread.paragraph
+  if page == 0
+    h3.OPname= thread.name
+    div.OP
+      p.OPtext= thread.paragraph
 
   div.comments
     each comment in comments
