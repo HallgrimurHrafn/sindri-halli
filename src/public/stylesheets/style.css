@@ -29,6 +29,10 @@ main {
   max-width: 1300px;
 }
 
+nav {
+  display: inline;
+}
+
 h1.pageheader {
   margin-top: 0;
   text-align: center;
