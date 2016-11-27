@@ -20,15 +20,19 @@ block content
   p= page + 1
 
   -n=0
-  hr
   nav
     while n < Pnum
       -x = n + 1
       -id = '/threadid=' + JSON.stringify(thread.id)
       -id = id + '&page=' + n
-      a(href=(id))= x
+      if n == page
+        li
+          p= page + 1
+      else
+
+        li
+          a(href=(id))= x
       -n = n + 1
-  hr
   br
 
   -id = '/threadid=' + JSON.stringify(thread.id)
