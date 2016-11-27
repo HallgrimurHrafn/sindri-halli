@@ -85,12 +85,12 @@ function getThread(req, res) {
         .then((comments) => {
           pageNum(threadID)
             .then((ParaNum) => {
-              // const Pnum =
+              const Pnum = Math.floor(ParaNum / 10) + 1;
               res.render('thread', {
                 thread,
                 comments,
                 page,
-                Pnum: ParaNum,
+                Pnum,
               });
             })
             .catch((error) => {
