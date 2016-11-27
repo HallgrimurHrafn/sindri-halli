@@ -75,7 +75,7 @@ function getThread(req, res) {
       }
       if (page > 2) {
         offset = 10;
-        add = 0;
+        add = -1;
       }
       db.one('SELECT * FROM threads WHERE id = $1', threadID)
       .then((thread) => {
