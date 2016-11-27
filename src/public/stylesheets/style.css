@@ -56,6 +56,7 @@ main {
   width: 5em;
   height: 3.5em;
   text-decoration: none;
+  float: left;
 }
 
 .menuBtn:hover {
@@ -70,6 +71,7 @@ a{
 
 .newThread {
   float: right;
+  background: rgb(244, 139, 194)
 }
 
 button {
