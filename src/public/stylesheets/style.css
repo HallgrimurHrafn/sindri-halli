@@ -23,16 +23,6 @@ header {
   background-size: cover;
 }
 
-main {
-  padding: 50px;
-  min-height: 100%;
-  max-width: 1300px;
-}
-
-nav {
-  display: inline;
-}
-
 h1.pageheader {
   margin-top: 0;
   text-align: center;
@@ -45,6 +35,16 @@ h1.pageheader {
   padding: 120px 0 0 0;
   display: block;
   font-weight: bold;
+}
+
+main {
+  padding: 50px;
+  min-height: 100%;
+  max-width: 1300px;
+}
+
+.menu {
+  display: inline;
 }
 
 a{
