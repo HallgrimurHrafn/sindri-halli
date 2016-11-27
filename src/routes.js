@@ -44,17 +44,17 @@ function getThread(req, res) {
 
 // nýr þráður er búinn til.
 function newThread(req, res) {
-  // const title = req.body.title;
-  // const name = req.body.name;
-  // const paragraph = req.body.paragraph;
-  // const sub = req.body.sub;
+  const title = req.body.title;
+  const name = req.body.name;
+  const paragraph = req.body.paragraph;
+  const sub = req.body.sub;
 
   // insert og svo viljum við fá þráðin
   const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4) return id';
-  db.one(str, ['name', 'paragraph', 'title', 'sub'])
-    .then((data) => {
+  db.none(str, [name, paragraph, title, sub])
+    .then(() => {
     // þurfum að searcha ID.
-      res.render('stringify', { data });
+      res.render('stringify', { data: 'yeyeye' });
     // // success;
     });
     // .catch((error) => {
