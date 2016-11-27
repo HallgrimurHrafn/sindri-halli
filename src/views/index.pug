@@ -13,19 +13,20 @@ block content
   br
 
   hr
-  table
-    thead
-      tr
-        th User
-        th Title
-        th Comments
-        th Date
-    tbody
-      each thread in threads
-        -id = '/threadid=' + thread.id + '&page=0'
+  .indexTable
+    table
+      thead
         tr
-          td= thread.name
-          td
-            a(href=id)= thread.title
-          td numComments
-          td= thread.date
+          th User
+          th Title
+          th Comments
+          th Date
+      tbody
+        each thread in threads
+          -id = '/threadid=' + thread.id + '&page=0'
+          tr
+            td= thread.name
+            td
+              a(href=id)= thread.title
+            td numComments
+            td= thread.date

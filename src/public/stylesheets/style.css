@@ -27,7 +27,6 @@ main {
   padding: 50px;
   min-height: 100%;
   max-width: 1300px;
-  float: center;
 }
 
 h1.pageheader {
@@ -62,6 +61,10 @@ a:hover {
 
 button {
   padding: 0px;
+}
+
+.indexTable {
+  align: center;
 }
 
 td, tr {
