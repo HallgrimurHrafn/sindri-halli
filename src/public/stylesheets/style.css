@@ -21,6 +21,7 @@ main {
 }
 
 h1.pageheader {
+  margin-top: 0;
   text-align: center;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
