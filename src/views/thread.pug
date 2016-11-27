@@ -17,14 +17,22 @@ block content
   br
 
   p= Pnum
-
   p= page + 1
-
+  -id = '/threadid=' + JSON.stringify(thread.id)
+  -id = id + '&page='
+  -var n=1
+  nav
+    while n < Pnum
+      if n = page
+        p= n+1
+      else
+        a(href=(id + n))= n + 1
+      -n++
   br
 
+  -id = id + page
+
   h3 Tjáðu þig um málið hér.
-  -id = '/threadid=' + JSON.stringify(thread.id)
-  -id = id + '&page=' + page
   form(method='post' action=id)
     div
       input(
