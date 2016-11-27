@@ -49,11 +49,12 @@ function newThread(req, res) {
   const sub = req.body.sub;
 
   // insert og svo viljum við fá þráðin
-  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4)';
+  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4) return id';
   db.none(str, [name, paragraph, title, sub])
-    .then(() => {
+    .then((data) => {
     // þurfum að searcha ID.
-      res.render('stringify', { data: 'yeyeye' });
+      let x = '/threadid=';
+      res.redirect(x);
     // // success;
     });
     // .catch((error) => {
