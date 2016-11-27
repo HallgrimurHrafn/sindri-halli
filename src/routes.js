@@ -54,6 +54,7 @@ function newThread(req, res) {
     .then((data) => {
     // þurfum að searcha ID.
       let x = '/threadid=';
+      x = x.concat(data.id);
       res.redirect(x);
     // // success;
     });
