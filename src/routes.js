@@ -49,12 +49,12 @@ function newThread(req, res) {
   const sub = req.body.sub;
 
   // insert og svo viljum við fá þráðin
-  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4) return id';
+  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4) returning id';
   db.one(str, [name, paragraph, title, sub])
     .then((data) => {
     // þurfum að searcha ID.
-      const x = '/threadid=';
-      res.redirect(x);
+      // const x = '/threadid=1';
+      res.redirect(data.id);
     // // success;
     });
     // .catch((error) => {
