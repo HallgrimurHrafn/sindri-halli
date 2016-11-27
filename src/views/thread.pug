@@ -18,8 +18,7 @@ block content
 
   p= Pnum
   p= page + 1
-  -id = '/threadid=' + JSON.stringify(thread.id)
-  -id = id + '&page='
+
   -n=1
   hr
   nav
@@ -27,13 +26,16 @@ block content
       if n = page
         p= n + 1
       else
-        
-        a(href=(id + JSON.stringify(n)))= n + 1
+
+        -id = '/threadid=' + JSON.stringify(thread.id)
+        -id = id + '&page=' + n
+        a(href=(id))= n + 1
       -n++
   hr
   br
 
-  -id = id + JSON.stringify(page)
+  -id = '/threadid=' + JSON.stringify(thread.id)
+  -id = id + '&page=' + page
 
   h3 Leave a comment below
   form(method='post' action=id)
