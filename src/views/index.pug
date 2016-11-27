@@ -9,13 +9,13 @@ block content
       button(type='submit' name='writeThread') New Thread
   br
 
+  hr
   table
     thead
       tr
         th User
         th Title
         th Date
-    //- hr
     tbody
       each thread in threads
         -id = '/threadid=' + thread.id
