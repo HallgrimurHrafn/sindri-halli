@@ -143,6 +143,9 @@ function createThread(req, res) {
   res.render('newthread');
 }
 
+function nolink(req, res) {
+  res.redirect('/');
+}
 
 router.get('/', index);
 router.post('/newthread', newThread);
@@ -150,5 +153,8 @@ router.get('/newthread', createThread);
 router.get('/threadID=*', getThread);
 router.post('/threadID=*', newComment);
 router.get('/cat=*', getSub);
+
+// VERDUR AD VERA NEDSTUR
+router.get('/*', nolink);
 
 module.exports = router;
