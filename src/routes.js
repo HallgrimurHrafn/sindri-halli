@@ -134,7 +134,7 @@ function newComment(req, res) {
   const name = req.body.name;
   const paragraph = req.body.paragraph;
   const x = req.url;
-  const re = /[=]/;
+  const re = /[=&]/;
   let threadID = x.split(re);
   threadID = threadID[1];
 
