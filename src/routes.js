@@ -50,11 +50,11 @@ function newThread(req, res) {
   // const sub = req.body.sub;
 
   // insert og svo viljum við fá þráðin
-  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4)';
-  db.none(str, ['name', 'paragraph', 'title', 'sub'])
-    .then(() => {
+  const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4) return id';
+  db.one(str, ['name', 'paragraph', 'title', 'sub'])
+    .then((data) => {
     // þurfum að searcha ID.
-      res.render('stringify', { title: 'okok' });
+      res.render('stringify', { data });
     // // success;
     });
     // .catch((error) => {
