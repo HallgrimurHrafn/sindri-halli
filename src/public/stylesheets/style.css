@@ -1,6 +1,4 @@
-body {
-  margin: 50px;
-}
+
 
 header {
   width: 100%;
@@ -8,6 +6,10 @@ header {
   margin-bottom: 2em;
   background: transparent url(/images/OP.jpg) no-repeat fixed 50% 50%;
   background-size: cover;
+}
+
+main {
+  margin: 50px;
 }
 
 h1.pageheader {
