@@ -53,8 +53,9 @@ function newThread(req, res) {
   db.one(str, [name, paragraph, title, sub])
     .then((data) => {
     // þurfum að searcha ID.
-      // const x = '/threadid=1';
-      res.redirect(data.id);
+      let x = '/threadid=';
+      x = x.concat(data.id);
+      res.redirect(x);
     // // success;
     });
     // .catch((error) => {
