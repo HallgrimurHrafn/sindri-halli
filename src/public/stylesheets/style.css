@@ -52,6 +52,10 @@ a:hover {
         transform: scale(1.3);
 }
 
+.newThread {
+  float: right;
+}
+
 button {
   padding: 0px;
 }
