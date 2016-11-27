@@ -28,12 +28,13 @@ function getSub(req, res) {
 // ef linkurinn er rangur innan marka logum vid.
 // annars sendum vid a forsidu.
 function getThreadPrep(req, res, x) {
-  const threadID = parseInt(x[2], 10);
-  const page = parseInt(x[4], 10);
+  const threadID = parseInt(x[1], 10);
+  const page = parseInt(x[3], 10);
   if (!isNaN(threadID)) {
     if (!isNaN(page)) {
-      let str = x[0].concat(x[1]).concat('=').concat(threadID).concat('=');
-      str = str.concat(x[3]).concat('=').concat(page);
+      let str = x[0];
+      str = str.concat('=').concat(threadID).concat('&');
+      str = str.concat(x[2]).concat('=').concat(page);
       res.redirect(str);
     }
   } else {
@@ -45,12 +46,12 @@ function getThreadPrep(req, res, x) {
 // function getThread(threadID, page) {
 function getThread(req, res) {
   let x = req.url;
-  const re = /[=]/;
+  const re = /[=&]/;
   x = x.split(re);
-  const threadID = x[2];
-  const page = x[4];
+  const threadID = x[1];
+  const page = x[3];
   if (!isNaN(threadID)) {
-    if (isNaN(page)) {
+    if (!isNaN(page)) {
       // select, faum fyrsta innleggið
       db.one('SELECT * FROM threads WHERE id = $1', threadID)
       .then((thread) => {
@@ -157,11 +158,11 @@ router.get('/', index);
 router.post('/', DirectToSub);
 router.post('/newthread', newThread);
 router.get('/newthread', createThread);
-router.get('/threadID=*/page=*', getThread);
+router.get('/threadID=*&page=*', getThread);
 router.post('/threadID=*', newComment);
 router.get('/cat=*', getSub);
 
 // VERDUR AD VERA NEDSTUR
-router.get('/*', nolink);
+// router.get('/*', nolink);
 
 module.exports = router;
