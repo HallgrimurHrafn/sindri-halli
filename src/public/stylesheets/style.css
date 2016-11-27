@@ -4,6 +4,10 @@ body {
 
 .header {
   width: 100%;
+  height: 300px;
+  margin-bottom: 2em;
+  background: transparent url(/images/OP.jpg) no-repeat fixed 50% 50%;
+  background-size: cover;
 }
 
 h1.pageheader {
