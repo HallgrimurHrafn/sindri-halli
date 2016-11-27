@@ -55,14 +55,23 @@ function getThread(req, res) {
   if (!isNaN(threadID)) {
     if (!isNaN(page)) {
       // select, faum fyrsta innleggið
+      let offset = 10;
+      let num = 10;
+      if (page === 0) {
+        num = 9;
+      } else if (page === 1) {
+        offset = 9;
+      }
       db.one('SELECT * FROM threads WHERE id = $1', threadID)
       .then((thread) => {
         // fáum öll kommentin. innan við page.
-        db.any('SELECT * FROM comments WHERE threadID = $1', threadID)
+        db.any('SELECT * FROM comments WHERE threadID = $1 limit $2 offset $3',
+          [threadID, num, page * offset])
         .then((comments) => {
           res.render('thread', {
             thread,
             comments,
+            page,
           });
         })
         .catch((error) => {
@@ -129,7 +138,7 @@ function newComment(req, res) {
 // }
 
 function index(req, res) {
-  db.any('SELECT * FROM threads LIMIT $1', 5)
+  db.any('SELECT * FROM threads LIMIT $1', 10)
     .then((thread) => {
       res.render('index', {
         title: 'BASIC',
