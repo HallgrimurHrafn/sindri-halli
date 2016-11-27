@@ -69,6 +69,10 @@ a{
   color: black;
 }
 
+.currentSub {
+  background: rgb(105, 199, 165)
+}
+
 .newThread {
   float: right;
   background: rgb(244, 139, 194)
