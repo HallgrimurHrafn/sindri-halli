@@ -36,6 +36,8 @@ function getThreadPrep(req, res, x) {
       str = str.concat('=').concat(threadID).concat('&');
       str = str.concat(x[2]).concat('=').concat(page);
       res.redirect(str);
+    } else {
+      res.redirect('/');
     }
   } else {
     res.redirect('/');
@@ -163,6 +165,6 @@ router.post('/threadID=*', newComment);
 router.get('/cat=*', getSub);
 
 // VERDUR AD VERA NEDSTUR
-// router.get('/*', nolink);
+router.get('/*', nolink);
 
 module.exports = router;

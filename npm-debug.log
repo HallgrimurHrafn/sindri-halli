@@ -1,0 +1,35 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.10.8
+3 info using node@v6.9.1
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle verkefni6@0.0.0~prestart: verkefni6@0.0.0
+6 silly lifecycle verkefni6@0.0.0~prestart: no script for prestart, continuing
+7 info lifecycle verkefni6@0.0.0~start: verkefni6@0.0.0
+8 verbose lifecycle verkefni6@0.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle verkefni6@0.0.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;D:\Skóli\Vefforritun\Lokaverkefni\node_modules\.bin;C:\Program Files\Haskell\bin;C:\Program Files\Haskell Platform\8.0.1\lib\extralibs\bin;C:\Program Files\Haskell Platform\8.0.1\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\QuickTime\QTSystem\;D:\Forrit\MATLAB\runtime\win64;D:\Forrit\MATLAB\bin;D:\Forrit\MATLAB\polyspace\bin;C:\Program Files (x86)\Skype\Phone\;D:\Skóli\SQLT;C:\Program Files\Git\cmd;C:\CamlLight\bin;C:\Python27;C:\Program Files\nodejs\;C:\Python27\scripts;C:\Users\Hallgrimur\AppData\Local\atom\bin;C:\Program Files\Haskell Platform\8.0.1\mingw\bin;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Program Files (x86)\Git\cmd;C:\Users\Hallgrimur\AppData\Roaming\cabal\bin;C:\Users\Hallgrimur\AppData\Roaming\local\bin;C:\Program Files (x86)\Nmap;C:\Users\Hallgrimur\AppData\Local\Microsoft\WindowsApps;C:\Users\Hallgrimur\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_60\bin;/home/halli/.local/bin;C:\Program Files\PostgreSQL\9.5\bin
+10 verbose lifecycle verkefni6@0.0.0~start: CWD: D:\Skóli\Vefforritun\Lokaverkefni
+11 silly lifecycle verkefni6@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at exports._errnoException (util.js:1026:11)
+12 verbose stack     at process.kill (internal/process.js:172:13)
+12 verbose stack     at process.listener (C:\Program Files\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at emitNone (events.js:91:20)
+12 verbose stack     at process.emit (events.js:185:7)
+12 verbose stack     at processEmit (C:\Program Files\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at processEmit (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at Signal.wrap.onsignal (internal/process.js:199:44)
+13 verbose cwd D:\Skóli\Vefforritun\Lokaverkefni
+14 error Windows_NT 10.0.14393
+15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+16 error node v6.9.1
+17 error npm  v3.10.8
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
