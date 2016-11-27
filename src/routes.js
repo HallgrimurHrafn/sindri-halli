@@ -10,8 +10,19 @@ const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(req, res) {
-  const sub = req.body.sub;
-  db.any('SELECT * FROM threads WHERE sub = $1', sub); // select, where sub=sub.
+  const x = req.url;
+  const re = /[=]/;
+  let sub = x.split(re);
+  sub = sub[1];
+  db.any('SELECT * FROM threads WHERE sub = $1', sub) // select, where sub=sub.
+    .then((threads) => {
+      res.render('index', {
+        title: sub,
+        threads });
+    })
+    .catch((error) => {
+      res.render('error', { title: 'oohh shiet', error });
+    });
 }
 
 // sækir þráðin með kommentum þessarar blaðsíðu
@@ -101,6 +112,12 @@ function index(req, res) {
     });
 }
 
+function DirectToSub(req, res) {
+  const sub = req.body.sub;
+  let x = '/cat=';
+  x = x.concat(sub);
+  res.redirect(x);
+}
 
 function createThread(req, res) {
   res.render('newthread');
@@ -113,6 +130,7 @@ router.get('/newthread', createThread);
 // router.post('/', index);
 router.get('/threadID=*', getThread);
 router.post('/threadID=*', newComment);
-router.post('/', getSub);
+router.post('/', DirectToSub);
+router.get('/cat=*', getSub);
 
 module.exports = router;
