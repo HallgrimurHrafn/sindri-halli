@@ -11,27 +11,26 @@ block content
       b Party
     a(href='/cat=Tech')
       b Tech
-    a(href='/cat=Videogames') 
+    a(href='/cat=Videogames')
       b Videgames
     a.newThread(href='/newThread')
       b New Thread
   br
 
   hr
-  .indexTable
-    table
-      thead
+  table.center
+    thead
+      tr
+        th User
+        th Title
+        th Comments
+        th Date
+    tbody
+      each thread in threads
+        -id = '/threadid=' + thread.id + '&page=0'
         tr
-          th User
-          th Title
-          th Comments
-          th Date
-      tbody
-        each thread in threads
-          -id = '/threadid=' + thread.id + '&page=0'
-          tr
-            td= thread.name
-            td
-              a(href=id)= thread.title
-            td numComments
-            td= thread.date
+          td= thread.name
+          td
+            a(href=id)= thread.title
+          td numComments
+          td= thread.date
