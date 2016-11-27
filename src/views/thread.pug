@@ -21,6 +21,7 @@ block content
   -id = '/threadid=' + JSON.stringify(thread.id)
   -id = id + '&page='
   -var n=1
+  hr
   nav
     while n < Pnum
       if n = page
@@ -28,6 +29,7 @@ block content
       else
         a(href=(id + n))= n + 1
       -n++
+  hr
   br
 
   -id = id + page
