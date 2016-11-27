@@ -51,10 +51,11 @@ function getThread(req, res) {
   const re = /[=&]/;
   x = x.split(re);
   const threadID = x[1];
-  const page = x[3];
+  let page = x[3];
   if (!isNaN(threadID)) {
     if (!isNaN(page)) {
       // select, faum fyrsta innleggið
+      page = parseInt(page, 10);
       let offset = 10;
       let num = 10;
       if (page === 0) {
