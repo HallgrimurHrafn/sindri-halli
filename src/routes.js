@@ -8,6 +8,14 @@ const env = process.env.DATABASE_URL;
 const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 
+// tekur inn thread id og skilar fjolda paragrapha
+function pageNum(id) {
+  let str = 'SELECT COUNT(*) FROM';
+  str = str.concat('(SELECT id FROM threads WHERE id = $1 UNION');
+  str = str.concat('(SELECT id FROM comments WHERE threadid = $1) AS derivedTable');
+  return db.one(str, id);
+}
+
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(req, res) {
   const x = req.url;
@@ -69,11 +77,19 @@ function getThread(req, res) {
         db.any('SELECT * FROM comments WHERE threadID = $1 limit $2 offset $3',
           [threadID, num, page * offset])
         .then((comments) => {
-          res.render('thread', {
-            thread,
-            comments,
-            page,
-          });
+          pageNum(threadID)
+            .then((ParaNum) => {
+              // const Pnum =
+              res.render('thread', {
+                thread,
+                comments,
+                page,
+                Pnum: ParaNum,
+              });
+            })
+            .catch((error) => {
+              res.render('error', { title: 'oohh shiet', error });
+            });
         })
         .catch((error) => {
           res.render('error', { title: 'oohh shiet', error });
