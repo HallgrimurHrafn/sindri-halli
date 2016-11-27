@@ -5,10 +5,11 @@ block content
   div.OP
     p.OPtext= thread.paragraph
 
-  each comment in comments
-    div.comment
-      p.username= comment.name
-      p.text= comment.text
+  div.comments
+    each comment in comments
+      div.comment
+        p.username= comment.name
+        p.text= comment.text
   br
 
   h3 Tjáðu þig um málið hér.
