@@ -25,13 +25,31 @@ function getSub(req, res) {
     });
 }
 
+
+function getThreadPrep(req, res) {
+  let x = req.url;
+  const re = /[=]/;
+  x = x.split(re);
+  const threadID = parseInt(x[2], 10);
+  if (!isNaN(threadID)) {
+    console.log('okok');
+    let str = x[0].concat(x[1]);
+    str = str.concat(threadID);
+    console.log(str);
+    // res.redirect(str);
+  }
+}
+
 // sækir þráðin með kommentum þessarar blaðsíðu
 // function getThread(threadID, page) {
 function getThread(req, res) {
-  const x = req.url;
-  const re = /[=]/;
-  let threadID = x.split(re);
-  threadID = threadID[1];
+  let x = req.url;
+  const re = /[=/]/;
+  x = x.split(re);
+  const threadID = x[2];
+  if (!isNaN(threadID)) {
+    getThreadPrep(req, res);
+  }
     // select, faum fyrsta innleggið
   db.one('SELECT * FROM threads WHERE id = $1', threadID)
     .then((thread) => {
@@ -51,6 +69,7 @@ function getThread(req, res) {
       res.render('error', { title: 'oohh shiet', error });
     });
 }
+
 
 // nýr þráður er búinn til.
 function newThread(req, res) {
