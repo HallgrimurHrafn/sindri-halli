@@ -54,7 +54,7 @@ main {
   font-family: Georgia;
   color: #ffffff;
   font-size: 23px;
-  width: 5em;
+  width: 6em;
   height: 3.5em;
   text-decoration: none;
 }
@@ -71,6 +71,13 @@ a{
 
 .currentSub {
   background: rgb(105, 199, 165)
+  text-shadow: 1px 1px 3px #000000;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 23px;
+  width: 6em;
+  height: 3.5em;
+  text-decoration: none;
 }
 
 .newThreadDiv {
