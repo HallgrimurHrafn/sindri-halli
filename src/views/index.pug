@@ -5,31 +5,30 @@ block content
   br
 
   div.menu
-    if title == 'Schemes'
-      button.currentSub(disabled) Schemes
-    else
+    form(method='get' action='/cat=Schemes')
+      if title == 'Schemes'
+        button.menuBtn.currentSub(type='submit') Schemes
+      else
 
-      form(method='get' action='/cat=Schemes')
-      button.menuBtn(type='submit') Schemes
-    if title == 'Party'
-      button.currentSub(disabled) Party
-    else
+        button.menuBtn(type='submit') Schemes
+    form(method='get' action='/cat=Party')
+      if title == 'Party'
+        button.menuBtn.currentSub(type='submit') Party
+      else
 
-      form(method='get' action='/cat=Party')
       button.menuBtn(type='submit') Party
-    if title == 'Tech'
-      button.currentSub(disabled) Tech
-    else
+    form(method='get' action='/cat=Tech')
+      if title == 'Tech'
+        button.menuBtn.currentSub(type='submit') Tech
+      else
 
-      form(method='get' action='/cat=Tech')
       button.menuBtn(type='submit') Tech
-    if title == 'Videogames'
-      button.currentSub(disabled) Video games
-    else
+    form(method='get' action='/cat=Videogames')
+      if title == 'Videogames'
+        button.menuBtn.currentSub(type='submit') Videogames
+      else
 
-      form(method='get' action='/cat=Videogames')
-      button.menuBtn(type='submit') Video games
-
+      button.menuBtn(type='submit') Videogames
   div.newThreadDiv
     form(method='get' action='/newThread')
       button.menuBtn.newThread(type='submit') New Thread
