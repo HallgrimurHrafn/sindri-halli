@@ -101,12 +101,12 @@ li {
 li a {
   margin: 0;
   padding: 3px;
-  background: rgb(244, 139, 194);
+  background: rgb(117, 201, 165);
 }
 
 li p {
   margin: 0;
   padding: 3px;
-  background: rgb(190, 190, 190);
+  background: rgb(75, 128, 105);
   display: inline;
 }
