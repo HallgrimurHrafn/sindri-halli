@@ -70,14 +70,7 @@ a{
 }
 
 .currentSub {
-  background: rgb(105, 199, 165)
-  text-shadow: 1px 1px 3px #000000;
-  font-family: Georgia;
-  color: #ffffff;
-  font-size: 23px;
-  width: 6em;
-  height: 3.5em;
-  text-decoration: none;
+  background: rgb(105, 199, 165);
 }
 
 .newThreadDiv {
