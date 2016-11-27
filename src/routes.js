@@ -129,7 +129,7 @@ function newComment(req, res) {
 // }
 
 function index(req, res) {
-  db.any('SELECT * FROM threads')
+  db.any('SELECT * FROM threads LIMIT $1', 5)
     .then((thread) => {
       res.render('index', {
         title: 'BASIC',
