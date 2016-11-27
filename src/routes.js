@@ -64,12 +64,10 @@ function getThread(req, res) {
     if (!isNaN(page)) {
       // select, faum fyrsta innleggið
       page = parseInt(page, 10);
-      let offset = 10;
+      let offset = 9;
       let num = 10;
       if (page === 0) {
         num = 9;
-      } else if (page === 1) {
-        offset = 9;
       }
       db.one('SELECT * FROM threads WHERE id = $1', threadID)
       .then((thread) => {
