@@ -22,7 +22,8 @@ block content
   br
 
   h3 Tjáðu þig um málið hér.
-  -id = '/threadid=' + thread.id + '&page=' + page
+  -id = '/threadid=' + thread.id
+  -id = id + '&page=' + page
   form(method='post' action=id)
     div
       input(
