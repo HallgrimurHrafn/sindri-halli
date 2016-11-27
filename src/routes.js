@@ -25,18 +25,19 @@ function getSub(req, res) {
     });
 }
 
-
+// ef linkurinn er rangur innan marka logum vid.
+// annars sendum vid a forsidu.
 function getThreadPrep(req, res) {
   let x = req.url;
-  const re = /[=]/;
+  const re = /[=/]/;
   x = x.split(re);
   const threadID = parseInt(x[2], 10);
   if (!isNaN(threadID)) {
-    console.log('okok');
-    let str = x[0].concat(x[1]);
+    let str = x[0].concat(x[1]).concat('=');
     str = str.concat(threadID);
-    console.log(str);
-    // res.redirect(str);
+    res.redirect(str);
+  } else {
+    res.redirect('/');
   }
 }
 
@@ -47,7 +48,7 @@ function getThread(req, res) {
   const re = /[=/]/;
   x = x.split(re);
   const threadID = x[2];
-  if (!isNaN(threadID)) {
+  if (isNaN(threadID)) {
     getThreadPrep(req, res);
   }
     // select, faum fyrsta innleggið
