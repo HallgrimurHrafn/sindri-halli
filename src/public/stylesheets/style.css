@@ -2,6 +2,10 @@ body {
   margin: 50px;
 }
 
+.header {
+  width: 100%;
+}
+
 button {
   padding: 0px;
 }
