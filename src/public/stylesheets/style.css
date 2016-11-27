@@ -48,7 +48,7 @@ main {
 }
 
 .menuBtn {
-  background: rgb(244, 139, 194);
+  background: rgb(250, 180, 135);
   text-shadow: 1px 1px 3px #000000;
   font-family: Georgia;
   color: #ffffff;
@@ -60,7 +60,7 @@ main {
 }
 
 .menuBtn:hover {
-  background: rgb(174, 222, 241);
+  background: rgb(119, 202, 168);
   text-decoration: none;
 }
 
