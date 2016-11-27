@@ -24,13 +24,9 @@ block content
   nav
     while n < Pnum
       -x = n + 1
-      if n = page
-        p= x
-      else
-
-        -id = '/threadid=' + JSON.stringify(thread.id)
-        -id = id + '&page=' + n
-        a(href=(id))= x
+      -id = '/threadid=' + JSON.stringify(thread.id)
+      -id = id + '&page=' + n
+      a(href=(id))= x
       -n = n + 1
   hr
   br
