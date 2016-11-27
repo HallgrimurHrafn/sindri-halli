@@ -54,9 +54,9 @@ function newThread(req, res) {
   db.none(str, ['name', 'paragraph', 'title', 'sub'])
     .then(() => {
     // þurfum að searcha ID.
-      res.render('stringify', { data });
+      res.render('stringify', { title: 'okok' });
     // // success;
-    // })
+    });
     // .catch((error) => {
     //   res.render('error', { title: 'oohh shiet', error });
     // });

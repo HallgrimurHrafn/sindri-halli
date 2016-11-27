@@ -1,2 +1,5 @@
 extends layout
-  JSON.stringify(data)
+  if data != null
+    JSON.stringify(data)
+  else
+    h1= title
