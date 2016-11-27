@@ -1,6 +1,11 @@
 html, body {
   padding: 0;
   margin: 0;
+}
+html {
+  height: 100%;
+}
+body {
   min-height: 100%;
 }
 
@@ -14,9 +19,9 @@ header {
 
 main {
   padding: 50px;
-  background: -webkit-linear-gradient(rgba(251,238,152,1) 0%, rgb(242, 179, 107) 20%);
-  background: -o-linear-gradient(rgba(251,238,152,1) 0%, rgb(242, 179, 107) 20%);
-  background: linear-gradient(rgba(251,238,152,1) 0%, rgb(242, 179, 107) 20%);
+  background: -webkit-linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%);
+  background: -o-linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%);
+  background: linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%);
 }
 
 h1.pageheader {
