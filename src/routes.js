@@ -187,7 +187,7 @@ router.post('/', DirectToSub);
 router.post('/newthread', newThread);
 router.get('/newthread', createThread);
 router.get('/threadID=*&page=*', getThread);
-router.post('/threadID=*', newComment);
+router.post('/threadID=*&page=*', newComment);
 router.get('/cat=*', getSub);
 
 // VERDUR AD VERA NEDSTUR
