@@ -66,17 +66,18 @@ function getThread(req, res) {
       page = parseInt(page, 10);
       let offset = 9;
       let num = 10;
+      let huh = 0;
       if (page === 0) {
         num = 9;
       }
       if (page > 1) {
-        offset = 10;
+        huh = 1;
       }
       db.one('SELECT * FROM threads WHERE id = $1', threadID)
       .then((thread) => {
         // fáum öll kommentin. innan við page.
         db.any('SELECT * FROM comments WHERE threadID = $1 limit $2 offset $3',
-          [threadID, num, page * offset])
+          [threadID, num, (page * offset) + huh])
         .then((comments) => {
           pageNum(threadID)
             .then((ParaNum) => {
