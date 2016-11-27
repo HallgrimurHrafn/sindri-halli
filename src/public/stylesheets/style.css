@@ -4,13 +4,14 @@ html, body {
 }
 html {
   height: 100%;
+  background-color: rgba(254, 247, 206,1);
 }
 body {
-  min-height: 100%;
-  /*background-color: rgba(254, 247, 206,1);*/
-  background: -webkit-linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 700px, rgba(254, 247, 206,1) 100%);
-  background: -o-linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 700px, rgba(254, 247, 206,1) 100%);
-  background: linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 700px, rgba(254, 247, 206,1) 100%);
+  height: 100%;
+  margin: 0;
+  background: -webkit-linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 440px);
+  background: -o-linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 440px);
+  background: linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 440px);
   background-repeat: no-repeat;
 }
 
