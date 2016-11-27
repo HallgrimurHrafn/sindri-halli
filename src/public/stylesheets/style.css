@@ -47,6 +47,22 @@ main {
   display: inline;
 }
 
+.menuBtn {
+  background: #811717;
+  text-shadow: 1px 1px 3px #000000;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 23px;
+  width: 5em;
+  height: 3.5em;
+  text-decoration: none;
+}
+
+.menuBtn:hover {
+  background: #aa2121;
+  text-decoration: none;
+}
+
 a{
   text-decoration: none;
   color: black;
