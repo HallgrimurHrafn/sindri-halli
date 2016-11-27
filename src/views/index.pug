@@ -4,17 +4,18 @@ block content
   h1= title
   br
 
-  nav
-    a(href='/cat=Schemes')
-      b Schemes
-    a(href='/cat=Party')
-      b Party
-    a(href='/cat=Tech')
-      b Tech
-    a(href='/cat=Videogames')
-      b Videgames
-    a.newThread(href='/newThread')
-      b New Thread
+  div.menu
+    form(method='get' action='/cat=Schemes')
+      button(type='submit') Schemes
+    form(method='get' action='/cat=Party')
+      button(type='submit') Party
+    form(method='get' action='/cat=Tech')
+      button(type='submit') Tech
+    form(method='get' action='/cat=Videogames')
+      button(type='submit') Videogames
+    form(method='get' action='/newThread')
+      button(type='submit') New Thread
+
   br
 
   hr
