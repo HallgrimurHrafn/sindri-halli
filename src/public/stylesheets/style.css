@@ -20,9 +20,9 @@ header {
 main {
   padding: 50px;
   min-height: 100%;
-  background: -webkit-linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%, rgb(255, 255, 255) 99%);
-  background: -o-linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%, rgb(255, 255, 255) 99%);
-  background: linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%, rgb(255, 255, 255) 99%);
+  background: -webkit-linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%, rgba(254, 247, 206,1) 90%, rgb(255, 255, 255) 100%);
+  background: -o-linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%, rgba(254, 247, 206,1) 90%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(rgba(251,238,152,1) 0%, rgba(254, 247, 206,1) 70%, rgba(254, 247, 206,1) 90%, rgb(255, 255, 255) 100%);
 }
 
 h1.pageheader {
