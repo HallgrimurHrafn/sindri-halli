@@ -8,21 +8,25 @@ block content
     if title == 'Schemes'
       button.currentSub(disabled) Schemes
     else
+
       form(method='get' action='/cat=Schemes')
       button.menuBtn(type='submit') Schemes
     if title == 'Party'
       button.currentSub(disabled) Party
-    else    
+    else
+
       form(method='get' action='/cat=Party')
       button.menuBtn(type='submit') Party
     if title == 'Tech'
       button.currentSub(disabled) Tech
     else
+
       form(method='get' action='/cat=Tech')
       button.menuBtn(type='submit') Tech
     if title == 'Videogames'
       button.currentSub(disabled) Videgames
     else
+
       form(method='get' action='/cat=Videogames')
       button.menuBtn(type='submit') Videogames
 
