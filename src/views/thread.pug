@@ -7,9 +7,10 @@ block content
 
   div.comments
     each comment in comments
+      hr
       div.comment
         p.username= comment.name
-        p.text= comment.text
+        p.text= comment.paragraph
   br
 
   h3 Tjáðu þig um málið hér.

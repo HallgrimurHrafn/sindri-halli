@@ -72,9 +72,10 @@ function newComment(req, res) {
   let threadID = x.split(re);
   threadID = threadID[1];
 
-  db.none('INSERT ')  // insert, svo viljum við fá þráðin
+  const str = 'insert into comments (name, paragraph, threadID) values ($1, $2, $3)';
+  db.none(str, [name, paragraph, threadID])
     .then(() => {
-      getThread(req, res);  // faum þráðinn og bls 0 for now.
+      res.redirect(req.url);
       // success;
     })
     .catch((error) => {
