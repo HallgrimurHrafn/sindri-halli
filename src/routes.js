@@ -127,10 +127,8 @@ function createThread(req, res) {
 router.get('/', index);
 router.post('/newthread', newThread);
 router.get('/newthread', createThread);
-// router.post('/', index);
 router.get('/threadID=*', getThread);
 router.post('/threadID=*', newComment);
-router.post('/', DirectToSub);
 router.get('/cat=*', getSub);
 
 module.exports = router;
