@@ -54,6 +54,7 @@ a:hover {
 
 .newThread {
   float: right;
+  padding-right: 30%;
 }
 
 button {
@@ -61,7 +62,7 @@ button {
 }
 
 table {
-  align: center;
+  float: center;
 }
 
 td, tr {
