@@ -27,12 +27,12 @@ block content
       if n = page
         p= n + 1
       else
-        a(href=(id + n))= n + 1
+        a(href=(id + JSON.stringify(n)))= n + 1
       -n++
   hr
   br
 
-  -id = id + page
+  -id = id + JSON.stringify(page)
 
   h3 Leave a comment below
   form(method='post' action=id)
