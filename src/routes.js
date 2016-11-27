@@ -70,7 +70,7 @@ function getThread(req, res) {
       if (page === 0) {
         num = 9;
       }
-      if (page === 1) {
+      if (page === 2) {
         add = 1;
       }
       if (page > 2) {

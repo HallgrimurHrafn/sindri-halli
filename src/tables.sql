@@ -15,8 +15,3 @@ CREATE TABLE comments (
   paragraph text,
   date timestamp with time zone not null default current_timestamp
 );
-
-SELECT COUNT(*) FROM (
-  SELECT id from threads where id = 1 UNION
-  SELECT threadid from comments where threadid = 1
-)
