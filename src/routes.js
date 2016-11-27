@@ -112,7 +112,6 @@ function getThread(req, res) {
   }
 }
 
-
 // nýr þráður er búinn til.
 function newThread(req, res) {
   const title = req.body.title;
