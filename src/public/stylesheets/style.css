@@ -12,7 +12,7 @@ header {
   width: 100%;
   height: 300px;
   margin-bottom: 2em;
-  background: transparent url(/images/OP.jpg) no-repeat fixed 65% 50%;
+  background: transparent url(/images/OP.jpg) no-repeat fixed 65% 300%;
   background-size: cover;
 }
 
@@ -24,12 +24,19 @@ h1.pageheader {
   margin-top: 0;
   text-align: center;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 120px 0 0 0;
   display: block;
   font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+  text-decoration-color:
 }
 
 button {
