@@ -9,7 +9,8 @@ block content
     each comment in comments
       hr
       div.comment
-        p.username= comment.name
+        p.username
+          strong= comment.name
         p.text= comment.paragraph
   br
 
