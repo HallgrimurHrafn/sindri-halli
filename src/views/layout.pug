@@ -14,18 +14,18 @@ html(lang='is')
         br
         -n = 0
         nav
-          while n < Pnum
-            -x = n + 1
-            -id = '/threadid=' + JSON.stringify(thread.id)
-            -id = id + '&page=' + n
-            if n == page
-              li
-                p= page + 1
-            else
+        while n < Pnum
+          -x = n + 1
+          -id = '/threadid=' + JSON.stringify(thread.id)
+          -id = id + '&page=' + n
+          if n == page
+            li
+              p= page + 1
+          else
 
-              li
-                a(href=(id))= x
-            -n = n + 1
+            li
+              a(href=(id))= x
+          -n = n + 1
         br
 
       block content2
