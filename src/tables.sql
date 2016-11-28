@@ -18,6 +18,15 @@ CREATE TABLE comments (a
   date timestamp not null default current_timestamp
 );
 
+Create view total as
+(Select * from
+  ((SELECT comments.paragraph, comments.date, comments.threadid, comments.id, comments.name, threads.title
+    FROM comments left outer join threads
+    on threads.id = comments.threadid)
+    union
+    (select paragraph, date, id, 0, name, title
+      from threads)) as test)
+      order by date desc;
 
 
 Last edited: skilar dagsetningu þess sem síðast var breytt.
@@ -27,12 +36,17 @@ SELECT date FROM comments where threadid = 1)
 ORDER BY date desc limit 1;
 
 
+-- Fyrir search þarf:
+paragraph, date, id/threadid, id/id, title, name
+
+comments: paragraph, date, threadid, id, (select title from threads), name
+threads: paragraph, date, id, ???, title, name,
+kannski setja ??? sem 0
 
 
 
-
-
-
+on test2.id = test2.threadid and
+test3.?column?=test2.id
 
 
 select distinct threadid FROM
