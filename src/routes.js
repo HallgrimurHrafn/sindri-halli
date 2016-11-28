@@ -281,9 +281,13 @@ function split(text) {
 
 function searchName(req, res) {
   const name = req.body.search;
-  db.any('SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc', name)
+  const name2 = split(name);
+  db.any('SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc', name2)
     .then((results) => {
+      let t = 'Search: ';
+      t = t.concat(name);
       res.render('search', {
+        title: t,
         searched: name,
         results,
       });
@@ -295,10 +299,14 @@ function searchName(req, res) {
 
 function searchPar(req, res) {
   const par = req.body.search;
-  db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc', par)
+  const par2 = split(par);
+  db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc', par2)
     .then((results) => {
+      let t = 'Search: ';
+      t = t.concat(par);
       res.render('search', {
         searched: par,
+        title: t,
         results,
       });
     })
@@ -311,8 +319,11 @@ function searchTitle(req, res) {
   const title = req.body.search;
   db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc', title)
     .then((results) => {
+      let t = 'Search: ';
+      t = t.concat(title);
       res.render('search', {
         searched: title,
+        title: t,
         results,
       });
     })
@@ -322,15 +333,18 @@ function searchTitle(req, res) {
 }
 
 function searchAll(req, res) {
-  let all = req.body.search;
-  all = split(all);
+  const all = req.body.search;
+  const all2 = split(all);
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
   str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
   str = str.concat('ORDER BY date desc');
-  db.any(str, all)
+  db.any(str, all2)
     .then((results) => {
+      let t = 'Search: ';
+      t = t.concat(all);
       res.render('search', {
         searched: all,
+        title: t,
         results,
       });
     })
