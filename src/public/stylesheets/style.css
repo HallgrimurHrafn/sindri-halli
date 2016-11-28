@@ -63,9 +63,13 @@ main {
 .menuBtn:hover {
   background: rgb(71, 198, 237);
   text-decoration: none;
-  -webkit-border-radius: 25;
-  -moz-border-radius: 25;
-  border-radius: 25px;
+  -webkit-border-radius: 15;
+  -moz-border-radius: 15;
+  border-radius: 15px;
+}
+
+.menuBtn:active {
+
 }
 
 a{
