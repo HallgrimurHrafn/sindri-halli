@@ -73,6 +73,11 @@ a{
   background: rgb(105, 199, 165);
 }
 
+.currentSub:hover {
+  background: rgb(40, 199, 141);
+  text-decoration: none;
+}
+
 .newThreadDiv {
   float: right;
 }
