@@ -260,8 +260,8 @@ router.post('/newthread(&*)?', newThread);
 router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
 router.post('/threadID=*&page=*', newComment);
+router.get('/cat=*&page=*', getSub);
 router.get('/cat=*', getSub);
-// router.get('/cat=*&page=*', getSub);
 
 // VERDUR AD VERA NEDSTUR
 router.get('/*', nolink);

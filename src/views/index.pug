@@ -2,25 +2,25 @@ extends layout
 
 block content
   .menu
-    a(href='/cat=Schemes')
+    a(href='/cat=Schemes&page=0')
       if title == 'Schemes'
         button.menuBtn.currentSub(type='submit') Schemes
       else
 
         button.menuBtn(type='submit') Schemes
-    a(href='/cat=Party')
+    a(href='/cat=Party&page=0')
       if title == 'Party'
         button.menuBtn.currentSub(type='submit') Party
       else
 
         button.menuBtn(type='submit') Party
-    a(href='/cat=Tech')
+    a(href='/cat=Tech&page=0')
       if title == 'Tech'
         button.menuBtn.currentSub(type='submit') Tech
       else
 
         button.menuBtn(type='submit') Tech
-    a(href='/cat=Videogames')
+    a(href='/cat=Videogames&page=0')
       if title == 'Videogames'
         button.menuBtn.currentSub(type='submit') Video games
       else
@@ -53,7 +53,7 @@ block content
               a(href=id)= thread.title
             td= thread.comnum
             td= thread.views
-            
+
             td= thread.mdate
 
   br
