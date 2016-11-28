@@ -53,6 +53,7 @@ block content
               a(href=id)= thread.title
             td= thread.comnum
             td= thread.views
+            //- logum date-id adeins til.
             script
               :cdata-js:babel(presets=['es2015'])
                 const x = thread.mdate;
