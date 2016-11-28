@@ -55,7 +55,10 @@ block content
             td= thread.views
             script(type='text/javascript').
               const x = thread.mdate;
-            td= thread.mdate
+              const re = /[+]/;
+              let mdate = x.split(re);
+              mdate = mdate[0]
+            td= mdate
 
   br
 

@@ -233,7 +233,7 @@ function DirectToIndex(req, res) {
 
 function createThread(req, res) {
   const x = req.url;
-    const re = /[&]/;
+  const re = /[&]/;
   let sel = 1;
   let url = x.split(re);
   url = url[1];
