@@ -253,6 +253,41 @@ function nolink(req, res) {
   res.redirect('/');
 }
 
+function searchName(req, res) {
+  const name = req.body.search;
+  db.any('SELECT * FROM total WHERE name ilike $1', name)
+    .then((results) => {
+      res.render('', {
+        searched: name,
+        results,
+      });
+    })
+    .catch((error) => {
+      res.render('error', { title: 'page amount', error });
+    });
+}
+
+function searchPar(req, res) {
+  const par = req.body.search;
+}
+
+function searchTitle(req, res) {
+  const title = req.body.search;
+}
+
+function search(req, res) {
+  const type = req.body.type;
+  if (type === 'name') {
+    searchName(req, res);
+  } else if (type === 'paragraph') {
+    searchPar(req, res);
+  } else if (type === 'title') {
+    searchTitle(req, res);
+  } else {
+    res.redirect('/');
+  }
+}
+
 router.get('/page=*', index);
 router.get('/', DirectToIndex);
 // router.post('/', DirectToSub);
@@ -262,7 +297,7 @@ router.get('/threadID=*&page=*', getThread);
 router.post('/threadID=*&page=*', newComment);
 router.get('/cat=*&page=*', getSub);
 router.get('/cat=*', getSub);
-
+router.post('/search=*', search);
 // VERDUR AD VERA NEDSTUR
 router.get('/*', nolink);
 

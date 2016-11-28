@@ -29,6 +29,14 @@ Create view total as
       order by date desc;
 
 
+
+Search:
+select * from
+(Select to_tsvector('sindri')) UNION
+total
+where name ilike testing.to_tsvector;
+
+
 Last edited: skilar dagsetningu þess sem síðast var breytt.
 output.date er dagsetningin
 (SELECT date FROM threads where id = 1 UNION ALL
