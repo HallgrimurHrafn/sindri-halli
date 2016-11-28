@@ -47,7 +47,7 @@ block content
         each thread in threads
           tr
             td= thread.name
-            -id = '/threadid=' + JSON.stringiy(thread.id) + '&page=0'
+            -id = '/threadid=' + JSON.stringify(thread.id) + '&page=0'
             td
               a(href=id)= thread.title
             td= thread.comnum
