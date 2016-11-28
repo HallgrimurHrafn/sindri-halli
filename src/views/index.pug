@@ -58,11 +58,20 @@ block content
 
   br
 
-  -n=0
+  -n = 0
+  -id = 0
+  if title == 'Schemes'
+    -id = '/cat=Schemes&'
+  if title == 'Party'
+    -id = '/cat=Party&'
+  if title == 'Tech'
+    -id = '/cat=Tech&'
+  if title == 'Videogames'
+    -id = '/cat=Videogames&'
   nav
     while n < Pnum
       -x = n + 1
-      -id = '/page=' + n
+      -id = id + '/page=' + n
       if n == page - 1
         li
           p= page
