@@ -275,7 +275,7 @@ function split(text) {
     }
     counter += 1;
   });
-  str = str.join(' | ');
+  str = str.join(' ');
   return str;
 }
 
