@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  div.menu
+  .menu
     a(href='/cat=Schemes')
       if title == 'Schemes'
         button.menuBtn.currentSub(type='submit') Schemes
@@ -26,7 +26,10 @@ block content
       else
 
         button.menuBtn(type='submit') Video games
-  div.newThreadDiv
+
+  .menuFill
+  
+  .newThreadDiv
     -blah = '/newThread&'+title
     a(href=blah)
       button.menuBtn.newThread(type='submit') New Thread
