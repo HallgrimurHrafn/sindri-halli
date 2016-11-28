@@ -295,7 +295,7 @@ function searchName(req, res) {
 
 function searchPar(req, res) {
   const par = req.body.search;
-  db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY dat desc', par)
+  db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc', par)
     .then((results) => {
       res.render('search', {
         searched: par,
@@ -309,7 +309,7 @@ function searchPar(req, res) {
 
 function searchTitle(req, res) {
   const title = req.body.search;
-  db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY dat desc', title)
+  db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc', title)
     .then((results) => {
       res.render('search', {
         searched: title,
