@@ -146,8 +146,25 @@ function newComment(req, res) {
   const str = 'insert into comments (name, paragraph, threadID) values ($1, $2, $3)';
   db.none(str, [name, paragraph, threadID])
     .then(() => {
-      res.redirect(req.url);
-      // success;
+      pageNum(threadID)
+        .then((comNum) => {
+          db.one()
+            .then((mdate) => {
+              db.none('UPDATE threads SET comnum = $1, mdate = $2', [comNum.count, mdate.date])
+                .then(() => {
+                  res.redirect(req.url);
+                })
+                .catch((error) => {
+                  res.render('error', { title: 'oohh shiet', error });
+                });
+            })
+            .catch((error) => {
+              res.render('error', { title: 'oohh shiet', error });
+            });
+        })
+        .catch((error) => {
+          res.render('error', { title: 'oohh shiet', error });
+        });
     })
     .catch((error) => {
       res.render('error', { title: 'oohh shiet', error });
@@ -189,8 +206,8 @@ function nolink(req, res) {
 
 router.get('/', index);
 router.post('/', DirectToSub);
-router.post('/newthread', newThread);
-router.get('/newthread', createThread);
+router.post('/newthread(&*)?', newThread);
+router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
 router.post('/threadID=*&page=*', newComment);
 router.get('/cat=*', getSub);
