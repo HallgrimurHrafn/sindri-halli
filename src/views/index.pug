@@ -38,6 +38,7 @@ block content
           th User
           th Title
           th Comments
+          th Views
           th Last modified
       tbody
         each thread in threads
@@ -47,4 +48,5 @@ block content
             td
               a(href=id)= thread.title
             td= thread.comnum
+            td= thread.views
             td= thread.mdate
