@@ -58,7 +58,6 @@ block content
 
   br
 
-  -n = 0
   -id1 = '/'
   if title == 'Schemes'
     -id1 = '/cat=Schemes&'
@@ -68,6 +67,17 @@ block content
     -id1 = '/cat=Tech&'
   if title == 'Videogames'
     -id1 = '/cat=Videogames&'
+
+  //- if page < 5
+  //-   -n = 0
+  //-   -max = page + 2
+  //- else if page < Pnum - 4
+  //-   -n = page - 3
+  //-   -max = Pnum
+  //- else
+  //-
+  //-   -n = page - 2
+  -n = 0
   nav
     while n < Pnum
       -x = n + 1
