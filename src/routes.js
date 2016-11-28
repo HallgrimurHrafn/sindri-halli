@@ -19,14 +19,25 @@ function pageNum(id) {
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(req, res) {
   const x = req.url;
-  const re = /[=]/;
+  const re = /[=&]/;
   let sub = x.split(re);
   sub = sub[1];
   db.any('SELECT * FROM threads WHERE sub = $1 ORDER BY mdate DESC LIMIT $2', [sub, 10]) // select, where sub=sub.
     .then((threads) => {
-      res.render('index', {
-        title: sub,
-        threads });
+      let str = 'SELECT COUNT(*) FROM ';
+      str = str.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
+      db.one(str, sub)
+        .then((tNum) => {
+          const Pnum = Math.floor(tNum.count / 10) + 1;
+          res.render('index', {
+            title: sub,
+            threads,
+            Pnum,
+          });
+        })
+        .catch((error) => {
+          res.render('error', { title: 'oohh shiet', error });
+        });
     })
     .catch((error) => {
       res.render('error', { title: 'oohh shiet', error });
