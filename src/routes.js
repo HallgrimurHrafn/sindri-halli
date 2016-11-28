@@ -29,7 +29,7 @@ function getSub(req, res) {
       str = str.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
       db.one(str, sub)
         .then((tNum) => {
-          const Pnum = Math.floor(tNum.count / 10) + 1;
+          const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
           res.render('index', {
             title: sub,
             threads,
@@ -98,7 +98,7 @@ function getThread(req, res) {
         .then((comments) => {
           pageNum(threadID)
             .then((ParaNum) => {
-              const Pnum = Math.floor(ParaNum.count / 10) + 1;
+              const Pnum = Math.floor((ParaNum.count - 1) / 10) + 1;
               res.render('thread', {
                 title: thread.title,
                 thread,
@@ -203,7 +203,7 @@ function index(req, res) {
       str = str.concat('(SELECT id FROM threads ) AS test');
       db.one(str)
         .then((tNum) => {
-          const Pnum = Math.floor(tNum.count / 10) + 1;
+          const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
           res.render('index', {
             title: 'The Front of the Frón of the Friend of the Foe',
             threads: thread,
