@@ -52,8 +52,12 @@ block content
               a(href=id)= thread.title
             td= thread.comnum
             td= thread.views
-
-            td= thread.mdate
+            script.
+              var date = JSON.stringify(thread.mdate)
+              var re = /[+]/
+              var x = date.split(re)
+              date = x[0]
+            td= date
 
   br
 
