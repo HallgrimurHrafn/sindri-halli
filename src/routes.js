@@ -323,7 +323,7 @@ function searchPar(par, req, res, page) {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
           res.render('search', {
             title: t,
-            searched: name,
+            searched: par,
             results,
             page,
             Pnum,
@@ -352,7 +352,7 @@ function searchTitle(title, req, res, page) {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
           res.render('search', {
             title: t,
-            searched: name,
+            searched: title,
             results,
             page,
             Pnum,
@@ -383,7 +383,7 @@ function searchAll(all, req, res, page) {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
           res.render('search', {
             title: t,
-            searched: name,
+            searched: all,
             results,
             page,
             Pnum,
