@@ -54,12 +54,11 @@ block content
             td= thread.comnum
             td= thread.views
             //- logum date-id adeins til.
-            script
-              :cdata-js:babel(presets=['es2015'])
-                const x = thread.mdate;
-                const re = /[+]/;
-                let mdate = x.split(re);
-                mdate = mdate[0];
+            script(type='text/javascript').
+              var x = thread.mdate;
+              var re = /[+]/;
+              var mdate = x.split(re);
+              mdate = mdate[0];
             td= mdate
 
   br
