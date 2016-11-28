@@ -148,8 +148,8 @@ function newComment(req, res) {
     .then(() => {
       pageNum(threadID)
         .then((comNum) => {
-          let str2 = '(SELECT date FROM threads where id = $1 UNION ALL';
-          str2 = str2.concat('SELECT date FROM comments where threadid = $1)');
+          let str2 = '(SELECT date FROM threads where id = $1 UNION ALL ';
+          str2 = str2.concat('SELECT date FROM comments where threadid = $1) ');
           str2 = str2.concat('ORDER BY date desc limit 1');
           db.one(str2, threadID)
             .then((mdate) => {
