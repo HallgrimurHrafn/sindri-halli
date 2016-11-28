@@ -259,7 +259,7 @@ function nolink(req, res) {
 
 function searchName(req, res) {
   const name = req.body.search;
-  db.any('SELECT * FROM total WHERE name ilike $1', name)
+  db.any('SELECT * FROM total WHERE name @@ to_tsquery($1)', name)
     .then((results) => {
       res.render('search', {
         searched: name,
@@ -273,10 +273,34 @@ function searchName(req, res) {
 
 function searchPar(req, res) {
   const par = req.body.search;
+  db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1)', par)
+    .then((results) => {
+      res.render('search', {
+        searched: par,
+        results,
+      });
+    })
+    .catch((error) => {
+      res.render('error', { title: 'page amount', error });
+    });
 }
 
 function searchTitle(req, res) {
   const title = req.body.search;
+  db.any('SELECT * FROM total WHERE title @@ to_tsquery($1)', title)
+    .then((results) => {
+      res.render('search', {
+        searched: title,
+        results,
+      });
+    })
+    .catch((error) => {
+      res.render('error', { title: 'page amount', error });
+    });
+}
+
+function searchAll(req, res) {
+  const all = req.body.search;
 }
 
 function search(req, res) {
@@ -287,6 +311,8 @@ function search(req, res) {
     searchPar(req, res);
   } else if (type === 'title') {
     searchTitle(req, res);
+  } else if (type === 'all') {
+    searchAll(req, res);
   } else {
     res.redirect('/');
   }
