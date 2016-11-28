@@ -90,6 +90,7 @@ a{
 
 .newThreadDiv {
   float: right;
+  display: flex;
 }
 
 .newThread {
