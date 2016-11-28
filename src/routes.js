@@ -452,7 +452,7 @@ router.post('/newthread(&*)?', newThread);
 router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
 router.post('/threadID=*&page=*', newComment);
-router.get('/threadID=*', DirectToPage0)
+router.get('/threadID=*', DirectToPage0);
 router.get('/cat=*&page=*', getSub);
 router.get('/cat=*', getSub);
 router.post('/search=*', search);
