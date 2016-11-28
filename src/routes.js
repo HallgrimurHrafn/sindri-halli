@@ -192,7 +192,9 @@ function newComment(req, res) {
 
 function index(req, res) {
   const x = req.url;
-  const re =
+  const re = /[=]/;
+  let page = x.split(re);
+  page = page[1];
   db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1', 10)
     .then((thread) => {
       let str = 'SELECT COUNT(*) FROM ';
@@ -224,7 +226,7 @@ function index(req, res) {
 // }
 
 function DirectToIndex(req, res) {
-  res.redirect('/page0');
+  res.redirect('/page=0');
 }
 
 function createThread(req, res) {
@@ -249,7 +251,7 @@ function nolink(req, res) {
   res.redirect('/');
 }
 
-router.get('/page0', index);
+router.get('/page=*', index);
 router.get('/', DirectToIndex);
 // router.post('/', DirectToSub);
 router.post('/newthread(&*)?', newThread);
