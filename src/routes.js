@@ -191,6 +191,8 @@ function newComment(req, res) {
 
 
 function index(req, res) {
+  const x = req.url;
+  const re =
   db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1', 10)
     .then((thread) => {
       let str = 'SELECT COUNT(*) FROM ';
@@ -202,27 +204,32 @@ function index(req, res) {
             title: 'The Front of the Frón of the Friend of the Foe',
             threads: thread,
             Pnum,
+            page,
           });
         })
         .catch((error) => {
-          res.render('error', { title: 'oohh shiet', error });
+          res.render('error', { title: 'page amount', error });
         });
     })
     .catch((error) => {
-      res.render('error', { title: 'oohh shiet', error });
+      res.render('error', { title: 'Cant load threads', error });
     });
 }
 
-function DirectToSub(req, res) {
-  const sub = req.body.sub;
-  let x = '/cat=';
-  x = x.concat(sub);
-  res.redirect(x);
+// function DirectToSub(req, res) {
+//   const sub = req.body.sub;
+//   let x = '/cat=';
+//   x = x.concat(sub);
+//   res.redirect(x);
+// }
+
+function DirectToIndex(req, res) {
+  res.redirect('/page0');
 }
 
 function createThread(req, res) {
   const x = req.url;
-  const re = /[&]/;
+    const re = /[&]/;
   let sel = 1;
   let url = x.split(re);
   url = url[1];
@@ -242,8 +249,9 @@ function nolink(req, res) {
   res.redirect('/');
 }
 
-router.get('/', index);
-router.post('/', DirectToSub);
+router.get('/page0', index);
+router.get('/', DirectToIndex);
+// router.post('/', DirectToSub);
 router.post('/newthread(&*)?', newThread);
 router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
