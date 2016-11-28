@@ -57,6 +57,22 @@ block content
 
   br
 
+  .search
+    form(method='post' action='/search=')
+      select.select(name='type')
+        option(value='name' selected) Name
+        option(value='title') Title
+        option(value='paragraph') paragraph
+        option(value='all') all
+      input(
+        type='text'
+        name='search'
+        pattern='.{2,64}'
+        required title='must be 2-64 characters'
+      )
+
+
+
   -id1 = '/'
   if title == 'Schemes'
     -id1 = '/cat=Schemes&'
