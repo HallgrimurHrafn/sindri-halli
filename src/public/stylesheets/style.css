@@ -42,7 +42,7 @@ main {
   max-width: 1300px;
 }
 
-.menu {
+.nav {
   display: flex;
   float:left;
 }
@@ -93,7 +93,7 @@ a{
   background: rgb(244, 139, 194);
 }
 
-.menuFill {
+.fill {
   background: rgb(250, 180, 135);
   /*margin-left: 40em;*/
   width: 100%;
