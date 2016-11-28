@@ -86,8 +86,8 @@ a{
 
 .newThreadDiv {
   position: absolute;
-  right: 0;
-  top: 18.75;
+  right: 5em;
+  top: 18.75em;
   display: flex;
 }
 
