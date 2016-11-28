@@ -133,6 +133,10 @@ li p {
   display: inline;
 }
 
+.select {
+  display: inline;
+}
+
 button, textarea, input {
   outline: none;
 }
