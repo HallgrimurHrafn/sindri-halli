@@ -85,6 +85,7 @@ a{
 }
 
 .newThreadDiv {
+  position: absolute;
   display: flex;
   float: right;
 }
