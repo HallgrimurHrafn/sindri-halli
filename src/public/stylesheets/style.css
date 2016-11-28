@@ -60,7 +60,7 @@ main {
 }
 
 .menuBtn:hover {
-  background: hsv(194, 70%, 93%);
+  background: rgb(71, 198, 237);
   text-decoration: none;
 }
 
