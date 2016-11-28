@@ -22,8 +22,9 @@ function getSub(req, res) {
   const re = /[=&]/;
   let sub = x.split(re);
   const page = sub[3];
-  sub = sub[1].toUpperCase();
-  if (sub === 'TECH' || sub === 'PARTY' || sub === 'SCHEMES' || sub === 'VIDEOGAMES') {
+  const sub2 = sub[1].toUpperCase();
+  sub = sub[1];
+  if (sub2 === 'TECH' || sub2 === 'PARTY' || sub2 === 'SCHEMES' || sub2 === 'VIDEOGAMES') {
     db.any('SELECT * FROM threads WHERE sub ilike $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
     .then((threads) => {
       let str = 'SELECT COUNT(*) FROM ';
@@ -279,8 +280,7 @@ function split(text) {
   return str;
 }
 
-function searchName(req, res) {
-  const name = req.body.search;
+function searchName(name, req, res) {
   const name2 = split(name);
   db.any('SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc', name2)
     .then((results) => {
@@ -297,8 +297,7 @@ function searchName(req, res) {
     });
 }
 
-function searchPar(req, res) {
-  const par = req.body.search;
+function searchPar(par, req, res) {
   const par2 = split(par);
   db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc', par2)
     .then((results) => {
@@ -315,9 +314,9 @@ function searchPar(req, res) {
     });
 }
 
-function searchTitle(req, res) {
-  const title = req.body.search;
-  db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc', title)
+function searchTitle(title, req, res) {
+  const title2 = split(title);
+  db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc', title2)
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(title);
@@ -332,8 +331,7 @@ function searchTitle(req, res) {
     });
 }
 
-function searchAll(req, res) {
-  const all = req.body.search;
+function searchAll(all, req, res) {
   const all2 = split(all);
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
   str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
@@ -354,18 +352,20 @@ function searchAll(req, res) {
 }
 
 function search(req, res) {
-  const type = req.body.type;
-  if (type === 'name') {
-    searchName(req, res);
-  } else if (type === 'paragraph') {
-    searchPar(req, res);
-  } else if (type === 'title') {
-    searchTitle(req, res);
-  } else if (type === 'all') {
-    searchAll(req, res);
+  let type = req.body.type;
+  const text = req.body.search;
+  let str = '/type=';
+  str = str.concat(type).concat('&search=').concat(text).concat('&page=0');
+  type = type.toUpperCase();
+  if (type === 'NAME' || type === 'PARAGRAPH' || type === 'TITLE' || type === 'ALL') {
+    res.redirect(str);
   } else {
     res.redirect('/');
   }
+}
+
+function searchprep(req, res) {
+  const url = req.body.url;
 }
 
 router.get('/page=*', index);
@@ -378,6 +378,7 @@ router.post('/threadID=*&page=*', newComment);
 router.get('/cat=*&page=*', getSub);
 router.get('/cat=*', getSub);
 router.post('/search=*', search);
+router.get('/type=*&search=*&page=*', searchprep);
 // VERDUR AD VERA NEDSTUR
 router.get('/*', nolink);
 

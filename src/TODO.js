@@ -1,9 +1,9 @@
-// TODO: XXX thydir done
-// Search engine.
-//    - title
+// TODO:
+// Search engine.  Minor tweaks i search parametrum
+//    - title XXX
 //    - user  XXX
-//    - paragraph
-// user base?   - BAIL right?
+//    - paragraph XXX
+// user base?   - BAIL right?  XXX
 // too many pages
 // lage date
 // cat= redirect  XXX
