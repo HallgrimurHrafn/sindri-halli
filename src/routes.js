@@ -261,7 +261,7 @@ function searchName(req, res) {
   const name = req.body.search;
   db.any('SELECT * FROM total WHERE name ilike $1', name)
     .then((results) => {
-      res.render('', {
+      res.render('search', {
         searched: name,
         results,
       });
