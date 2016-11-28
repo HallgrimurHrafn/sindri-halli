@@ -324,8 +324,8 @@ function searchTitle(req, res) {
 function searchAll(req, res) {
   let all = req.body.search;
   all = split(all);
-  let str = 'SELECT * FROM total WHERE name @@ to to_tsquery($1) or ';
-  str = str.concat('title @@ to to_tsquery($1) or paragraph @@ to to_tsquery($1) ');
+  let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
+  str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
   str = str.concat('ORDER BY date desc');
   db.any(str, all)
     .then((results) => {
