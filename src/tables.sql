@@ -27,3 +27,7 @@ Create view total as
     (select paragraph, date, id, 0, name, title
       from threads)) as test)
       order by date desc;
+
+
+SELECT COUNT(*) from
+(SELECT * FROM total WHERE name @@ to_tsquery('Sindri')) as test

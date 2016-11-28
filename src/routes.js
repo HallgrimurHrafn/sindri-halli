@@ -282,16 +282,27 @@ function split(text) {
 
 function searchName(name, req, res, page) {
   const name2 = split(name);
-  db.any('SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc', name2)
+  const count = 'SELECT COUNT(*) FROM ( ';
+  let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc';
+  db.any(str, name2)
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(name);
-      res.render('search', {
-        title: t,
-        searched: name,
-        results,
-        page,
-      });
+      str = count.concat(str).concat(') AS blah');
+      db.one(str, name2)
+        .then((p) => {
+          const Pnum = Math.floor((p.count - 1) / 10) + 1;
+          res.render('search', {
+            title: t,
+            searched: name,
+            results,
+            page,
+            Pnum,
+          });
+        })
+        .catch((error) => {
+          res.render('error', { title: 'page amount', error });
+        });
     })
     .catch((error) => {
       res.render('error', { title: 'page amount', error });
@@ -300,16 +311,27 @@ function searchName(name, req, res, page) {
 
 function searchPar(par, req, res, page) {
   const par2 = split(par);
-  db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc', par2)
+  const count = 'SELECT COUNT(*) FROM ( ';
+  let str = 'SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc';
+  db.any(str, par2)
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(par);
-      res.render('search', {
-        searched: par,
-        title: t,
-        results,
-        page,
-      });
+      str = count.concat(str).concat(') AS blah');
+      db.one(str, par2)
+        .then((p) => {
+          const Pnum = Math.floor((p.count - 1) / 10) + 1;
+          res.render('search', {
+            title: t,
+            searched: name,
+            results,
+            page,
+            Pnum,
+          });
+        })
+        .catch((error) => {
+          res.render('error', { title: 'page amount', error });
+        });
     })
     .catch((error) => {
       res.render('error', { title: 'page amount', error });
@@ -318,16 +340,27 @@ function searchPar(par, req, res, page) {
 
 function searchTitle(title, req, res, page) {
   const title2 = split(title);
+  const count = 'SELECT COUNT(*) FROM ( ';
+  let str = 'SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc';
   db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc', title2)
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(title);
-      res.render('search', {
-        searched: title,
-        title: t,
-        results,
-        page,
-      });
+      str = count.concat(str).concat(') AS blah');
+      db.one(str, title2)
+        .then((p) => {
+          const Pnum = Math.floor((p.count - 1) / 10) + 1;
+          res.render('search', {
+            title: t,
+            searched: name,
+            results,
+            page,
+            Pnum,
+          });
+        })
+        .catch((error) => {
+          res.render('error', { title: 'page amount', error });
+        });
     })
     .catch((error) => {
       res.render('error', { title: 'page amount', error });
@@ -336,6 +369,7 @@ function searchTitle(title, req, res, page) {
 
 function searchAll(all, req, res, page) {
   const all2 = split(all);
+  const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
   str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
   str = str.concat('ORDER BY date desc');
@@ -343,12 +377,21 @@ function searchAll(all, req, res, page) {
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(all);
-      res.render('search', {
-        searched: all,
-        title: t,
-        results,
-        page,
-      });
+      str = count.concat(str).concat(') AS blah');
+      db.one(str, all2)
+        .then((p) => {
+          const Pnum = Math.floor((p.count - 1) / 10) + 1;
+          res.render('search', {
+            title: t,
+            searched: name,
+            results,
+            page,
+            Pnum,
+          });
+        })
+        .catch((error) => {
+          res.render('error', { title: 'page amount', error });
+        });
     })
     .catch((error) => {
       res.render('error', { title: 'page amount', error });
