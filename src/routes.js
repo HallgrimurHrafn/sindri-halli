@@ -154,7 +154,7 @@ function newComment(req, res) {
           str2 = str2.concat('ORDER BY date desc limit 1');
           db.one(str2, threadID)
             .then((mdate) => {
-              db.none('UPDATE threads SET comnum = $1, mdate = $2', [comNum.count - 1, mdate.date])
+              db.none('UPDATE threads SET comnum = $1, mdate = $2 where id=$3', [comNum.count - 1, mdate.date, threadID])
                 .then(() => {
                   res.redirect(req.url);
                 })
@@ -175,13 +175,9 @@ function newComment(req, res) {
     });
 }
 
-// sækir 10 nýlegast modified þræðina.
-// function top10() {
-//   return;
-// }
 
 function index(req, res) {
-  db.any('SELECT * FROM threads LIMIT $1', 10)
+  db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1', 10)
     .then((thread) => {
       res.render('index', {
         title: 'The Front of the Frón of the Friend of the Foe',
