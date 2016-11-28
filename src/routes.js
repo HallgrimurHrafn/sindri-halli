@@ -412,7 +412,7 @@ function search(req, res) {
 }
 
 function searchprep(req, res) {
-  const url = req.body.url;
+  const url = req.url;
   const re = /[=&]/;
   const str = url.split(re);
   const type = str[1];
