@@ -33,9 +33,13 @@ block content
     div
       p.select Category:
       select.select(name='sub')
-        option(value='Schemes') Schemes
-        option(value='Party' selected='selected') Party
-        option(value='Tech') Tech
-        option(value='Videogames') Videogames
+        -a=''
+        -b=''
+        -c='selected'
+        -d=''
+        option(value='Schemes' selected=a) Schemes
+        option(value='Party' selected=b) Party
+        option(value='Tech' selected=c) Tech
+        option(value='Videogames' selected=d) Videogames
     div
       button(type='submit') Express yourself
