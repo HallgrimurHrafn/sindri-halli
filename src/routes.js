@@ -259,7 +259,7 @@ function nolink(req, res) {
 
 function searchName(req, res) {
   const name = req.body.search;
-  db.any('SELECT * FROM total WHERE name @@ to_tsquery($1)', name)
+  db.any('SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY dat desc', name)
     .then((results) => {
       res.render('search', {
         searched: name,
@@ -273,7 +273,7 @@ function searchName(req, res) {
 
 function searchPar(req, res) {
   const par = req.body.search;
-  db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1)', par)
+  db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY dat desc', par)
     .then((results) => {
       res.render('search', {
         searched: par,
@@ -287,7 +287,7 @@ function searchPar(req, res) {
 
 function searchTitle(req, res) {
   const title = req.body.search;
-  db.any('SELECT * FROM total WHERE title @@ to_tsquery($1)', title)
+  db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY dat desc', title)
     .then((results) => {
       res.render('search', {
         searched: title,
@@ -301,6 +301,19 @@ function searchTitle(req, res) {
 
 function searchAll(req, res) {
   const all = req.body.search;
+  let str = 'SELECT * FROM total WHERE name @@ to to_tsquery($1) or ';
+  str = str.concat('title @@ to to_tsquery($1) or paragraph @@ to to_tsquery($1) ');
+  str = str.concat('ORDER BY date desc');
+  db.any(str, all)
+    .then((results) => {
+      res.render('search', {
+        searched: all,
+        results,
+      });
+    })
+    .catch((error) => {
+      res.render('error', { title: 'page amount', error });
+    });
 }
 
 function search(req, res) {
