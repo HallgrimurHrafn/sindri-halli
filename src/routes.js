@@ -280,7 +280,7 @@ function split(text) {
   return str;
 }
 
-function searchName(name, req, res) {
+function searchName(name, req, res, page) {
   const name2 = split(name);
   db.any('SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc', name2)
     .then((results) => {
@@ -290,6 +290,7 @@ function searchName(name, req, res) {
         title: t,
         searched: name,
         results,
+        page,
       });
     })
     .catch((error) => {
@@ -297,7 +298,7 @@ function searchName(name, req, res) {
     });
 }
 
-function searchPar(par, req, res) {
+function searchPar(par, req, res, page) {
   const par2 = split(par);
   db.any('SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc', par2)
     .then((results) => {
@@ -307,6 +308,7 @@ function searchPar(par, req, res) {
         searched: par,
         title: t,
         results,
+        page,
       });
     })
     .catch((error) => {
@@ -314,7 +316,7 @@ function searchPar(par, req, res) {
     });
 }
 
-function searchTitle(title, req, res) {
+function searchTitle(title, req, res, page) {
   const title2 = split(title);
   db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc', title2)
     .then((results) => {
@@ -324,6 +326,7 @@ function searchTitle(title, req, res) {
         searched: title,
         title: t,
         results,
+        page,
       });
     })
     .catch((error) => {
@@ -331,7 +334,7 @@ function searchTitle(title, req, res) {
     });
 }
 
-function searchAll(all, req, res) {
+function searchAll(all, req, res, page) {
   const all2 = split(all);
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
   str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
@@ -344,6 +347,7 @@ function searchAll(all, req, res) {
         searched: all,
         title: t,
         results,
+        page,
       });
     })
     .catch((error) => {
@@ -366,6 +370,26 @@ function search(req, res) {
 
 function searchprep(req, res) {
   const url = req.body.url;
+  const re = /[=&]/;
+  const str = url.split(re);
+  const type = str[1];
+  const TYPE = type.toUpperCase();
+  const searched = str[3];
+  let page = str[5];
+  page = parseInt(page, 10);
+  if (isNaN(page)) {
+    res.redirect('/');
+  } else if (TYPE === 'NAME') {
+    searchName(searched, req, res, page);
+  } else if (TYPE === 'PARAGRAPH') {
+    searchPar(searched, req, res, page);
+  } else if (TYPE === 'TITLE') {
+    searchTitle(searched, req, res, page);
+  } else if (TYPE === 'ALL') {
+    searchAll(searched, req, res, page);
+  } else {
+    res.redirect('/');
+  }
 }
 
 router.get('/page=*', index);
