@@ -232,12 +232,11 @@ function index(req, res) {
     });
 }
 
-// function DirectToSub(req, res) {
-//   const sub = req.body.sub;
-//   let x = '/cat=';
-//   x = x.concat(sub);
-//   res.redirect(x);
-// }
+function DirectToSub(req, res) {
+  let sub = req.url;
+  sub = sub.concat('&page=0');
+  res.redirect(sub);
+}
 
 function DirectToIndex(req, res) {
   res.redirect('/page=0');
@@ -447,7 +446,6 @@ function searchprep(req, res) {
 
 router.get('/page=*', index);
 router.get('/', DirectToIndex);
-// router.post('/', DirectToSub);
 router.post('/newthread(&*)?', newThread);
 router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
@@ -455,7 +453,7 @@ router.post('/threadID=*&page=*', newComment);
 router.get('/threadID=*', DirectToPage0);
 router.get('/cat=*&page=*', getSub);
 router.get('/cat=*', getSub);
-router.post('/search=*', search);
+router.post('/search=*', DirectToSub);
 router.get('/type=*&search=*&page=*', searchprep);
 // VERDUR AD VERA NEDSTUR
 router.get('/*', nolink);
