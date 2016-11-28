@@ -259,20 +259,24 @@ function nolink(req, res) {
 
 function split(text) {
   let re = /["]/;
-  const str = text.split(re);
+  let str = text.split(re);
   const quotes = '( ';
-  const temp = [];
+  let parts;
   let counter = 0;
+  re = /[\s]/;
   str.forEach((block) => {
     if (counter % 2 === 1) {
-      re = /[\s]/;
-
-      str[counter] = quotes.concat(block[counter]);
+      parts = str[counter].split(re);
+      parts = parts.join(' & ');
+      str[counter] = quotes.concat(parts).concat(' )');
     } else {
-      str[counter] = temp.concat(block[counter]);
+      parts = str[counter].split(re);
+      str[counter] = parts.join(' | ');
     }
     counter += 1;
   });
+  str = str.join(' | ');
+  return str;
 }
 
 function searchName(req, res) {
