@@ -264,6 +264,10 @@ function nolink(req, res) {
   res.redirect('/');
 }
 
+// function transform(text) {
+//
+// }
+
 function splitter(text) {
   let re = /["]/;
   let str = text.split(re);
@@ -347,21 +351,22 @@ function searchPar(par, req, res, page) {
 }
 
 function searchTitle(title, req, res, page) {
-  const title2 = splitter(title);
+  const title1 = window.decodeURIComponent(title);
+  const title2 = splitter(title1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc';
   const str2 = str.concat(' LIMIT $2 offset $3');
   db.any(str2, [title2, 10, 10 * page])
     .then((results) => {
       let t = 'Search: ';
-      t = t.concat(title);
+      t = t.concat(title1);
       str = count.concat(str).concat(') AS blah');
       db.one(str, title2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
           res.render('search', {
             title: t,
-            searched: title,
+            searched: title1,
             results,
             page,
             Pnum,
