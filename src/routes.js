@@ -51,6 +51,13 @@ function getSub(req, res) {
   }
 }
 
+function DirectToPage0(req, res) {
+  let url = req.url;
+  url = url.concat('&page=0');
+  res.redirect(url);
+}
+
+
 // ef linkurinn er rangur innan marka logum vid.
 // annars sendum vid a forsidu.
 function getThreadPrep(req, res, x) {
@@ -445,6 +452,7 @@ router.post('/newthread(&*)?', newThread);
 router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
 router.post('/threadID=*&page=*', newComment);
+router.get('/threadID=*', DirectToPage0)
 router.get('/cat=*&page=*', getSub);
 router.get('/cat=*', getSub);
 router.post('/search=*', search);
