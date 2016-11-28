@@ -351,7 +351,7 @@ function searchPar(par, req, res, page) {
 }
 
 function searchTitle(title, req, res, page) {
-  const title1 = window.decodeURIComponent(title);
+  const title1 = decodeURIComponent(title);
   const title2 = splitter(title1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc';
