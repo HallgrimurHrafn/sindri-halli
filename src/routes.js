@@ -22,7 +22,7 @@ function getSub(req, res) {
   const re = /[=]/;
   let sub = x.split(re);
   sub = sub[1];
-  db.any('SELECT * FROM threads WHERE sub = $1', sub) // select, where sub=sub.
+  db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $2 WHERE sub = $1', [sub, 10]) // select, where sub=sub.
     .then((threads) => {
       res.render('index', {
         title: sub,
