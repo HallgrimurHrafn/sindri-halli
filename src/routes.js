@@ -23,7 +23,7 @@ function getSub(req, res) {
   let sub = x.split(re);
   const page = sub[3];
   sub = sub[1];
-  db.any('SELECT * FROM threads WHERE sub = $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
+  db.any('SELECT * FROM threads WHERE sub ilike $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
     .then((threads) => {
       let str = 'SELECT COUNT(*) FROM ';
       str = str.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
