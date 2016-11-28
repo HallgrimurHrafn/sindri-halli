@@ -32,9 +32,9 @@ Create view total as
 
 Search:
 select * from
-(Select to_tsvector('sindri')) UNION
-total
-where name ilike testing.to_tsvector;
+(Select to_tsvector('sindri')) as search
+left outer join total on search.to_tsvector ilike total.name
+;
 
 
 Last edited: skilar dagsetningu þess sem síðast var breytt.
