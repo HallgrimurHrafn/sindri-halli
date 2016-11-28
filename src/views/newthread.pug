@@ -33,13 +33,21 @@ block content
     div
       p.select Category:
       select.select(name='sub')
-        -a=''
-        -b=''
-        -c='selected'
-        -d=''
-        option(value='Schemes' a) Schemes
-        option(value='Party' b) Party
-        option(value='Tech' c) Tech
-        option(value='Videogames' d) Videogames
+        if (sel==1)
+          option(value='Schemes' selected) Schemes
+        else ()
+          option(value='Schemes') Schemes
+        if (sel==2)
+          option(value='Party' selected) Party
+        else ()
+          option(value='Party') Party
+        if (sel==3)
+          option(value='Tech' selected) Tech
+        else ()
+          option(value='Tech') Tech
+        if (sel==4)
+          option(value='Videogames' selected) Videogames
+        else ()
+          option(value='Videogames') Videogames
     div
       button(type='submit') Express yourself
