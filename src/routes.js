@@ -183,7 +183,7 @@ function index(req, res) {
   db.any('SELECT * FROM threads LIMIT $1', 10)
     .then((thread) => {
       res.render('index', {
-        title: 'BASIC',
+        title: 'The Front of the Frón of the Friend of the Foe',
         threads: thread,
       });
     })
