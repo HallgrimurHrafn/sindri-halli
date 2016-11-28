@@ -54,9 +54,11 @@ block content
             td= thread.comnum
             td= thread.views
             //- logum date-id adeins til.
-            script(type='text/javascript').
+            script.
+              "use strict";
+              
               var x = thread.mdate;
-              var re = /[+]/;
+              var re = /[x]/;
               var mdate = x.split(re);
               mdate = mdate[0];
             td= mdate
