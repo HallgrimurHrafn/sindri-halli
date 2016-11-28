@@ -6,6 +6,7 @@
 // user base?   - BAIL right?
 // too many pages
 // lage date
-// cat= redirect
-// index redirect
+// cat= redirect  XXX
+// cat page redirect
+// index page redirect
 // page sub og index XXX
