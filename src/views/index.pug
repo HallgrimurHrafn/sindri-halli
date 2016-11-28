@@ -44,10 +44,12 @@ block content
       tbody
         each thread in threads
           -id = '/threadid=' + thread.id + '&page=0'
+          -re = /[+]/
+          -date = thread.mdate.split(re)
           tr
             td= thread.name
             td
               a(href=id)= thread.title
             td= thread.comnum
             td= thread.views
-            td= thread.mdate
+            td= date[0]
