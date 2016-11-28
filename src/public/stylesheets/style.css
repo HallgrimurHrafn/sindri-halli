@@ -60,7 +60,7 @@ main {
 }
 
 .menuBtn:hover {
-  background: rgb(170,223,239);
+  background: hsv(194, 70%, 93%);
   text-decoration: none;
 }
 
@@ -83,7 +83,7 @@ a{
 }
 
 .newThread {
-  background: rgb(244, 139, 194)
+  background: rgb(244, 139, 194);
 }
 
 button {
