@@ -452,8 +452,8 @@ router.get('/threadID=*&page=*', getThread);
 router.post('/threadID=*&page=*', newComment);
 router.get('/threadID=*', DirectToPage0);
 router.get('/cat=*&page=*', getSub);
-router.get('/cat=*', getSub);
-router.post('/search=*', DirectToSub);
+router.get('/cat=*', DirectToSub);
+router.post('/search=*', search);
 router.get('/type=*&search=*&page=*', searchprep);
 // VERDUR AD VERA NEDSTUR
 router.get('/*', nolink);
