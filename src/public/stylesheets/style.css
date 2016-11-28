@@ -133,3 +133,7 @@ li p {
   background: rgb(75, 128, 105);
   display: inline;
 }
+
+button, textarea, input {
+  outline: none;
+}
