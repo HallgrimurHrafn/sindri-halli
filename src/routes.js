@@ -20,8 +20,8 @@ function pageNum(id) {
 function getSub(req, res) {
   const x = req.url;
   const re = /[=&]/;
-  const page = 1;
   let sub = x.split(re);
+  const page = sub[3];
   sub = sub[1];
   db.any('SELECT * FROM threads WHERE sub = $1 ORDER BY mdate DESC LIMIT $2', [sub, 10]) // select, where sub=sub.
     .then((threads) => {
