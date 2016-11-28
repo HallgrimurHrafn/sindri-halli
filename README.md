@@ -1,5 +1,5 @@
 
-# Verkefni 6
+# Lokaverkefni
 
 ## Lýsing
 
