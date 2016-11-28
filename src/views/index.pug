@@ -5,19 +5,19 @@ block content
   br
 
   div.menu
-    form(method='get' action='/cat=Schemes')
+    a(href='/cat=Schemes')
       if title == 'Schemes'
         button.menuBtn.currentSub(type='submit') Schemes
       else
 
         button.menuBtn(type='submit') Schemes
-    form(method='get' action='/cat=Party')
+    a(href='/cat=Party')
       if title == 'Party'
         button.menuBtn.currentSub(type='submit') Party
       else
 
         button.menuBtn(type='submit') Party
-    form(method='get' action='/cat=Tech')
+    a(href='/cat=Tech')
       if title == 'Tech'
         button.menuBtn.currentSub(type='submit') Tech
       else
@@ -30,7 +30,7 @@ block content
 
         button.menuBtn(type='submit') Video games
   div.newThreadDiv
-    form(method='get' action='/newThread')
+    a(href='/newThread')
       button.menuBtn.newThread(type='submit') New Thread
 
   br
