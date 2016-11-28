@@ -6,7 +6,8 @@ CREATE TABLE threads (
   title varchar(100) not null,
   sub varchar(60) not null,
   comNum integer default 0,
-  mDate timestamp not null default current_timestamp
+  mDate timestamp not null default current_timestamp,
+  views integer default 0
 );
 
 CREATE TABLE comments (

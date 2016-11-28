@@ -93,6 +93,9 @@ function getThread(req, res) {
                 page,
                 Pnum,
               });
+              // teljum views en okkur er sama hvort thad virki.
+              // þ.e. birtum síðuna þó error komi upp.
+              db.none('UPDATE threads SET views=views+1 WHERE id=$1', threadID);
             })
             .catch((error) => {
               res.render('error', { title: 'oohh shiet', error });
