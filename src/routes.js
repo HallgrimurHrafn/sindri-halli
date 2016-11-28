@@ -153,7 +153,7 @@ function newComment(req, res) {
           str2 = str2.concat('ORDER BY date desc limit 1');
           db.one(str2, threadID)
             .then((mdate) => {
-              db.none('UPDATE threads SET comnum = $1, mdate = $2', [comNum.count, mdate.date])
+              db.none('UPDATE threads SET comnum = $1, mdate = $2', [comNum.count - 1, mdate.date])
                 .then(() => {
                   res.redirect(req.url);
                 })
