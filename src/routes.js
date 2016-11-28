@@ -194,7 +194,7 @@ function index(req, res) {
   const x = req.url;
   const re = /[=]/;
   let page = x.split(re);
-  page = page[1]+1;
+  page = page[1] + 1;
   db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1', 10)
     .then((thread) => {
       let str = 'SELECT COUNT(*) FROM ';
