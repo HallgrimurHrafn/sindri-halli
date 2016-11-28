@@ -258,7 +258,7 @@ function nolink(req, res) {
   res.redirect('/');
 }
 
-function split(text) {
+function splitter(text) {
   let re = /["]/;
   let str = text.split(re);
   const quotes = '( ';
@@ -281,7 +281,7 @@ function split(text) {
 }
 
 function searchName(name, req, res, page) {
-  const name2 = split(name);
+  const name2 = splitter(name);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc';
   db.any(str, name2)
@@ -310,7 +310,7 @@ function searchName(name, req, res, page) {
 }
 
 function searchPar(par, req, res, page) {
-  const par2 = split(par);
+  const par2 = splitter(par);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc';
   db.any(str, par2)
@@ -339,7 +339,7 @@ function searchPar(par, req, res, page) {
 }
 
 function searchTitle(title, req, res, page) {
-  const title2 = split(title);
+  const title2 = splitter(title);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc';
   db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc', title2)
@@ -368,7 +368,7 @@ function searchTitle(title, req, res, page) {
 }
 
 function searchAll(all, req, res, page) {
-  const all2 = split(all);
+  const all2 = splitter(all);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
   str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
