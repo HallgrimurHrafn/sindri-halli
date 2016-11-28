@@ -56,6 +56,7 @@ main {
   font-size: 23px;
   width: 5em;
   height: 3.5em;
+  border: solid rgb(250, 127, 50) 2px;
   text-decoration: none;
 }
 
@@ -71,6 +72,7 @@ a{
 
 .currentSub {
   background: rgb(105, 199, 165);
+  border: solid rgb(40, 199, 141) 2px;
 }
 
 .currentSub:hover {
@@ -84,6 +86,7 @@ a{
 
 .newThread {
   background: rgb(244, 139, 194);
+  border: solid rgb(242, 97, 172) 2px;
 }
 
 button {
