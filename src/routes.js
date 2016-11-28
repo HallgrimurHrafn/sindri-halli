@@ -257,9 +257,27 @@ function nolink(req, res) {
   res.redirect('/');
 }
 
+function split(text) {
+  let re = /["]/;
+  const str = text.split(re);
+  const quotes = '( ';
+  cont temp = [];
+  let counter = 0;
+  str.forEach((block) => {
+    if (counter % 2 === 1) {
+      re = /[\s]/;
+
+      str[counter] = quotes.concat(block[counter]);
+    } else {
+      str[counter] = temp.concat(block[counter]);
+    }
+    counter += 1;
+  });
+}
+
 function searchName(req, res) {
   const name = req.body.search;
-  db.any('SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY dat desc', name)
+  db.any('SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc', name)
     .then((results) => {
       res.render('search', {
         searched: name,
@@ -300,7 +318,8 @@ function searchTitle(req, res) {
 }
 
 function searchAll(req, res) {
-  const all = req.body.search;
+  let all = req.body.search;
+  all = split(all);
   let str = 'SELECT * FROM total WHERE name @@ to to_tsquery($1) or ';
   str = str.concat('title @@ to to_tsquery($1) or paragraph @@ to to_tsquery($1) ');
   str = str.concat('ORDER BY date desc');
