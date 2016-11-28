@@ -58,14 +58,14 @@ main {
   height: 3.5em;
   text-decoration: none;
   border: none;
-  -webkit-border-radius: 25;
-  -moz-border-radius: 25;
-  border-radius: 25px;
 }
 
 .menuBtn:hover {
   background: rgb(71, 198, 237);
   text-decoration: none;
+  -webkit-border-radius: 25;
+  -moz-border-radius: 25;
+  border-radius: 25px;
 }
 
 a{
@@ -79,7 +79,6 @@ a{
 
 .currentSub:hover {
   background: rgb(40, 199, 141);
-  text-decoration: none;
 }
 
 .newThreadDiv {
