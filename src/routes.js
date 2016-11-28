@@ -193,10 +193,20 @@ function newComment(req, res) {
 function index(req, res) {
   db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1', 10)
     .then((thread) => {
-      res.render('index', {
-        title: 'The Front of the Frón of the Friend of the Foe',
-        threads: thread,
-      });
+      let str = 'SELECT COUNT(*) FROM ';
+      str = str.concat('(SELECT id FROM threads ) AS test');
+      db.one(str)
+        .then((tNum) => {
+          const Pnum = Math.floor(tNum.count / 10) + 1;
+          res.render('index', {
+            title: 'The Front of the Frón of the Friend of the Foe',
+            threads: thread,
+            Pnum,
+          });
+        })
+        .catch((error) => {
+          res.render('error', { title: 'oohh shiet', error });
+        });
     })
     .catch((error) => {
       res.render('error', { title: 'oohh shiet', error });
@@ -211,7 +221,21 @@ function DirectToSub(req, res) {
 }
 
 function createThread(req, res) {
-  res.render('newthread');
+  const x = req.url;
+  const re = /[&]/;
+  let sel = 1;
+  let url = x.split(re);
+  url = url[1];
+  if (url === 'Schemes') {
+    sel = 1;
+  } else if (url === 'Party') {
+    sel = 2;
+  } else if (url === 'Tech') {
+    sel = 3;
+  } else if (url === 'Videogames') {
+    sel = 4;
+  }
+  res.render('newthread', { sel });
 }
 
 function nolink(req, res) {
