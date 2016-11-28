@@ -43,7 +43,7 @@ block content
           th User
           th Title
           th Comments
-          th Date
+          th Last modified
       tbody
         each thread in threads
           -id = '/threadid=' + thread.id + '&page=0'
@@ -51,5 +51,5 @@ block content
             td= thread.name
             td
               a(href=id)= thread.title
-            td numComments
-            td= thread.date
+            td thread.comnum
+            td= thread.mdate
