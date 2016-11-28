@@ -22,28 +22,32 @@ function getSub(req, res) {
   const re = /[=&]/;
   let sub = x.split(re);
   const page = sub[3];
-  sub = sub[1];
-  db.any('SELECT * FROM threads WHERE sub ilike $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
+  sub = sub[1].toUpperCase();
+  if (sub === 'TECH' || sub === 'PARTY' || sub === 'SCHEMES' || sub === 'VIDEOGAMES') {
+    db.any('SELECT * FROM threads WHERE sub ilike $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
     .then((threads) => {
       let str = 'SELECT COUNT(*) FROM ';
       str = str.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
       db.one(str, sub)
-        .then((tNum) => {
-          const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
-          res.render('index', {
-            title: sub,
-            threads,
-            Pnum,
-            page,
-          });
-        })
-        .catch((error) => {
-          res.render('error', { title: 'oohh shiet', error });
+      .then((tNum) => {
+        const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
+        res.render('index', {
+          title: sub,
+          threads,
+          Pnum,
+          page,
         });
+      })
+      .catch((error) => {
+        res.render('error', { title: 'oohh shiet', error });
+      });
     })
     .catch((error) => {
       res.render('error', { title: 'oohh shiet', error });
     });
+  } else {
+    res.redirect('/');
+  }
 }
 
 // ef linkurinn er rangur innan marka logum vid.
