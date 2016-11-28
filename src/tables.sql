@@ -10,7 +10,7 @@ CREATE TABLE threads (
   views integer default 0
 );
 
-CREATE TABLE comments (
+CREATE TABLE comments (a
   id serial PRIMARY KEY,
   threadID int NOT NULL references threads(id),
   name varchar(64),
