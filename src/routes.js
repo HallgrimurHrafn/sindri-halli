@@ -291,21 +291,22 @@ function splitter(text) {
 }
 
 function searchName(name, req, res, page) {
-  const name2 = splitter(name);
+  const name1 = decodeURIComponent(name);
+  const name2 = splitter(name1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc';
   const str2 = str.concat(' LIMIT $2 offset $3');
   db.any(str2, [name2, 10, page * 10])
     .then((results) => {
       let t = 'Search: ';
-      t = t.concat(name);
+      t = t.concat(name1);
       str = count.concat(str).concat(') AS blah');
       db.one(str, name2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
           res.render('search', {
             title: t,
-            searched: name,
+            searched: name1,
             results,
             page,
             Pnum,
@@ -321,21 +322,22 @@ function searchName(name, req, res, page) {
 }
 
 function searchPar(par, req, res, page) {
-  const par2 = splitter(par);
+  const par1 = decodeURIComponent(par);
+  const par2 = splitter(par1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc';
   const str2 = str.concat(' LIMIT $2 offset $3');
   db.any(str2, [par2, 10, 10 * page])
     .then((results) => {
       let t = 'Search: ';
-      t = t.concat(par);
+      t = t.concat(par1);
       str = count.concat(str).concat(') AS blah');
       db.one(str, par2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
           res.render('search', {
             title: t,
-            searched: par,
+            searched: par1,
             results,
             page,
             Pnum,
@@ -382,7 +384,8 @@ function searchTitle(title, req, res, page) {
 }
 
 function searchAll(all, req, res, page) {
-  const all2 = splitter(all);
+  const all1 = decodeURIComponent(all);
+  const all2 = splitter(all1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
   str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
@@ -390,14 +393,14 @@ function searchAll(all, req, res, page) {
   db.any(str2, [all2, 10, 10 * page])
     .then((results) => {
       let t = 'Search: ';
-      t = t.concat(all);
+      t = t.concat(all1);
       str = count.concat(str).concat(') AS blah');
       db.one(str, all2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
           res.render('search', {
             title: t,
-            searched: all,
+            searched: all1,
             results,
             page,
             Pnum,
