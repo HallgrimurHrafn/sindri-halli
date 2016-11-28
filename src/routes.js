@@ -284,7 +284,8 @@ function searchName(name, req, res, page) {
   const name2 = splitter(name);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc';
-  db.any(str, name2)
+  const str2 = str.concat(' LIMIT $2 offset $3');
+  db.any(str2, [name2, 10, page * 10])
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(name);
@@ -313,7 +314,8 @@ function searchPar(par, req, res, page) {
   const par2 = splitter(par);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc';
-  db.any(str, par2)
+  const str2 = str.concat(' LIMIT $2 offset $3');
+  db.any(str2, [par2, 10, 10 * page])
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(par);
@@ -342,7 +344,8 @@ function searchTitle(title, req, res, page) {
   const title2 = splitter(title);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc';
-  db.any('SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc', title2)
+  const str2 = str.concat(' LIMIT $2 offset $3');
+  db.any(str2, [title2, 10, 10 * page])
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(title);
@@ -372,8 +375,8 @@ function searchAll(all, req, res, page) {
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
   str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
-  str = str.concat('ORDER BY date desc');
-  db.any(str, all2)
+  const str2 = str.concat('ORDER BY date desc LIMIT $2 offset $3');
+  db.any(str2, [all2, 10, 10 * page])
     .then((results) => {
       let t = 'Search: ';
       t = t.concat(all);
