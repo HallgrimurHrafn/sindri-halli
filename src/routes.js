@@ -87,6 +87,7 @@ function getThread(req, res) {
             .then((ParaNum) => {
               const Pnum = Math.floor(ParaNum.count / 10) + 1;
               res.render('thread', {
+                title: thread.title,
                 thread,
                 comments,
                 page,
