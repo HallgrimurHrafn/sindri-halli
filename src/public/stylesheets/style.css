@@ -91,7 +91,7 @@ button {
 }
 
 .table {
-  float: none;
+  clear: both;
 }
 
 td, tr {
