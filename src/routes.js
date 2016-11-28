@@ -261,7 +261,7 @@ function split(text) {
   let re = /["]/;
   const str = text.split(re);
   const quotes = '( ';
-  cont temp = [];
+  const temp = [];
   let counter = 0;
   str.forEach((block) => {
     if (counter % 2 === 1) {
