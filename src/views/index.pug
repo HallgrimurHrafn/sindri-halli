@@ -45,7 +45,8 @@ block content
         each thread in threads
           -id = '/threadid=' + thread.id + '&page=0'
           -re = /[+]/
-          -date = thread.mdate.split(re)
+          -x = thread.mdate
+          -date = x.split(re)
           tr
             td= thread.name
             td
