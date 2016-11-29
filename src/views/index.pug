@@ -25,6 +25,7 @@ block content
             form(method='get' action='/sort=mdate&page=0')
               button.btn(type='submit') Last Modified
       tbody
+        -i = 0
         each thread in threads
           -id = '/threadid=' + JSON.stringify(thread.id) + '&page=0'
           tr
