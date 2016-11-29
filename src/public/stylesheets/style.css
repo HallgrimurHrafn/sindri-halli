@@ -188,6 +188,7 @@ ul {
   background: rgba(250,180,135,1);
   padding: 4px 4px;
   border-radius: 9px;
+  overflow: hidden;
 }
 
 .pageBtn {
