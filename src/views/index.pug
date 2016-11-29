@@ -52,7 +52,7 @@ block content
               a(href=id)= thread.title
             td= thread.comnum
             td= thread.views
-            -date = JSON.stringify(thread.mdate)
+            -date = '' + thread.mdate
             //- -date = date.substr(0,20) + date.substr(24,27)
             td= date
 
