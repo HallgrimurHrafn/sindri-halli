@@ -3,7 +3,6 @@
 //    - title XXX
 //    - user  XXX
 //    - paragraph XXX
-// user base?   - BAIL right?  XXX
 // too many pages
 // lage date
 // cat= redirect  XXX
@@ -11,3 +10,10 @@
 // index page redirect XXX
 // page sub og index XXX
 // keywords i link eru case insensitve XXX
+
+// CSS:
+// index table
+// new thread og leave comment
+// thread
+// pages navigation
+// laga skölun
