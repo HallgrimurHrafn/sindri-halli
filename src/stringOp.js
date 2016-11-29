@@ -39,7 +39,32 @@ function catFix(x, sele) {
   return sel;
 }
 
+
+function orderCheck(order) {
+  let ord = order;
+  ord = ord.toUpperCase();
+  if (ord === 'MDATE') {
+    ord = 'mdate DESC'
+  } else if (ord === 'COMNUM') {
+    ord = 'comnum DESC';
+  } else if (ord === 'VIEWS') {
+    ord = 'views DESC';
+  } else if (ord === 'NAME') {
+    ord = 'name ASC';
+  } else if (ord === 'TITLE') {
+    ord = 'title ASC';
+  } else if (ord === 'DATE') {
+    ord = 'date DESC';
+  } else {
+    ord = 'nope';
+  }
+  return ord;
+}
+
+
+
 module.exports = {
   splitter,
   catFix,
+  orderCheck,
 };

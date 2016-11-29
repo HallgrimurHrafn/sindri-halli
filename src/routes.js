@@ -11,30 +11,25 @@ const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 
 function getSubPrep(x, req, res) {
-  let page = x[3];
+  let page = x[5];
   const sub = x[1].toUpperCase();
-  let url = '&';
+  let url = '/';
   page = parseInt(page, 10);
   if (!isNaN(page)) {
-    url = url.concat('page=').concat(page);
+    url = ('&').concat('page=').concat(page);
     if (sub === 'TECH') {
-      url = ('/cat=Tech').concat(url);
-      res.redirect(url);
+      url = ('/cat=Tech&sort=').concat(x[3]).concat(url);
     } else if (sub === 'PARTY') {
-      url = ('/cat=Party').concat(url);
-      res.redirect(url);
+      url = ('/cat=Party&sort=').concat(x[3]).concat(url);
     } else if (sub === 'VIDEOGAMES') {
-      url = ('/cat=Videogames').concat(url);
-      res.redirect(url);
+      url = ('/cat=Videogames&sort=').concat(x[3]).concat(url);
     } else if (sub === 'SCHEMES') {
-      url = ('/cat=Schemes').concat(url);
-      res.redirect(url);
+      url = ('/cat=Schemes&sort=').concat(x[3]).concat(url);
     } else {
-      res.redirect('/');
+      url = '/';
     }
-  } else {
-    res.redirect('/');
   }
+  res.redirect(url);
 }
 
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
@@ -42,18 +37,25 @@ function getSub(req, res) {
   let x = req.url;
   const re = /[=&]/;
   x = x.split(re);
-  const page = x[3];
+  const page = x[5];
   const sub = x[1];
+  const ord = strOp.orderCheck(x[3]);
+  // database command 1:
+  let str = ('SELECT * FROM threads WHERE sub ilike $1 ORDER BY ');
+  str = str.concat(ord).concat(' LIMIT $2 offset $3');
+  // database command 2:
+  let str2 = 'SELECT COUNT(*) FROM ';
+  str2 = str2.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
+  // tryggja ad page number se ekki rugl
   if (!isNaN(page)) {
+    // thad sem sub verdur ad vera jafnt og.
     if (sub === 'Tech' || sub === 'Party' || sub === 'Schemes' || sub === 'Videogames') {
-      db.any('SELECT * FROM threads WHERE sub ilike $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
+      db.any(str, [sub, 10, (page * 10)]) // select, where sub=sub.
       .then((threads) => {
-        let str = 'SELECT COUNT(*) FROM ';
-        str = str.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
-        db.one(str, sub)
+        db.one(str2, sub)
         .then((tNum) => {
           const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
-          const info = ('/cat=').concat(sub).concat('&');
+          const info = ('/cat=').concat(sub).concat('&sort=');
           res.render('index', {
             title: sub,
             threads,
@@ -233,9 +235,9 @@ function newComment(req, res) {
 }
 
 function indexprep(x, req, res) {
-  const page = parseInt(x[1], 10);
+  const page = parseInt(x[3], 10);
   if (!isNaN(page)) {
-    const url = ('/page=').concat(page);
+    const url = ('/sort=').concat(x[1]).concat('&page=').concat(page);
     res.redirect(url);
   } else {
     res.redirect('/');
@@ -244,13 +246,15 @@ function indexprep(x, req, res) {
 
 function index(req, res) {
   let x = req.url;
-  const re = /[=]/;
+  const re = /[=&]/;
   x = x.split(re);
-  const page = x[1];
+  const page = x[3];
+  const ord = strOp.orderCheck(x[1]);
   if (!isNaN(page)) {
-    const str1 = 'SELECT * FROM threads ORDER BY mdate DESC LIMIT $1 offset $2';
-    const str2 = 'SELECT COUNT(*) FROM (SELECT id FROM threads ) AS test';
-    Promise.all([db.any(str1, [10, (page * 10)]), db.one(str2)])
+    if (ord !== 'nope') {
+      const str1 = ('SELECT * FROM threads ORDER BY ').concat(ord).concat(' LIMIT $1 offset $2');
+      const str2 = 'SELECT COUNT(*) FROM (SELECT id FROM threads ) AS test';
+      Promise.all([db.any(str1, [10, (page * 10)]), db.one(str2)])
       .then((results) => {
         const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
         res.render('index', {
@@ -258,25 +262,24 @@ function index(req, res) {
           threads: results[0],
           Pnum,
           page,
-          info: '/',
+          info: '/'.concat(ord),
         });
       })
       .catch((error) => {
         res.render('error', { title: 'Cant load threads', error });
       });
-  } else {
-    indexprep(x, req, res);
-  }
+    } else { res.redirect('/'); }
+  } else { indexprep(x, req, res); }
 }
 
 function DirectToSub(req, res) {
   let sub = req.url;
-  sub = sub.concat('&page=0');
+  sub = sub.concat('&sort=mdate').concat('&page=0');
   res.redirect(sub);
 }
 
 function DirectToIndex(req, res) {
-  res.redirect('/page=0');
+  res.redirect('/sort=mdate&page=0');
 }
 
 function createThread(req, res) {
@@ -449,13 +452,13 @@ function searchprep(req, res) {
   }
 }
 
-router.get('/page=*', index);
+router.get('/sort=*&page=*', index);
 router.post('/newthread(&*)?', newThread);
 router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
 router.post('/threadID=*&page=*', newComment);
 router.get('/threadID=*', DirectToPage0);
-router.get('/cat=*&page=*', getSub);
+router.get('/cat=*&sort=*&page=*', getSub);
 router.get('/cat=*', DirectToSub);
 router.post('/search=*', search);
 router.get('/type=*&search=*&page=*', searchprep);
