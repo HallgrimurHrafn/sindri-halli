@@ -121,7 +121,7 @@ function index(req, res) {
   const info = ('/sort=').concat(x[1]).concat('&');
   if (!isNaN(page)) {
     if (ord !== 'nope') {
-      dbOp.inde(ord, page)
+      dbOp.indexx(ord, page)
         .then((results) => {
           const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
           res.render('index', {
