@@ -261,7 +261,7 @@ function createThread(req, res) {
 }
 
 function nolink(req, res) {
-  const url = req.body.url;
+  const url = req.url;
   const re = /[&=]/;
   let link = url.split(re);
   let i = 0;
