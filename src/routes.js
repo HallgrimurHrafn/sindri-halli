@@ -52,32 +52,29 @@ function getSub(req, res) {
   // database command 2:
   let str2 = 'SELECT COUNT(*) FROM ';
   str2 = str2.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
-  // tryggja ad page number se ekki rugl
-  if (!isNaN(page)) {
-    // thad sem sub verdur ad vera jafnt og.
-    if (sub === 'Tech' || sub === 'Party' || sub === 'Schemes' || sub === 'Videogames') {
-      // order typan verdur ad vera rett.
-      if (ord !== 'nope') {
-        // oll paralell promise.
-        Promise.all([db.any(str, [sub, 10, (page * 10)]), db.one(str2, sub)])
-          .then((results) => {
-            // reiknum bladsidu fjolda
-            const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
-            res.render('index', {
-              title: sub,
-              threads: results[0],
-              Pnum,
-              page,
-              info,
-            });
-          })
-          .catch((error) => {
-            res.render('error', { title: 'oohh shiet', error });
+  // tryggja ad page number se ekki rugl og thad sem sub verdur ad vera jafnt og
+  if ((!isNaN(page)) && (sub === 'Tech' || sub === 'Party' || sub === 'Schemes' || sub === 'Videogames')) {
+    // order typan verdur ad vera rett.
+    if (ord !== 'nope') {
+      // oll paralell promise.
+      Promise.all([db.any(str, [sub, 10, (page * 10)]), db.one(str2, sub)])
+        .then((results) => {
+          // reiknum bladsidu fjolda
+          const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
+          res.render('index', {
+            title: sub,
+            threads: results[0],
+            Pnum,
+            page,
+            info,
           });
-        // ef sort var rangt, forum a forsidu subsins.
-      } else { res.redirect(('/cat=').concat(sub)); }
-      // ef linkurinn er rangur, reynum ad laga.
-    } else { getSubPrep(x, req, res); }
+        })
+        .catch((error) => {
+          res.render('error', { title: 'oohh shiet', error });
+        });
+      // ef sort var rangt, forum a forsidu subsins.
+    } else { res.redirect(('/cat=').concat(sub)); }
+    // ef linkurinn er rangur, reynum ad laga.
   } else { getSubPrep(x, req, res); }
 }
 
