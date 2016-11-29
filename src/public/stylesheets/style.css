@@ -192,16 +192,6 @@ button {
   clear: both;
 }
 
-table {
-  margin: auto;
-}
-
-td, tr {
-  padding: 15px;
-}
-
-
-
 ul {
   /*list-style-type: none;
   display: inline;*/
