@@ -185,20 +185,33 @@ ul {
 .pages {
   margin: auto;
   display: inline-block;
-  background: rgb(117, 201, 165);
+  background: rgba(250,180,135,1);
   padding: 4px 0;
 }
 
 .pageBtn {
-  background: rgb(117, 201, 165);
+  background: rgba(250,180,135,1);
   height: 10px;
   width: 10px;
+  -webkit-transition-property: background-color, border-radius;
+  transition-property: background-color, border-radius;
 }
 
 p.selected, p.dot {
   display: inline;
   padding: 3px;
-  background: rgb(75, 128, 105);
+}
+
+p.selected {
+  background: rgb(105, 199, 165);
+}
+.pageBtn:hover {
+  background: rgb(40, 199, 141);
+  border-radius: 10px;
+}
+
+p.dot {
+  background: rgba(250,180,135,1);
 }
 
 .select {
