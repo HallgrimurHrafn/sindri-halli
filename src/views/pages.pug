@@ -1,4 +1,4 @@
-extends pages
+extends layout
 
 block content
 
@@ -7,9 +7,10 @@ block content2
     br
     -n = 0
     nav
-      while n < Pnum
+      while n < 4
         -x = n + 1
-        -id = info + 'page=' + n
+        -id= info
+        -id = id + 'page=' + n
         if n == page
           li
             p= page + 1
@@ -17,6 +18,6 @@ block content2
 
           li
             a(href=(id))= x
-        -n = n + 1
+        -n = x
     br
 block content3
