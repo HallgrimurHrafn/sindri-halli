@@ -126,6 +126,28 @@ a{
   background: -webkit-linear-gradient(left, rgba(250,180,135,1) 0%, rgba(250,180,135,1) 80%, rgb(71, 198, 237) 85%);
   background: -o-linear-gradient(left, rgba(250,180,135,1) 0%, rgba(250,180,135,1) 80%, rgb(71, 198, 237) 85%);
   background: linear-gradient(to right, rgba(250,180,135,1) 0%, rgba(250,180,135,1) 80%, rgb(71, 198, 237) 85%);
+  background: rgb(250,180,135); /* Old browsers */
+  background: -webkit-linear-gradient(left,
+    rgba(250,180,135,0) 0%,
+    rgba(250,180,135,1) 20px,
+    rgba(250,180,135,1) 80%,
+    rgb(71, 198, 237) 85%,
+    rgb(71, 198, 237) 95%,
+    rgba(244,139,194,0) 100%);
+  background: -o-linear-gradient(left,
+    rgba(250,180,135,0) 0%,
+    rgba(250,180,135,1) 20px,
+    rgba(250,180,135,1) 80%,
+    rgb(71, 198, 237) 85%,
+    rgb(71, 198, 237) 95%,
+    rgba(244,139,194,0) 100%);
+  background: linear-gradient(to right,
+    rgba(250,180,135,0) 0%,
+    rgba(250,180,135,1) 20px,
+    rgba(250,180,135,1) 80%,
+    rgb(71, 198, 237) 85%,
+    rgb(71, 198, 237) 95%,
+    rgba(244,139,194,0) 98%);
 }
 
 .searchbar {
