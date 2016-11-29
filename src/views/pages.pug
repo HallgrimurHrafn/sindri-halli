@@ -11,7 +11,7 @@ block content2
         while n < Pnum
           -id = info + 'page=' + n
           if n == page
-            p.selected= n+1
+            button.selected(type='button')= n+1
           else
 
             a(href=(id))
