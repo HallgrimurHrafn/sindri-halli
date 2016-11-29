@@ -144,12 +144,14 @@ function getThread(req, res) {
           pageNum(threadID)
             .then((ParaNum) => {
               const Pnum = Math.floor((ParaNum.count - 1) / 10) + 1;
+              const info = ('threadid=').concat(threadID).concat('&');
               res.render('thread', {
                 title: thread.title,
                 thread,
                 comments,
                 page,
                 Pnum,
+                info,
               });
               // teljum views en okkur er sama hvort thad virki.
               // þ.e. birtum síðuna þó error komi upp.
