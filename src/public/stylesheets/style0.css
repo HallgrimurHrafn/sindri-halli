@@ -7,9 +7,14 @@ input[type=checkbox] {
 }
 label {
   display: inline-block;
-  padding: 100px;
+  background: url(/images/search2.png) no-repeat;
+  padding: 30px;
   margin: 0;
   cursor: pointer;
+}
+
+.inline {
+  display: inline-block;
 }
 
 .image{
@@ -28,6 +33,7 @@ label {
    line-height: 100px;
    color: rgb(255, 255, 255);
    text-align: center;
+   display: inline-block
 }
 
 /* Toggled State */
