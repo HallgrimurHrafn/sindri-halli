@@ -234,12 +234,21 @@ function newComment(req, res) {
     });
 }
 
+function indexprep(x, req, res) {
+  const page = parseInt(x[1], 10);
+  if (!isNaN(page)) {
+    const url = ('/page=').concat(page);
+    res.redirect(url);
+  } else {
+    res.redirect('/');
+  }
+}
 
 function index(req, res) {
-  const x = req.url;
+  let x = req.url;
   const re = /[=]/;
-  let page = x.split(re);
-  page = parseInt(page[1], 10);
+  x = x.split(re);
+  const page = x[1];
   if (!isNaN(page)) {
     db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1 offset $2', [10, (page * 10)])
     .then((thread) => {
@@ -263,7 +272,7 @@ function index(req, res) {
       res.render('error', { title: 'Cant load threads', error });
     });
   } else {
-    res.redirect('/');
+    indexprep(x, req, res);
   }
 }
 
