@@ -28,26 +28,21 @@ block content
         each thread in threads
           -id = '/threadid=' + JSON.stringify(thread.id) + '&page=0'
           tr
+            form(method='get' action=id)
             if title == 'Front'
               td
-                form(method='get' action=id)
-                  button.sub(type='submit')= thread.sub
+                button.sub(type='submit')= thread.sub
             td
-              form(method='get' action=id)
-                button.name(type='submit')= thread.name
+              button.name(type='submit')= thread.name
             td
-              form(method='get' action=id)
-                button.title(type='submit')= thread.title
+              button.title(type='submit')= thread.title
             td
-              form(method='get' action=id)
-                button.comnum(type='submit')= thread.comnum
+              button.comnum(type='submit')= thread.comnum
             td
-              form(method='get' action=id)
-                button.views(type='submit')= thread.views
+              button.views(type='submit')= thread.views
             -date = '' + thread.mdate
             -date = date.slice(0,-18)
             td
-              form(method='get' action=id)
-                button.mdate(type='submit')= date
+              button.mdate(type='submit')= date
 
   br
