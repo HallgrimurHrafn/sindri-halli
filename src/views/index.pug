@@ -40,10 +40,10 @@ block content
       .search
         form(method = 'post' action = '/search=')
           select.select(name = 'type')
-            option(value = 'name' selected) Name
+            option(value = 'all' selected) All
+            option(value = 'name') Usernames
             option(value = 'title') Title
-            option(value = 'paragraph') paragraph
-            option(value = 'all') all
+            option(value = 'paragraph') Text
             input.searchbar(
               type = 'text'
               name = 'search'
