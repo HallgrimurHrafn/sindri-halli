@@ -4,7 +4,7 @@ input[type=checkbox] {
 }
 
 label {
-  background: url(/images/search2.png) no-repeat;
+  background: url(/images/search.png) no-repeat;
   display: inline-block;
   cursor: pointer;
   padding: 30px;
