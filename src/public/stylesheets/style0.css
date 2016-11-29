@@ -10,6 +10,7 @@ label {
   background: transparent url(/images/search.png);
   -moz-appearance: button;
   display: inline-block;
+  padding: 100px;
   margin: 60px 0 10px 0;
   cursor: pointer;
 }
