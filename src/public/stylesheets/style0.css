@@ -2,11 +2,9 @@
 
 input[type=checkbox] {
    position: absolute;
-   top: -9999px;
    left: -9999px;
 }
 label {
-
   background: url(/images/search2.png) no-repeat;
   display: inline-block;
   cursor: pointer;
