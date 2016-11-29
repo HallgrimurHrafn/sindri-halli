@@ -447,7 +447,6 @@ function searchprep(req, res) {
 }
 
 router.get('/page=*', index);
-router.get('/', DirectToIndex);
 router.post('/newthread(&*)?', newThread);
 router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
@@ -458,6 +457,6 @@ router.get('/cat=*', DirectToSub);
 router.post('/search=*', search);
 router.get('/type=*&search=*&page=*', searchprep);
 // VERDUR AD VERA NEDSTUR
-router.get('/*', nolink);
+router.get('/*', DirectToIndex);
 
 module.exports = router;
