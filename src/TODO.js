@@ -7,7 +7,7 @@
 // too many pages
 // lage date
 // cat= redirect  XXX
-// cat page redirect
-// index page redirect
+// cat page redirect XXX
+// index page redirect XXX
 // page sub og index XXX
 // keywords i link eru case insensitve XXX
