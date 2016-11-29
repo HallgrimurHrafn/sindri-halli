@@ -262,7 +262,7 @@ function index(req, res) {
       .then((tNum) => {
         const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
         res.render('index', {
-          title: 'Forsida',
+          title: 'Front',
           threads: thread,
           Pnum,
           page,
