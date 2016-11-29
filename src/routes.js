@@ -112,6 +112,32 @@ function getThread(req, res) {
   }
 }
 
+// Get faum forsiduna
+function index(req, res) {
+  const re = /[=&]/;
+  const x = req.url.split(re);
+  const page = x[3];
+  const ord = strOp.orderCheck(x[1]);
+  const info = ('/sort=').concat(x[1]).concat('&');
+  if (!isNaN(page)) {
+    if (ord !== 'nope') {
+      dbOp.index(ord, page)
+        .then((results) => {
+          const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
+          res.render('index', {
+            title: 'Front',
+            threads: results[0],
+            Pnum,
+            page,
+            info,
+          });
+        })
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
+    } else { res.redirect('/'); }
+  } else { indexprep(x, req, res); }
+}
+
+
 // nýr þráður er búinn til.
 function newThread(req, res) {
   const title = req.body.title;
@@ -163,33 +189,6 @@ function newComment(req, res) {
         .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
     .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
-}
-
-
-function index(req, res) {
-  let x = req.url;
-  const re = /[=&]/;
-  x = x.split(re);
-  const page = x[3];
-  const ord = strOp.orderCheck(x[1]);
-  if (!isNaN(page)) {
-    if (ord !== 'nope') {
-      const str1 = ('SELECT * FROM threads ORDER BY ').concat(ord).concat(' LIMIT $1 offset $2');
-      const str2 = 'SELECT COUNT(*) FROM (SELECT id FROM threads ) AS test';
-      Promise.all([db.any(str1, [10, (page * 10)]), db.one(str2)])
-      .then((results) => {
-        const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
-        res.render('index', {
-          title: 'Front',
-          threads: results[0],
-          Pnum,
-          page,
-          info: '/sort='.concat(x[1]).concat('&'),
-        });
-      })
-      .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
-    } else { res.redirect('/'); }
-  } else { indexprep(x, req, res); }
 }
 
 function DirectToSub(req, res) {
