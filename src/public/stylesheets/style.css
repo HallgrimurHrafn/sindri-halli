@@ -179,6 +179,10 @@ ul {
   display: inline;*/
 }
 
+.pages {
+  display: inline;
+}
+
 li {
   list-style-type: none;
   display: inline;

@@ -6,8 +6,8 @@ block content2
   if page != null
     br
     -n = 0
-    nav
-      mixin pageIndex
+    nav.pages
+      while n < Pnum
         -id = info + 'page=' + n
         if n == page
           li
@@ -16,8 +16,6 @@ block content2
 
           li
             a(href=(id))= n+1
-      while n < Pnum
-        +pageIndex
         if n == 0 && page > 3
           -n = page-2
           li
