@@ -24,7 +24,7 @@ body {
     rgba(251,238,152,1) 320px,
     rgba(254, 247, 206,1) 440px);
   background: -o-linear-gradient(
-    rgba(251,238,152,1) 320px, 
+    rgba(251,238,152,1) 320px,
     rgba(254, 247, 206,1) 440px);
   background: linear-gradient(
     rgba(251,238,152,1) 320px,
@@ -244,4 +244,18 @@ p.dot {
 
 .select {
   display: inline;
+}
+
+.btn {
+  rgba(244,139,194,0)
+  font-size: 16px;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: background-color, border-radius;
+  transition-property: background-color, border-radius;
+}
+
+.btn:hover{
+  background: rgb(40, 199, 141);
+  border-radius: 10px;
 }
