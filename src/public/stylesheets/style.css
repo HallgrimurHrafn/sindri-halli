@@ -185,16 +185,8 @@ ul {
   background: rgb(117, 201, 165);
 }
 
-li {
-  list-style-type: none;
-  display: inline;
-  padding: 0;
-  margin: 0;
-}
+.pageBtn {
 
-li a {
-  padding: 3px;
-  background: rgb(117, 201, 165);
 }
 
 p.selected {
