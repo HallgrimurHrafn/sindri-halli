@@ -61,6 +61,8 @@ block content
     table
       thead
         tr
+          if title == 'Frontpage'
+            th Category
           th User
           th Title
           th Comments
@@ -69,6 +71,8 @@ block content
       tbody
         each thread in threads
           tr
+            if title == 'Frontpage'
+            td= thread.sub
             td= thread.name
             -id = '/threadid=' + JSON.stringify(thread.id) + '&page=0'
             td
