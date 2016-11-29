@@ -182,6 +182,9 @@ a{
 
 button {
   padding: 0px;
+}
+
+.noClick {
   font-size: 18px;
 }
 
