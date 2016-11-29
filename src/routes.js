@@ -55,7 +55,7 @@ function getSub(req, res) {
         db.one(str2, sub)
         .then((tNum) => {
           const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
-          const info = ('/cat=').concat(sub).concat('&sort=').concat(x[3]);
+          const info = ('/cat=').concat(sub).concat('&sort=').concat(x[3]).concat('&');
           res.render('index', {
             title: sub,
             threads,
@@ -262,7 +262,7 @@ function index(req, res) {
           threads: results[0],
           Pnum,
           page,
-          info: '/sort='.concat(x[1]),
+          info: '/sort='.concat(x[1]).concat('&'),
         });
       })
       .catch((error) => {
