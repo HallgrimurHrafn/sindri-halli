@@ -6,11 +6,12 @@ input[type=checkbox] {
    left: -9999px;
 }
 label {
-  display: inline-block;
+
   background: url(/images/search2.png) no-repeat;
+  display: inline-block;
+  cursor: pointer;
   padding: 30px;
   margin: 0;
-  cursor: pointer;
 }
 
 .inline {
