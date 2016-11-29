@@ -10,9 +10,14 @@ label {
   background: transparent url(/images/search.png) fixed 65% 150%;
   /*-moz-appearance: button;*/
   display: inline-block;
-  padding: 0;
+  padding: 100px;
   margin: 0;
   cursor: pointer;
+}
+
+.image{
+  background: transparent url(/images/search.png);
+  width:4000px;
 }
 
 /* Default State */
