@@ -248,8 +248,8 @@ p.dot {
   background: rgba(250,180,135,1);
 }
 
-.sub {
-
+.sub, .name .title, .comnum, .views, .mdate{
+  font-size: 14px;
 }
 
 .name {
