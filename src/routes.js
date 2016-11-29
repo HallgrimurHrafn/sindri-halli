@@ -2,6 +2,7 @@
 /* routes hér */
 const express = require('express');
 const pgp = require('pg-promise')();
+const strOp = require('./stringOp.js');
 
 const router = express.Router();
 const env = process.env.DATABASE_URL;
@@ -334,7 +335,7 @@ function splitter(text) {
 
 function searchName(name, req, res, page) {
   const name1 = decodeURIComponent(name);
-  const name2 = splitter(name1);
+  const name2 = strOp.splitter(name1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc';
   const str2 = str.concat(' LIMIT $2 offset $3');
@@ -367,7 +368,7 @@ function searchName(name, req, res, page) {
 
 function searchPar(par, req, res, page) {
   const par1 = decodeURIComponent(par);
-  const par2 = splitter(par1);
+  const par2 = strOp.splitter(par1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE paragraph @@ to_tsquery($1) ORDER BY date desc';
   const str2 = str.concat(' LIMIT $2 offset $3');
@@ -400,7 +401,7 @@ function searchPar(par, req, res, page) {
 
 function searchTitle(title, req, res, page) {
   const title1 = decodeURIComponent(title);
-  const title2 = splitter(title1);
+  const title2 = strOp.splitter(title1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE title @@ to_tsquery($1) ORDER BY date desc';
   const str2 = str.concat(' LIMIT $2 offset $3');
@@ -433,7 +434,7 @@ function searchTitle(title, req, res, page) {
 
 function searchAll(all, req, res, page) {
   const all1 = decodeURIComponent(all);
-  const all2 = splitter(all1);
+  const all2 = strOp.splitter(all1);
   const count = 'SELECT COUNT(*) FROM ( ';
   let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) or ';
   str = str.concat('title @@ to_tsquery($1) or paragraph @@ to_tsquery($1) ');
