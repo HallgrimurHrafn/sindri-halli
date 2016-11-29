@@ -18,10 +18,10 @@ block content2
               button.pageBtn(type='submit')= n+1
           if n == 0 && page > 3
             -n = page-2
-            p &middot &middot &middot
+            p.dot &middot &middot &middot
           else if n == page+2 && n < Pnum-2
             -n = Pnum-1
-            p &middot &middot &middot
+            p.dot &middot &middot &middot
           else
 
             - n++
