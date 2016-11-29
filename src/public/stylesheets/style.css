@@ -131,9 +131,9 @@ a{
 .searchbar {
   border: none;
   background: rgb(255,255,255); /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, rgba(250,180,135,0) 46%, rgba(250,180,135,1) 100%);
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(250,180,135,0) 46%, rgba(250,180,135,1) 100%);
-  background: radial-gradient(ellipse at center, rgba(250,180,135,0) 46%,rgba(250,180,135,1) 100%);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(250,180,135,0) 46%, rgb(255,255,255) 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(250,180,135,0) 46%, rgb(255,255,255) 100%);
+  background: radial-gradient(ellipse at center, rgba(250,180,135,0) 46%,rgb(255,255,255) 100%);
 }
 
 button {
