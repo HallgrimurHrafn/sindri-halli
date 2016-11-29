@@ -12,12 +12,9 @@ label {
   margin-top: 11px;
 }
 
-.inline {
-  display: inline-block;
-  height: 81px;
-}
 
 .image{
+  float: right;
   display: inline-block;
   float: right;
   height: 81px;
