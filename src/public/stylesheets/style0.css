@@ -6,9 +6,6 @@ input[type=checkbox] {
    left: -9999px;
 }
 label {
-  /*-webkit-appearance: push-button;*/
-  background: transparent url(/images/search.png) fixed 65% 150%;
-  /*-moz-appearance: button;*/
   display: inline-block;
   padding: 100px;
   margin: 0;
@@ -16,8 +13,11 @@ label {
 }
 
 .image{
-  background: transparent url(/images/search.png);
-  width:4000px;
+  display: inline-block;
+}
+
+.im {
+  cursor: pointer;
 }
 
 /* Default State */
