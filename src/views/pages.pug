@@ -3,7 +3,7 @@ extends layout
 block content
 
 block content2
-  if page != null
+  if page != null && Pnum > 1
     br
     -n = 0
     .center
@@ -11,15 +11,15 @@ block content2
         while n < Pnum
           -id = info + 'page=' + n
           if n == page
-            button.selected(type='button')= n+1
+            button.selected(type='button')= n + 1
           else
 
             a(href=(id))
-              button.pageBtn(type='submit')= n+1
+              button.pageBtn(type='submit')= n + 1
           if n == 0 && page > 3
             -n = page-2
             p.dot &middot &middot &middot
-          else if n == page+2 && n < Pnum-2
+          else if n == page + 2 && n < Pnum - 2
             -n = Pnum-1
             p.dot &middot &middot &middot
           else
