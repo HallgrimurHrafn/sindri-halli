@@ -165,9 +165,9 @@ a{
 
 .searchbar {
   background: rgba(251,238,152,1); /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, rgba(251,238,152,1) 46%, rgba(250,180,135,0) 100%);
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(251,238,152,1) 46%, rgba(250,180,135,0) 100%);
-  background: radial-gradient(ellipse at center, rgba(251,238,152,1) 46%, rgba(250,180,135,0) 100%);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(251,238,152,1) 20%, rgba(250,180,135,0) 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(251,238,152,1) 20%, rgba(250,180,135,0) 100%);
+  background: radial-gradient(ellipse at center, rgba(251,238,152,1) 20%, rgba(250,180,135,0) 100%);
 }
 
 button {
