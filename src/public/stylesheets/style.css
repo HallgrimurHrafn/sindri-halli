@@ -197,6 +197,11 @@ ul {
   transition-property: background-color, border-radius;
 }
 
+.pageBtn:hover {
+  background: rgb(40, 199, 141);
+  border-radius: 10px;
+}
+
 p.selected, p.dot {
   display: inline;
   padding: 3px;
@@ -204,10 +209,6 @@ p.selected, p.dot {
 
 p.selected {
   background: rgb(105, 199, 165);
-}
-.pageBtn:hover {
-  background: rgb(40, 199, 141);
-  border-radius: 10px;
 }
 
 p.dot {
