@@ -3,8 +3,8 @@
 //    - title XXX
 //    - user  XXX
 //    - paragraph XXX
-// too many pages
-// lage date
+// too many pages XXX
+// lage date XXX
 // cat= redirect  XXX
 // cat page redirect XXX
 // index page redirect XXX
