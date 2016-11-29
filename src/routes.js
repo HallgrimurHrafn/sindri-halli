@@ -25,16 +25,19 @@ function getSubPrep(x, req, res) {
     url = url.concat('page=').concat(page);
     if (sub === 'TECH') {
       url = ('/cat=Tech').concat(url);
+      res.redirect(url);
     } else if (sub === 'PARTY') {
       url = ('/cat=Party').concat(url);
+      res.redirect(url);
     } else if (sub === 'VIDEOGAMES') {
       url = ('/cat=Videogames').concat(url);
+      res.redirect(url);
     } else if (sub === 'SCHEMES') {
       url = ('/cat=Schemes').concat(url);
+      res.redirect(url);
     } else {
-      url = ('/').concat(url);
+      res.redirect('/');
     }
-    res.redirect(url);
   } else {
     res.redirect('/');
   }
