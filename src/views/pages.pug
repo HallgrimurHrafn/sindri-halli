@@ -10,20 +10,17 @@ block content2
       while n < Pnum
         -id = info + 'page=' + n
         if n == page
-          li
-            p= n+1
+          p= n+1
         else
 
-          li
-            a(href=(id))= n+1
+          a(href=(id))
+            button(type='submit')= n+1
         if n == 0 && page > 3
           -n = page-2
-          li
-            p &middot &middot &middot
+          p &middot &middot &middot
         else if n == page+2 && n < Pnum-2
           -n = Pnum-1
-          li
-            p &middot &middot &middot
+          p &middot &middot &middot
         else
 
           - n++
