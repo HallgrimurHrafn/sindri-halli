@@ -62,7 +62,7 @@ main {
     rgba(250,180,135,1) 20px,
     rgba(250,180,135,1) 80%,
     rgba(244,139,194,1) 85%,
-    rgba(244,139,194,1) 95%,  
+    rgba(244,139,194,1) 95%,
     rgba(244,139,194,0) 98%);
   height: 81px;
 }
@@ -110,9 +110,7 @@ a{
 }
 
 .newThreadDiv {
-  position: absolute;
-  right: 50px;
-  top: 300px;
+  float: right;
   display: flex;
 }
 
