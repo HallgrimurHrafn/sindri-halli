@@ -97,10 +97,20 @@ function threadPrep(x) {
   return str;
 }
 
+function indexPrep(x) {
+  const page = parseInt(x[3], 10);
+  let url = '/';
+  if (!isNaN(page)) {
+    url = ('/sort=').concat(x[1]).concat('&page=').concat(page);
+  }
+  return url;
+}
+
 module.exports = {
   splitter,
   catFix,
   orderCheck,
   subPrep,
   threadPrep,
+  indexPrep,
 };

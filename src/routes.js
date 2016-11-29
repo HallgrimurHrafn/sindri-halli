@@ -10,7 +10,7 @@ const env = process.env.DATABASE_URL;
 const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 
-// NOTE: Hér koma öll function til að laga linka.
+// NOTE: Hér koma öll function til að laga linka nema search tengd.
 
 
 // ef linkurinn er rangur innan marka logum vid.
@@ -36,6 +36,17 @@ function DirectToPage0(req, res) {
 }
 
 
+// ef linkurinn er rangur innan marka logum vid.
+// annars sendum vid a forsidu.
+function indexprep(x, req, res) {
+  const url = strOp.indexPrep(x);
+  res.redirect(url);
+}
+
+
+// NOTE: Hér byrja get að ferðir.
+
+
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(req, res) {
   // lesum ur url
@@ -46,18 +57,12 @@ function getSub(req, res) {
   const sub = x[1];
   const ord = strOp.orderCheck(x[3]);
   const info = ('/cat=').concat(sub).concat('&sort=').concat(x[3]).concat('&');
-  // database command 1:
-  let str = ('SELECT * FROM threads WHERE sub ilike $1 ORDER BY ');
-  str = str.concat(ord).concat(' LIMIT $2 offset $3');
-  // database command 2:
-  let str2 = 'SELECT COUNT(*) FROM ';
-  str2 = str2.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
   // tryggja ad page number se ekki rugl og thad sem sub verdur ad vera jafnt og
   if ((!isNaN(page)) && (sub === 'Tech' || sub === 'Party' || sub === 'Schemes' || sub === 'Videogames')) {
     // order typan verdur ad vera rett.
     if (ord !== 'nope') {
-      // oll paralell promise.
-      Promise.all([db.any(str, [sub, 10, (page * 10)]), db.one(str2, sub)])
+      // SAEKJUM UPPLYSINGAR.
+      dbOp.getSub(sub, page, ord)
         .then((results) => {
           // reiknum bladsidu fjolda
           const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
@@ -69,9 +74,7 @@ function getSub(req, res) {
             info,
           });
         })
-        .catch((error) => {
-          res.render('error', { title: 'oohh shiet', error });
-        });
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
       // ef sort var rangt, forum a forsidu subsins.
     } else { res.redirect(('/cat=').concat(sub)); }
     // ef linkurinn er rangur, reynum ad laga.
@@ -130,13 +133,9 @@ function getThread(req, res) {
               res.render('error', { title: 'oohh shiet', error });
             });
         })
-        .catch((error) => {
-          res.render('error', { title: 'oohh shiet', error });
-        });
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
       })
-      .catch((error) => {
-        res.render('error', { title: 'oohh shiet', error });
-      });
+      .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     } else {
       getThreadPrep(req, res, x);
     }
@@ -190,32 +189,15 @@ function newComment(req, res) {
                 .then(() => {
                   res.redirect(req.url);
                 })
-                .catch((error) => {
-                  res.render('error', { title: 'oohh shiet', error });
-                });
+                .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
             })
-            .catch((error) => {
-              res.render('error', { title: 'oohh shiet', error });
-            });
+            .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
         })
-        .catch((error) => {
-          res.render('error', { title: 'oohh shiet', error });
-        });
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
-    .catch((error) => {
-      res.render('error', { title: 'oohh shiet', error });
-    });
+    .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
 }
 
-function indexprep(x, req, res) {
-  const page = parseInt(x[3], 10);
-  if (!isNaN(page)) {
-    const url = ('/sort=').concat(x[1]).concat('&page=').concat(page);
-    res.redirect(url);
-  } else {
-    res.redirect('/');
-  }
-}
 
 function index(req, res) {
   let x = req.url;
@@ -238,9 +220,7 @@ function index(req, res) {
           info: '/sort='.concat(x[1]).concat('&'),
         });
       })
-      .catch((error) => {
-        res.render('error', { title: 'Cant load threads', error });
-      });
+      .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     } else { res.redirect('/'); }
   } else { indexprep(x, req, res); }
 }
@@ -283,9 +263,7 @@ function searchName(name, req, res, page) {
         info,
       });
     })
-    .catch((error) => {
-      res.render('error', { title: 'page amount', error });
-    });
+    .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
 }
 
 function searchPar(par, req, res, page) {
@@ -312,13 +290,9 @@ function searchPar(par, req, res, page) {
             info,
           });
         })
-        .catch((error) => {
-          res.render('error', { title: 'page amount', error });
-        });
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
-    .catch((error) => {
-      res.render('error', { title: 'page amount', error });
-    });
+    .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
 }
 
 function searchTitle(title, req, res, page) {
@@ -345,13 +319,9 @@ function searchTitle(title, req, res, page) {
             info,
           });
         })
-        .catch((error) => {
-          res.render('error', { title: 'page amount', error });
-        });
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
-    .catch((error) => {
-      res.render('error', { title: 'page amount', error });
-    });
+    .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
 }
 
 function searchAll(all, req, res, page) {
@@ -379,13 +349,9 @@ function searchAll(all, req, res, page) {
             info,
           });
         })
-        .catch((error) => {
-          res.render('error', { title: 'page amount', error });
-        });
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
-    .catch((error) => {
-      res.render('error', { title: 'page amount', error });
-    });
+    .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
 }
 
 function search(req, res) {
