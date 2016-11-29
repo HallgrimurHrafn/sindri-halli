@@ -65,24 +65,19 @@ block content
           if title == 'Front'
             th Category
           th
-            -action = '/sort=' + name + '&page=0'
-            form(method='get' action=action)
+            form(method='get' action='/sort=name&page=0')
               button= User
           th
-            -action = '/sort=' + title + '&page=0'
-            form(method='get' action=action)
+            form(method='get' action='/sort=title&page=0')
               button= Title
           th
-            -action = '/sort=' + numcom + '&page=0'
-            form(method='get' action=action)
+            form(method='get' action='/sort=numcom&page=0')
               button= Comments
           th
-            -action = '/sort=' + views + '&page=0'
-            form(method='get' action=action)
+            form(method='get' action='/sort=views&page=0')
               button= Views
           th
-            -action = '/sort=' + mdate + '&page=0'
-            form(method='get' action=action)
+            form(method='get' action='/sort=mdate&page=0')
               button= Last Modified
       tbody
         each thread in threads
