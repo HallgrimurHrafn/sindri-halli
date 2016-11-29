@@ -296,7 +296,6 @@ function createThread(req, res) {
 }
 
 
-
 function splitter(text) {
   let re = /["]/;
   let str = text.split(re);
