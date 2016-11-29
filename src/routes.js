@@ -262,7 +262,7 @@ function index(req, res) {
           threads: results[0],
           Pnum,
           page,
-          info: '/sort='.concat(x[3]),
+          info: '/sort='.concat(x[1]),
         });
       })
       .catch((error) => {
