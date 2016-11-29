@@ -1,4 +1,4 @@
-extends layout
+extends pages
 
 block content
   h1.title= thread.title
@@ -20,7 +20,7 @@ block content
   -id = id + '&page=' + page
 
 
-block content2
+block content3
   h3 Leave a comment below
   form(method='post' action=id)
     div

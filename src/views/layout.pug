@@ -3,29 +3,12 @@ html(lang='is')
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    //- link(rel='stylesheet', href='/stylesheets/style0.css')
   body
     header
       a(href='/')
         h1.pageheader Forum
     main
       block content
-
-      //- if page != null
-      //-   br
-      //-   -n = 0
-      //-   nav
-      //-     while n < Pnum
-      //-       -x = n + 1
-      //-       -id = '/threadid=' + JSON.stringify(thread.id)
-      //-       -id = id + '&page=' + n
-      //-       if n == page
-      //-         li
-      //-           p= page + 1
-      //-       else
-      //-
-      //-         li
-      //-           a(href=(id))= x
-      //-       -n = n + 1
-      //-   br
-
       block content2
+      block content3
