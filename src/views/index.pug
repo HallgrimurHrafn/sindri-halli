@@ -8,7 +8,7 @@ block content
         tr
           if title == 'Front'
             th
-              button Category
+              button.noClick Category
           th
             form(method='get' action='/sort=name&page=0')
               button.btn(type='submit') User
@@ -26,17 +26,28 @@ block content
               button.btn(type='submit') Last Modified
       tbody
         each thread in threads
+          -id = '/threadid=' + JSON.stringify(thread.id) + '&page=0'
           tr
             if title == 'Front'
-              td= thread.sub
-            td= thread.name
-            -id = '/threadid=' + JSON.stringify(thread.id) + '&page=0'
+              td
+                form(method='get' action=id)
+                  button(type='submit')= thread.sub
             td
-              a(href=id)= thread.title
-            td= thread.comnum
-            td= thread.views
+              form(method='get' action=id)
+                button(type='submit')= thread.name
+            td
+              form(method='get' action=id)
+                button(type='submit')= thread.title
+            td
+              form(method='get' action=id)
+                button(type='submit')= thread.comnum
+            td
+              form(method='get' action=id)
+                button(type='submit')= thread.views
             -date = '' + thread.mdate
             -date = date.slice(0,-18)
-            td= date
+            td
+              form(method='get' action=id)
+                button(type='submit')= date
 
   br
