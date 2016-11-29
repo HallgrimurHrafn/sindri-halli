@@ -247,7 +247,7 @@ p.dot {
 }
 
 .btn {
-  rgba(244,139,194,0)
+  rgba(251,238,152,1);
   font-size: 18px;
   padding: 3px;
   -webkit-transition-duration: 0.3s;
