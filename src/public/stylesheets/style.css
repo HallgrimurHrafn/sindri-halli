@@ -255,7 +255,6 @@ p.dot {
 
 .name {
   width: 170px;
-  height
 }
 
 .title {
@@ -263,11 +262,11 @@ p.dot {
 }
 
 .comnum {
-
+  text-align: right;
 }
 
 .views {
-
+  text-align: right;
 }
 
 .mdate {
