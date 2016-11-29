@@ -61,7 +61,7 @@ main {
   color: #ffffff;
   font-size: 23px;
   width: 5em;
-  height: 3.5em;
+  height: inherit;
   text-decoration: none;
   border: none;
   -webkit-transition-duration: 0.3s;
