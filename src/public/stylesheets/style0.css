@@ -21,9 +21,6 @@ label {
   display: inline-block;
 }
 
-.im {
-  cursor: pointer;
-}
 
 /* Default State */
 .search {
