@@ -66,19 +66,19 @@ block content
             th Category
           th
             form(method='get' action='/sort=name&page=0')
-              button= User
+              button(type='submit')= User
           th
             form(method='get' action='/sort=title&page=0')
-              button= Title
+              button(type='submit')= Title
           th
             form(method='get' action='/sort=numcom&page=0')
-              button= Comments
+              button(type='submit')= Comments
           th
             form(method='get' action='/sort=views&page=0')
-              button= Views
+              button(type='submit')= Views
           th
             form(method='get' action='/sort=mdate&page=0')
-              button= Last Modified
+              button(type='submit')= Last Modified
       tbody
         each thread in threads
           tr
