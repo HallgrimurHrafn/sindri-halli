@@ -268,7 +268,9 @@ p.dot {
   width: 160px;
 }
 
-.color
+.colorRow {
+  background: rgba(251,238,152,1);
+}
 
 .select {
   display: inline;
