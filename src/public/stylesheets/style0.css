@@ -1,9 +1,8 @@
-/* Checkbox Hack */
-
 input[type=checkbox] {
   position: absolute;
   left: -9999px;
 }
+
 label {
   background: url(/images/search2.png) no-repeat;
   display: inline-block;
@@ -20,14 +19,11 @@ label {
   display: inline-block;
 }
 
-
-/* Default State */
 .search {
   text-align: center;
   display: inline-block
 }
 
-/* Toggled State */
 input[type=checkbox]:checked ~ .search{
   display: none;
 }
