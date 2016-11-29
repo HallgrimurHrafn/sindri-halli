@@ -83,62 +83,30 @@ function getSub(req, res) {
 
 
 // sækir þráðin með kommentum þessarar blaðsíðu
-// function getThread(threadID, page) {
 function getThread(req, res) {
-  let x = req.url;
+  // saekjum breytur ur url.
   const re = /[=&]/;
-  x = x.split(re);
+  const x = req.url.split(re);
   const threadID = x[1];
-  let page = x[3];
-  if (!isNaN(threadID)) {
-    if (!isNaN(page)) {
-      // select, faum fyrsta innleggið
-      page = parseInt(page, 10);
-      let offset = 9;
-      let num = 10;
-      let add = 0;
-      if (page === 0) {
-        num = 9;
-      }
-      if (page === 2) {
-        add = 1;
-      }
-      if (page > 2) {
-        offset = 10;
-        add = -1;
-      }
-      db.one('SELECT * FROM threads WHERE id = $1', threadID)
-      .then((thread) => {
-        // fáum öll kommentin. innan við page.
-        db.any('SELECT * FROM comments WHERE threadID = $1 limit $2 offset $3',
-          [threadID, num, (page * offset) + add])
-        .then((comments) => {
-          dbOp.pageNum(threadID)
-            .then((ParaNum) => {
-              const Pnum = Math.floor((ParaNum.count - 1) / 10) + 1;
-              const info = ('threadid=').concat(threadID).concat('&');
-              res.render('thread', {
-                title: thread.title,
-                thread,
-                comments,
-                page,
-                Pnum,
-                info,
-              });
-              // teljum views en okkur er sama hvort thad virki.
-              // þ.e. birtum síðuna þó error komi upp.
-              db.none('UPDATE threads SET views=views+1 WHERE id=$1', threadID);
-            })
-            .catch((error) => {
-              res.render('error', { title: 'oohh shiet', error });
-            });
-        })
-        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
+  const page = x[3];
+  const info = ('threadid=').concat(threadID).concat('&');
+  // tryggjum ad format sloðarinnar se rett.
+  if ((!isNaN(threadID)) && (!isNaN(page))) {
+    // Database adgerdir
+    dbOp.getThread(threadID, page)
+      .then((results) => {
+      // fáum öll kommentin. innan við page.
+        const Pnum = Math.floor((results[2].count - 1) / 10) + 1;
+        res.render('thread', {
+          title: results[0].title,
+          threadid: threadID,
+          comments: results[1],
+          page,
+          Pnum,
+          info,
+        });
       })
-      .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
-    } else {
-      getThreadPrep(req, res, x);
-    }
+    .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
   } else {
     getThreadPrep(req, res, x);
   }
@@ -170,10 +138,9 @@ function newThread(req, res) {
 function newComment(req, res) {
   const name = req.body.name;
   const paragraph = req.body.paragraph;
-  const x = req.url;
   const re = /[=&]/;
-  let threadID = x.split(re);
-  threadID = threadID[1];
+  const x = req.url.split(re);
+  const threadID = x[1];
 
   const str = 'insert into comments (name, paragraph, threadID) values ($1, $2, $3)';
   db.none(str, [name, paragraph, threadID])

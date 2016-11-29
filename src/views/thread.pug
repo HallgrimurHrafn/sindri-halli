@@ -1,22 +1,27 @@
 extends pages
 
 block content
-  h1.title= thread.title
-  if page == 0
-    h3.OPname= thread.name
-    div.OP
-      p.OPtext= thread.paragraph
+  h1.title= title
 
   div.comments
+    -x = 0
     each comment in comments
-      hr
-      div.comment
+      if page == 0 & x == 0
+        h3.OPname= comment.name
+        div.OP
+          p.OPtext= comment.paragraph
+          -x = 1
+      else
+
+        div.comment
         p.username
           strong= comment.name
         p.text= comment.paragraph
+
+      hr
   br
 
-  -id = '/threadid=' + JSON.stringify(thread.id)
+  -id = '/threadid=' + threadid
   -id = id + '&page=' + page
 
 

@@ -1,7 +1,10 @@
+/* eslint max-len: ["error", { "ignoreStrings": true }]*/
 const pgp = require('pg-promise')();
 
 const env = process.env.DATABASE_URL;
 const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
+
+// dbOp. stytting af database Opperations.
 
 // tekur inn thread id og skilar fjolda paragrapha
 function pageNum(id) {
@@ -21,7 +24,20 @@ function getSub(sub, page, ord) {
   return Promise.all([db.any(str, [sub, 10, (page * 10)]), db.one(str2, sub)]);
 }
 
+function getThread(threadID, page) {
+  const str1 = 'SELECT distinct title FROM total WHERE threadid = $1';
+  const str2 = 'SELECT * FROM total WHERE threadID = $1 order BY id ASC LIMIT $2 OFFSET $3';
+  const str3 = 'UPDATE threads SET views=views+1 WHERE id=$1';
+  return Promise.all([
+    db.one(str1, threadID),
+    db.any(str2, [threadID, 10, (page * 10)]),
+    pageNum(threadID),
+    db.none(str3, threadID),
+  ]);
+}
+
 module.exports = {
   pageNum,
   getSub,
+  getThread,
 };
