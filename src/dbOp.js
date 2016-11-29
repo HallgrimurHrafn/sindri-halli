@@ -39,7 +39,7 @@ function getThread(threadID, page) {
 function indexx(ord, page) {
   const str1 = ('SELECT * FROM threads ORDER BY ').concat(ord).concat(' LIMIT $1 offset $2');
   const str2 = 'SELECT COUNT(*) FROM (SELECT id FROM threads ) AS test';
-  Promise.all([db.any(str1, [10, (page * 10)]), db.one(str2)]);
+  return Promise.all([db.any(str1, [10, (page * 10)]), db.one(str2)]);
 }
 
 module.exports = {
