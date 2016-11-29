@@ -173,6 +173,10 @@ button {
   clear: both;
 }
 
+table {
+  margin: auto;
+}
+
 td, tr {
   padding: 15px;
 }
