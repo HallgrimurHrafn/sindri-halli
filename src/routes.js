@@ -16,16 +16,39 @@ function pageNum(id) {
   return db.one(str, id);
 }
 
+function getSubPrep(x, req, res) {
+  let page = x[3];
+  const sub = x[1].toUpperCase();
+  let url = '&';
+  page = parseInt(page, 10);
+  if (!isNaN(page)) {
+    url = url.concat('page=').concat(page);
+    if (sub === 'TECH') {
+      url = ('/cat=Tech').concat(url);
+    } else if (sub === 'PARTY') {
+      url = ('/cat=Party').concat(url);
+    } else if (sub === 'VIDEOGAMES') {
+      url = ('/cat=Videogames').concat(url);
+    } else if (sub === 'SCHEMES') {
+      url = ('/cat=Schemes').concat(url);
+    } else {
+      url = ('/').concat(url);
+    }
+    res.redirect(url);
+  } else {
+    res.redirect('/');
+  }
+}
+
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(req, res) {
-  const x = req.url;
+  let x = req.url;
   const re = /[=&]/;
-  let sub = x.split(re);
-  const page = parseInt(sub[3], 10);
-  const sub2 = sub[1].toUpperCase();
-  sub = sub[1];
+  x = x.split(re);
+  const page = x[3];
+  const sub = x[1];
   if (!isNaN(page)) {
-    if (sub2 === 'TECH' || sub2 === 'PARTY' || sub2 === 'SCHEMES' || sub2 === 'VIDEOGAMES') {
+    if (sub === 'Tech' || sub === 'Party' || sub === 'Schemes' || sub === 'Videogames') {
       db.any('SELECT * FROM threads WHERE sub ilike $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
       .then((threads) => {
         let str = 'SELECT COUNT(*) FROM ';
@@ -48,12 +71,13 @@ function getSub(req, res) {
         res.render('error', { title: 'oohh shiet', error });
       });
     } else {
-      res.redirect('/');
+      getSubPrep(x, req, res);
     }
   } else {
-    res.redirect('/');
+    getSubPrep(x, req, res);
   }
 }
+
 
 function DirectToPage0(req, res) {
   let url = req.url;
