@@ -13,16 +13,19 @@ label {
 
 .inline {
   display: inline-block;
+  height: 100%;
 }
 
 .image{
   display: inline-block;
   float: right;
+  vertical-align: middle;
 }
 
 .search {
   text-align: center;
-  display: inline-block
+  display: inline-block;
+  vertical-align: middle;
 }
 
 input[type=checkbox]:not(:checked) ~ .search{
