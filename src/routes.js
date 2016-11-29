@@ -121,7 +121,7 @@ function index(req, res) {
   const info = ('/sort=').concat(x[1]).concat('&');
   if (!isNaN(page)) {
     if (ord !== 'nope') {
-      dbOp.index(ord, page)
+      dbOp.inde(ord, page)
         .then((results) => {
           const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
           res.render('index', {
@@ -144,7 +144,6 @@ function newThread(req, res) {
   const name = req.body.name;
   const paragraph = req.body.paragraph;
   const sub = req.body.sub;
-
   // insert og svo viljum við fá þráðin
   const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4) returning id';
   db.one(str, [name, paragraph, title, sub])
