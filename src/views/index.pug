@@ -31,23 +31,23 @@ block content
             if title == 'Front'
               td
                 form(method='get' action=id)
-                  button(type='submit')= thread.sub
+                  button.sub(type='submit')= thread.sub
             td
               form(method='get' action=id)
-                button(type='submit')= thread.name
+                button.name(type='submit')= thread.name
             td
               form(method='get' action=id)
-                button(type='submit')= thread.title
+                button.title(type='submit')= thread.title
             td
               form(method='get' action=id)
-                button(type='submit')= thread.comnum
+                button.comnum(type='submit')= thread.comnum
             td
               form(method='get' action=id)
-                button(type='submit')= thread.views
+                button.views(type='submit')= thread.views
             -date = '' + thread.mdate
             -date = date.slice(0,-18)
             td
               form(method='get' action=id)
-                button(type='submit')= date
+                button.mdate(type='submit')= date
 
   br
