@@ -10,3 +10,4 @@
 // cat page redirect
 // index page redirect
 // page sub og index XXX
+// keywords i link eru case insensitve XXX
