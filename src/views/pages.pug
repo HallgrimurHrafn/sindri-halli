@@ -5,19 +5,30 @@ block content
 block content2
   if page != null
     br
-    -n = 0
+    -n = 1
     nav
-      while n < Pnum
-        -x = n + 1
-        -id= info
+      mixin pageIndex
         -id = info + 'page=' + n
         if n == page
           li
-            p= x
+            p= n
         else
 
           li
-            a(href=(id))= x
-        -n = x
+            a(href=(id))= n
+      while n <= Pnum
+        +pageIndex
+        if n == 1 && page > 4
+          -n = page-2
+          li
+            p &middot &middot &middot
+        else if n == page+2 && n < Pnum-1
+          -n = Pnum
+          li
+            p &middot &middot &middot
+        else
+
+          - n++
+
     br
 block content3
