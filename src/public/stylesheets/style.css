@@ -194,7 +194,7 @@ ul {
 
 }
 
-p.selected {
+p.selected .dot {
   display: inline;
   padding: 3px;
   background: rgb(75, 128, 105);
