@@ -7,6 +7,7 @@ input[type=checkbox] {
 }
 label {
   -webkit-appearance: push-button;
+  background: transparent url(/images/search.png);
   -moz-appearance: button;
   display: inline-block;
   margin: 60px 0 10px 0;
@@ -15,11 +16,11 @@ label {
 
 /* Default State */
 .search {
-   background: transparent url(/images/search.png);
+   background: rgba(41, 159, 175, 0);
    width: 400px;
    height: 100px;
    line-height: 100px;
-   color: white;
+   color: rgb(255, 255, 255);
    text-align: center;
 }
 

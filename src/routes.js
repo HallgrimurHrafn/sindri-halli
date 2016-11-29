@@ -59,11 +59,13 @@ function getSub(req, res) {
         db.one(str, sub)
         .then((tNum) => {
           const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
+          const info = ('/cat=').concat(sub).concat('&');
           res.render('index', {
             title: sub,
             threads,
             Pnum,
             page,
+            info,
           });
         })
         .catch((error) => {
@@ -262,6 +264,7 @@ function index(req, res) {
           threads: thread,
           Pnum,
           page,
+          info: '/',
         });
       })
       .catch((error) => {
@@ -341,12 +344,14 @@ function searchName(name, req, res, page) {
       db.one(str, name2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
+          const info = ('type=name&search=').concat(name).concat('&');
           res.render('search', {
             title: t,
             searched: name1,
             results,
             page,
             Pnum,
+            info,
           });
         })
         .catch((error) => {
@@ -372,12 +377,14 @@ function searchPar(par, req, res, page) {
       db.one(str, par2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
+          const info = ('type=name&search=').concat(par).concat('&');
           res.render('search', {
             title: t,
             searched: par1,
             results,
             page,
             Pnum,
+            info,
           });
         })
         .catch((error) => {
@@ -403,12 +410,14 @@ function searchTitle(title, req, res, page) {
       db.one(str, title2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
+          const info = ('type=name&search=').concat(title).concat('&');
           res.render('search', {
             title: t,
             searched: title1,
             results,
             page,
             Pnum,
+            info,
           });
         })
         .catch((error) => {
@@ -435,12 +444,14 @@ function searchAll(all, req, res, page) {
       db.one(str, all2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
+          const info = ('type=name&search=').concat(all).concat('&');
           res.render('search', {
             title: t,
             searched: all1,
             results,
             page,
             Pnum,
+            info,
           });
         })
         .catch((error) => {
