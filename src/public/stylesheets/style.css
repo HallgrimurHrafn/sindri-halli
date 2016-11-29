@@ -186,7 +186,8 @@ ul {
   margin: auto;
   display: inline-block;
   background: rgba(250,180,135,1);
-  padding: 4px 0;
+  padding: 4px 4px;
+  border-radius: 9px;
 }
 
 .pageBtn {
