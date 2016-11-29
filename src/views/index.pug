@@ -28,32 +28,33 @@ block content
 
           button.menuBtn(type='submit') Video games
 
-    .inline
-      .image
-        label(for='toggle-1')
-        input(type='checkbox', id='toggle-1')
-        .search
-          form(method = 'post' action = '/search=')
-            select.select(name = 'type')
-              option(value = 'name' selected) Name
-              option(value = 'title') Title
-              option(value = 'paragraph') paragraph
-              option(value = 'all') all
-            input(
-              type = 'text'
-              name = 'search'
-              pattern = '.{2,64}'
-              required title = 'must be 2-64 characters'
-            )
-            input(
-              type = 'submit'
-              style = 'visibility: hidden;'
-              )
 
     .newThreadDiv
       -blah = '/newThread&'+title
       a(href=blah)
         button.menuBtn.newThread(type='submit') New Thread
+
+    .image
+      label(for='toggle-1')
+        input(type='checkbox', id='toggle-1')
+          .search
+            form(method = 'post' action = '/search=')
+              select.select(name = 'type')
+                option(value = 'name' selected) Name
+                option(value = 'title') Title
+                option(value = 'paragraph') paragraph
+                option(value = 'all') all
+                input(
+                  type = 'text'
+                  name = 'search'
+                  pattern = '.{2,64}'
+                  required title = 'must be 2-64 characters'
+                  )
+                  input(
+                    type = 'submit'
+                    style = 'visibility: hidden;'
+                    )
+
     .fill
 
   .table
