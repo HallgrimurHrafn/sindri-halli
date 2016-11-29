@@ -7,6 +7,11 @@ html {
   background-color: rgba(254, 247, 206,1);
 }
 
+button, textarea, input {
+  border: none;
+  outline: none;
+}
+
 .center {
   text-align: center;
 }
@@ -229,9 +234,4 @@ p.dot {
 
 .select {
   display: inline;
-}
-
-button, textarea, input {
-  border: none;
-  outline: none;
 }
