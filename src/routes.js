@@ -24,28 +24,32 @@ function getSub(req, res) {
   const page = parseInt(sub[3], 10);
   const sub2 = sub[1].toUpperCase();
   sub = sub[1];
-  if (sub2 === 'TECH' || sub2 === 'PARTY' || sub2 === 'SCHEMES' || sub2 === 'VIDEOGAMES') {
-    db.any('SELECT * FROM threads WHERE sub ilike $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
-    .then((threads) => {
-      let str = 'SELECT COUNT(*) FROM ';
-      str = str.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
-      db.one(str, sub)
-      .then((tNum) => {
-        const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
-        res.render('index', {
-          title: sub,
-          threads,
-          Pnum,
-          page,
+  if (!isNaN(page)) {
+    if (sub2 === 'TECH' || sub2 === 'PARTY' || sub2 === 'SCHEMES' || sub2 === 'VIDEOGAMES') {
+      db.any('SELECT * FROM threads WHERE sub ilike $1 ORDER BY mdate DESC LIMIT $2 offset $3', [sub, 10, (page * 10)]) // select, where sub=sub.
+      .then((threads) => {
+        let str = 'SELECT COUNT(*) FROM ';
+        str = str.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
+        db.one(str, sub)
+        .then((tNum) => {
+          const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
+          res.render('index', {
+            title: sub,
+            threads,
+            Pnum,
+            page,
+          });
+        })
+        .catch((error) => {
+          res.render('error', { title: 'oohh shiet', error });
         });
       })
       .catch((error) => {
         res.render('error', { title: 'oohh shiet', error });
       });
-    })
-    .catch((error) => {
-      res.render('error', { title: 'oohh shiet', error });
-    });
+    } else {
+      res.redirect('/');
+    }
   } else {
     res.redirect('/');
   }
@@ -209,27 +213,31 @@ function index(req, res) {
   const re = /[=]/;
   let page = x.split(re);
   page = parseInt(page[1], 10);
-  db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1 offset $2', [10, (page * 10)])
+  if (!isNaN(page)) {
+    db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1 offset $2', [10, (page * 10)])
     .then((thread) => {
       let str = 'SELECT COUNT(*) FROM ';
       str = str.concat('(SELECT id FROM threads ) AS test');
       db.one(str)
-        .then((tNum) => {
-          const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
-          res.render('index', {
-            title: 'The Front of the Frón of the Friend of the Foe',
-            threads: thread,
-            Pnum,
-            page,
-          });
-        })
-        .catch((error) => {
-          res.render('error', { title: 'page amount', error });
+      .then((tNum) => {
+        const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
+        res.render('index', {
+          title: 'The Front of the Frón of the Friend of the Foe',
+          threads: thread,
+          Pnum,
+          page,
         });
+      })
+      .catch((error) => {
+        res.render('error', { title: 'page amount', error });
+      });
     })
     .catch((error) => {
       res.render('error', { title: 'Cant load threads', error });
     });
+  } else {
+    res.redirect('/');
+  }
 }
 
 function DirectToSub(req, res) {
