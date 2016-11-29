@@ -7,25 +7,29 @@ label {
   background: url(/images/search.png) no-repeat;
   display: inline-block;
   cursor: pointer;
-  padding: 30px;
+  height: 81px;
+  width: 60px;
   margin: 0;
 }
 
 .inline {
   display: inline-block;
-  height: 100%;
+  height: 81px;
 }
 
 .image{
   display: inline-block;
   float: right;
+  height: 81px;
   vertical-align: middle;
 }
 
 .search {
   text-align: center;
   display: inline-block;
+  height: 81px;
   vertical-align: middle;
+  float: left;
 }
 
 input[type=checkbox]:not(:checked) ~ .search{

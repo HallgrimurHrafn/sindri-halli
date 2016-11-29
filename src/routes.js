@@ -262,7 +262,7 @@ function index(req, res) {
       .then((tNum) => {
         const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
         res.render('index', {
-          title: 'The Front of the Frón of the Friend of the Foe',
+          title: 'E-ð nett',
           threads: thread,
           Pnum,
           page,
