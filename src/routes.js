@@ -21,7 +21,7 @@ function getSub(req, res) {
   const x = req.url;
   const re = /[=&]/;
   let sub = x.split(re);
-  const page = sub[3];
+  const page = parseInt(sub[3], 10);
   const sub2 = sub[1].toUpperCase();
   sub = sub[1];
   if (sub2 === 'TECH' || sub2 === 'PARTY' || sub2 === 'SCHEMES' || sub2 === 'VIDEOGAMES') {
