@@ -64,11 +64,26 @@ block content
         tr
           if title == 'Front'
             th Category
-          th User
-          th Title
-          th Comments
-          th Views
-          th Last modified
+          th
+            -action = '/sort=' + name + '&page=0'
+            form(method='get' action=action)
+              button= User
+          th
+            -action = '/sort=' + title + '&page=0'
+            form(method='get' action=action)
+              button= Title
+          th
+            -action = '/sort=' + numcom + '&page=0'
+            form(method='get' action=action)
+              button= Comments
+          th
+            -action = '/sort=' + views + '&page=0'
+            form(method='get' action=action)
+              button= Views
+          th
+            -action = '/sort=' + mdate + '&page=0'
+            form(method='get' action=action)
+              button= Last Modified
       tbody
         each thread in threads
           tr
