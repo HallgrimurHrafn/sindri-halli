@@ -253,21 +253,22 @@ p.dot {
 
 .title {
   width: 350px;
+  text-align: left;
 }
 
 .comnum {
-  text-align: right;
   width: 100px;
 }
 
 .views {
-  text-align: right;
   width: 59px;
 }
 
 .mdate {
   width: 160px;
 }
+
+.color
 
 .select {
   display: inline;
