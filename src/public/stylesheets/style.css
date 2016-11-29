@@ -206,12 +206,12 @@ ul {
   border-radius: 10px;
 }
 
-p.selected, p.dot {
+button.selected, p.dot {
   display: inline;
   height: 30px;
 }
 
-p.selected {
+button.selected {
   background: rgb(40, 199, 141);
   font-size: 19px;
   width: 20px;
