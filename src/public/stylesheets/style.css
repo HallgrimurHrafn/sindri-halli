@@ -181,6 +181,7 @@ ul {
 
 .pages {
   margin: auto;
+  display: inline-block;
   background: rgb(117, 201, 165);
 }
 
