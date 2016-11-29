@@ -377,7 +377,7 @@ function searchPar(par, req, res, page) {
       db.one(str, par2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
-          const info = ('type=name&search=').concat(par).concat('&');
+          const info = ('type=paragraph&search=').concat(par).concat('&');
           res.render('search', {
             title: t,
             searched: par1,
@@ -410,7 +410,7 @@ function searchTitle(title, req, res, page) {
       db.one(str, title2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
-          const info = ('type=name&search=').concat(title).concat('&');
+          const info = ('type=title&search=').concat(title).concat('&');
           res.render('search', {
             title: t,
             searched: title1,
@@ -444,7 +444,7 @@ function searchAll(all, req, res, page) {
       db.one(str, all2)
         .then((p) => {
           const Pnum = Math.floor((p.count - 1) / 10) + 1;
-          const info = ('type=name&search=').concat(all).concat('&');
+          const info = ('type=all&search=').concat(all).concat('&');
           res.render('search', {
             title: t,
             searched: all1,
