@@ -3,19 +3,12 @@
 const express = require('express');
 const pgp = require('pg-promise')();
 const strOp = require('./stringOp.js');
+const dbOp = require('./dbOp.js');
 
 const router = express.Router();
 const env = process.env.DATABASE_URL;
 const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
-
-// tekur inn thread id og skilar fjolda paragrapha
-function pageNum(id) {
-  let str = 'SELECT COUNT(*) FROM ';
-  str = str.concat('(SELECT id FROM threads WHERE id = $1 UNION ALL ');
-  str = str.concat('SELECT id FROM comments WHERE threadid = $1) AS test');
-  return db.one(str, id);
-}
 
 function getSubPrep(x, req, res) {
   let page = x[3];
@@ -142,7 +135,7 @@ function getThread(req, res) {
         db.any('SELECT * FROM comments WHERE threadID = $1 limit $2 offset $3',
           [threadID, num, (page * offset) + add])
         .then((comments) => {
-          pageNum(threadID)
+          dbOp.pageNum(threadID)
             .then((ParaNum) => {
               const Pnum = Math.floor((ParaNum.count - 1) / 10) + 1;
               const info = ('threadid=').concat(threadID).concat('&');
@@ -211,7 +204,7 @@ function newComment(req, res) {
   const str = 'insert into comments (name, paragraph, threadID) values ($1, $2, $3)';
   db.none(str, [name, paragraph, threadID])
     .then(() => {
-      pageNum(threadID)
+      dbOp.pageNum(threadID)
         .then((comNum) => {
           let str2 = '(SELECT date FROM threads where id = $1 UNION ALL ';
           str2 = str2.concat('SELECT date FROM comments where threadid = $1) ');
@@ -255,28 +248,22 @@ function index(req, res) {
   x = x.split(re);
   const page = x[1];
   if (!isNaN(page)) {
-    db.any('SELECT * FROM threads ORDER BY mdate DESC LIMIT $1 offset $2', [10, (page * 10)])
-    .then((thread) => {
-      let str = 'SELECT COUNT(*) FROM ';
-      str = str.concat('(SELECT id FROM threads ) AS test');
-      db.one(str)
-      .then((tNum) => {
-        const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
+    const str1 = 'SELECT * FROM threads ORDER BY mdate DESC LIMIT $1 offset $2';
+    const str2 = 'SELECT COUNT(*) FROM (SELECT id FROM threads ) AS test';
+    Promise.all([db.any(str1, [10, (page * 10)]), db.one(str2)])
+      .then((results) => {
+        const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
         res.render('index', {
           title: 'Front',
-          threads: thread,
+          threads: results[0],
           Pnum,
           page,
           info: '/',
         });
       })
       .catch((error) => {
-        res.render('error', { title: 'page amount', error });
+        res.render('error', { title: 'Cant load threads', error });
       });
-    })
-    .catch((error) => {
-      res.render('error', { title: 'Cant load threads', error });
-    });
   } else {
     indexprep(x, req, res);
   }
@@ -294,72 +281,31 @@ function DirectToIndex(req, res) {
 
 function createThread(req, res) {
   const x = req.url;
-  const re = /[&]/;
   let sel = 1;
-  let url = x.split(re);
-  url = url[1];
-  if (url === 'Schemes') {
-    sel = 1;
-  } else if (url === 'Party') {
-    sel = 2;
-  } else if (url === 'Tech') {
-    sel = 3;
-  } else if (url === 'Videogames') {
-    sel = 4;
-  }
+  sel = strOp.catFix(x, sel);
   res.render('newthread', { sel });
 }
 
 
-function splitter(text) {
-  let re = /["]/;
-  let str = text.split(re);
-  const quotes = '( ';
-  let parts;
-  let counter = 0;
-  re = /[\s]/;
-  str.forEach(() => {
-    if (counter % 2 === 1) {
-      parts = str[counter].split(re);
-      parts = parts.join(' & ');
-      str[counter] = quotes.concat(parts).concat(' )');
-    } else {
-      parts = str[counter].split(re);
-      str[counter] = parts.join(' | ');
-    }
-    counter += 1;
-  });
-  str = str.join(' ');
-  return str;
-}
-
 function searchName(name, req, res, page) {
   const name1 = decodeURIComponent(name);
   const name2 = strOp.splitter(name1);
-  const count = 'SELECT COUNT(*) FROM ( ';
-  let str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc';
+  const titill = ('Search: ').concat(name1);
+  const str = 'SELECT * FROM total WHERE name @@ to_tsquery($1) ORDER BY date desc';
+  const count = ('SELECT COUNT(*) FROM ( ').concat(str).concat(') AS blah');
   const str2 = str.concat(' LIMIT $2 offset $3');
-  db.any(str2, [name2, 10, page * 10])
+  Promise.all([db.any(str2, [name2, 10, page * 10]), db.one(count, name2)])
     .then((results) => {
-      let t = 'Search: ';
-      t = t.concat(name1);
-      str = count.concat(str).concat(') AS blah');
-      db.one(str, name2)
-        .then((p) => {
-          const Pnum = Math.floor((p.count - 1) / 10) + 1;
-          const info = ('type=name&search=').concat(name).concat('&');
-          res.render('search', {
-            title: t,
-            searched: name1,
-            results,
-            page,
-            Pnum,
-            info,
-          });
-        })
-        .catch((error) => {
-          res.render('error', { title: 'page amount', error });
-        });
+      const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
+      const info = ('type=name&search=').concat(name).concat('&');
+      res.render('search', {
+        title: titill,
+        searched: name1,
+        results: results[0],
+        page,
+        Pnum,
+        info,
+      });
     })
     .catch((error) => {
       res.render('error', { title: 'page amount', error });

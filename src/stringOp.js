@@ -21,6 +21,25 @@ function splitter(text) {
   return str;
 }
 
+
+function catFix(x, sele) {
+  const re = /[&]/;
+  let url = x.split(re);
+  url = url[1];
+  let sel = sele;
+  if (url === 'Schemes') {
+    sel = 1;
+  } else if (url === 'Party') {
+    sel = 2;
+  } else if (url === 'Tech') {
+    sel = 3;
+  } else if (url === 'Videogames') {
+    sel = 4;
+  }
+  return sel;
+}
+
 module.exports = {
   splitter,
+  catFix,
 };
