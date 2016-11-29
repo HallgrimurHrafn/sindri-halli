@@ -261,7 +261,34 @@ function createThread(req, res) {
 }
 
 function nolink(req, res) {
-  res.redirect('/');
+  const url = req.body.url;
+  const re = /[&=]/;
+  let link = url.split(re);
+  let i = 0;
+  const og = '&';
+  let cd = false;
+  link.forEach((block) => {
+    if (i % 2 === 0) {
+      link[i] = link[i].toLowerCase();
+      if (link[i] === 'threadid' || link[i] === 'page' || link[i] === 'type') {
+        cd = true;
+      } else if (link[i] === 'search' || link[i] === 'newthread' || link[i] === 'cat') {
+        cd = true;
+      }
+      if (i === 0) {
+        link[i] = link[i].concat('=');
+      } else {
+        link[i] = og.concat(link[i]).concat('=');
+      }
+    }
+    i += 1;
+  });
+  link = link.join('');
+  if (cd) {
+    res.redirect(link);
+  } else {
+    res.redirect('/');
+  }
 }
 
 // function transform(text) {
@@ -275,7 +302,7 @@ function splitter(text) {
   let parts;
   let counter = 0;
   re = /[\s]/;
-  str.forEach((block) => {
+  str.forEach(() => {
     if (counter % 2 === 1) {
       parts = str[counter].split(re);
       parts = parts.join(' & ');
