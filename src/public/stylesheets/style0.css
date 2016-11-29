@@ -27,16 +27,11 @@ label {
 
 /* Default State */
 .search {
-   background: rgba(41, 159, 175, 0);
-   width: 400px;
-   height: 100px;
-   line-height: 100px;
-   color: rgb(255, 255, 255);
    text-align: center;
    display: inline-block
 }
 
 /* Toggled State */
-input[type=checkbox]:checked ~ .search {
+input[type=checkbox]:checked ~ .search{
    display: none;
 }
