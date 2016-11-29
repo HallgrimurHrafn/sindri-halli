@@ -7,9 +7,9 @@ label {
   background: url(/images/search.png) no-repeat;
   display: inline-block;
   cursor: pointer;
-  height: 81px;
   width: 60px;
-  margin: 0;
+  height: 60px;
+  margin-top: 11px;
 }
 
 .inline {
@@ -27,7 +27,9 @@ label {
 .search {
   text-align: center;
   display: inline-block;
-  height: 81px;
+  height: 21px;
+  width: 275px;
+  margin-top: 30px;
   vertical-align: middle;
   float: left;
 }
