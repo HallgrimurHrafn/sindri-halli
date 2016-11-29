@@ -7,7 +7,8 @@ block content
       thead
         tr
           if title == 'Front'
-            th Category
+            th
+              button Category
           th
             form(method='get' action='/sort=name&page=0')
               button.btn(type='submit') User
