@@ -44,7 +44,7 @@ function orderCheck(order) {
   let ord = order;
   ord = ord.toUpperCase();
   if (ord === 'MDATE') {
-    ord = 'mdate DESC'
+    ord = 'mdate DESC';
   } else if (ord === 'COMNUM') {
     ord = 'comnum DESC';
   } else if (ord === 'VIEWS') {
@@ -61,10 +61,46 @@ function orderCheck(order) {
   return ord;
 }
 
+function subPrep(x) {
+  let page = x[5];
+  const sub = x[1].toUpperCase();
+  let url = '/';
+  page = parseInt(page, 10);
+  if (!isNaN(page)) {
+    url = ('&').concat('page=').concat(page);
+    if (sub === 'TECH') {
+      url = ('/cat=Tech&sort=').concat(x[3]).concat(url);
+    } else if (sub === 'PARTY') {
+      url = ('/cat=Party&sort=').concat(x[3]).concat(url);
+    } else if (sub === 'VIDEOGAMES') {
+      url = ('/cat=Videogames&sort=').concat(x[3]).concat(url);
+    } else if (sub === 'SCHEMES') {
+      url = ('/cat=Schemes&sort=').concat(x[3]).concat(url);
+    } else {
+      url = '/';
+    }
+  }
+  return url;
+}
 
+function threadPrep(x) {
+  const threadID = parseInt(x[1], 10);
+  const page = parseInt(x[3], 10);
+  let str = '/';
+  if (!isNaN(threadID)) {
+    if (!isNaN(page)) {
+      str = x[0];
+      str = str.concat('=').concat(threadID).concat('&');
+      str = str.concat(x[2]).concat('=').concat(page);
+    }
+  }
+  return str;
+}
 
 module.exports = {
   splitter,
   catFix,
   orderCheck,
+  subPrep,
+  threadPrep,
 };

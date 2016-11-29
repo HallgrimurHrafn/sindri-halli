@@ -10,36 +10,42 @@ const env = process.env.DATABASE_URL;
 const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 
+// NOTE: Hér koma öll function til að laga linka.
+
+
+// ef linkurinn er rangur innan marka logum vid.
+// annars sendum vid a forsidu videigandi category.
 function getSubPrep(x, req, res) {
-  let page = x[5];
-  const sub = x[1].toUpperCase();
-  let url = '/';
-  page = parseInt(page, 10);
-  if (!isNaN(page)) {
-    url = ('&').concat('page=').concat(page);
-    if (sub === 'TECH') {
-      url = ('/cat=Tech&sort=').concat(x[3]).concat(url);
-    } else if (sub === 'PARTY') {
-      url = ('/cat=Party&sort=').concat(x[3]).concat(url);
-    } else if (sub === 'VIDEOGAMES') {
-      url = ('/cat=Videogames&sort=').concat(x[3]).concat(url);
-    } else if (sub === 'SCHEMES') {
-      url = ('/cat=Schemes&sort=').concat(x[3]).concat(url);
-    } else {
-      url = '/';
-    }
-  }
+  const url = strOp.subPrep(x);
   res.redirect(url);
 }
 
+
+// ef linkurinn er rangur innan marka logum vid.
+// annars sendum vid a forsidu.
+function getThreadPrep(req, res, x) {
+  const url = strOp.threadPrep(x);
+  res.redirect(url);
+}
+
+
+// setjum baetum vid &page=0 aftan a url.
+function DirectToPage0(req, res) {
+  const url = req.url.concat('&page=0');
+  res.redirect(url);
+}
+
+
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(req, res) {
-  let x = req.url;
+  // lesum ur url
   const re = /[=&]/;
-  x = x.split(re);
+  const x = req.url.split(re);
+  // veljum mikilvaeg variables ur url
   const page = x[5];
   const sub = x[1];
   const ord = strOp.orderCheck(x[3]);
+  const info = ('/cat=').concat(sub).concat('&sort=').concat(x[3]).concat('&');
   // database command 1:
   let str = ('SELECT * FROM threads WHERE sub ilike $1 ORDER BY ');
   str = str.concat(ord).concat(' LIMIT $2 offset $3');
@@ -50,61 +56,31 @@ function getSub(req, res) {
   if (!isNaN(page)) {
     // thad sem sub verdur ad vera jafnt og.
     if (sub === 'Tech' || sub === 'Party' || sub === 'Schemes' || sub === 'Videogames') {
-      db.any(str, [sub, 10, (page * 10)]) // select, where sub=sub.
-      .then((threads) => {
-        db.one(str2, sub)
-        .then((tNum) => {
-          const Pnum = Math.floor((tNum.count - 1) / 10) + 1;
-          const info = ('/cat=').concat(sub).concat('&sort=').concat(x[3]).concat('&');
-          res.render('index', {
-            title: sub,
-            threads,
-            Pnum,
-            page,
-            info,
+      // order typan verdur ad vera rett.
+      if (ord !== 'nope') {
+        // oll paralell promise.
+        Promise.all([db.any(str, [sub, 10, (page * 10)]), db.one(str2, sub)])
+          .then((results) => {
+            // reiknum bladsidu fjolda
+            const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
+            res.render('index', {
+              title: sub,
+              threads: results[0],
+              Pnum,
+              page,
+              info,
+            });
+          })
+          .catch((error) => {
+            res.render('error', { title: 'oohh shiet', error });
           });
-        })
-        .catch((error) => {
-          res.render('error', { title: 'oohh shiet', error });
-        });
-      })
-      .catch((error) => {
-        res.render('error', { title: 'oohh shiet', error });
-      });
-    } else {
-      getSubPrep(x, req, res);
-    }
-  } else {
-    getSubPrep(x, req, res);
-  }
+        // ef sort var rangt, forum a forsidu subsins.
+      } else { res.redirect(('/cat=').concat(sub)); }
+      // ef linkurinn er rangur, reynum ad laga.
+    } else { getSubPrep(x, req, res); }
+  } else { getSubPrep(x, req, res); }
 }
 
-
-function DirectToPage0(req, res) {
-  let url = req.url;
-  url = url.concat('&page=0');
-  res.redirect(url);
-}
-
-
-// ef linkurinn er rangur innan marka logum vid.
-// annars sendum vid a forsidu.
-function getThreadPrep(req, res, x) {
-  const threadID = parseInt(x[1], 10);
-  const page = parseInt(x[3], 10);
-  if (!isNaN(threadID)) {
-    if (!isNaN(page)) {
-      let str = x[0];
-      str = str.concat('=').concat(threadID).concat('&');
-      str = str.concat(x[2]).concat('=').concat(page);
-      res.redirect(str);
-    } else {
-      res.redirect('/');
-    }
-  } else {
-    res.redirect('/');
-  }
-}
 
 // sækir þráðin með kommentum þessarar blaðsíðu
 // function getThread(threadID, page) {
