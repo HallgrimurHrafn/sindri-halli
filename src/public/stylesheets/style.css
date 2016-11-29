@@ -10,6 +10,7 @@ html {
 button, textarea, input {
   border: none;
   outline: none;
+  background: transparent;
 }
 
 .center {
