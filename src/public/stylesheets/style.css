@@ -242,28 +242,28 @@ p.dot {
   background: rgba(250,180,135,1);
 }
 
-.Tsub, .Tname, .Ttitle, .Tcomnum, .Tviews, .Tmdate{
+.sub, .name, .title, .comnum, .views, .mdate{
   font-size: 14px;
   height: 48px;
 }
 
-.Tname {
+.name {
   width: 170px;
 }
 
-.Ttitle {
+.title {
 
 }
 
-.Tcomnum {
+.comnum {
   text-align: right;
 }
 
-.Tviews {
+.views {
   text-align: right;
 }
 
-.Tmdate {
+.mdate {
 
 }
 
