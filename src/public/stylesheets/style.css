@@ -163,7 +163,7 @@ a{
     rgba(244,139,194,0) 98%);
 }
 
-.searchbar {
+input {
   background: rgba(251,238,152,1);
   border: inset 2px rgba(250,180,135,1);
 }
