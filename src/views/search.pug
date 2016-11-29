@@ -1,7 +1,7 @@
 extends pages
 
 block content
-  h1= searched
+  h1 Search results for: !{searched}.
   hr
   each result in results
     p= result.name + ' ' + result.date
