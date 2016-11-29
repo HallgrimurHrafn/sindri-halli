@@ -17,6 +17,7 @@ label {
 
 .image{
   display: inline-block;
+  float: right;
 }
 
 .search {
