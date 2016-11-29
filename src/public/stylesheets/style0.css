@@ -24,6 +24,6 @@ label {
   display: inline-block
 }
 
-input[type=checkbox]:checked ~ .search{
+input[type=checkbox]:not(:checked) ~ .search{
   display: none;
 }
