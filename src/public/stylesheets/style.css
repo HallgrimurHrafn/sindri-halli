@@ -6,6 +6,11 @@ html {
   height: 100%;
   background-color: rgba(254, 247, 206,1);
 }
+
+.center {
+  text-align: center;
+}
+
 body {
   height: 100%;
   margin: 0;
