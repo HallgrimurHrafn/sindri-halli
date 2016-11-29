@@ -142,7 +142,7 @@ function index(req, res) {
 function newThread(req, res) {
   const title = req.body.title;
   const name = req.body.name;
-  const paragraph = req.body.paragraph;
+  const paragraph = req.body.paragraph.replace(/\n?\r\n/g, '<br />');
   const sub = req.body.sub;
   // insert og svo viljum við fá þráðin
   const str = 'insert into threads (name, paragraph, title, sub) values ($1, $2, $3, $4) returning id';
@@ -162,7 +162,7 @@ function newThread(req, res) {
 // nýtt komment er búið til
 function newComment(req, res) {
   const name = req.body.name;
-  const paragraph = req.body.paragraph;
+  const paragraph = req.body.paragraph.replace(/\n?\r\n/g, '<br />');
   const re = /[=&]/;
   const x = req.url.split(re);
   const threadID = x[1];

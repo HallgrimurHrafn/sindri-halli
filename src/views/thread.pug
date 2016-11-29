@@ -9,14 +9,14 @@ block content
       if page == 0 & x == 0
         h3.OPname= comment.name
         div.OP
-          p.OPtext= comment.paragraph
+          p.OPtext !{comment.paragraph}
           -x = 1
       else
 
         div.comment
         p.username
           strong= comment.name
-        p.text= comment.paragraph
+        p.text !{comment.paragraph}
 
       hr
   br
