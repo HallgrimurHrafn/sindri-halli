@@ -11,6 +11,7 @@ label {
   width: 60px;
   height: 60px;
   margin-top: 11px;
+  margin-right: 15px;
 }
 
 
@@ -20,14 +21,13 @@ label {
   float: right;
   height: 81px;
   vertical-align: middle;
-  margin-right: 35px;
 }
 
 .search {
   text-align: center;
   display: inline-block;
   height: 21px;
-  width: 242px;
+  width: 250px;
   margin-top: 30px;
   margin-right: 20px;
   vertical-align: middle;
