@@ -10,19 +10,19 @@ block content
             th Category
           th
             form(method='get' action='/sort=name&page=0')
-              button(type='submit') User
+              button.btn(type='submit') User
           th
             form(method='get' action='/sort=title&page=0')
-              button(type='submit') Title
+              button.btn(type='submit') Title
           th
             form(method='get' action='/sort=comnum&page=0')
-              button(type='submit') Comments
+              button.btn(type='submit') Comments
           th
             form(method='get' action='/sort=views&page=0')
-              button(type='submit') Views
+              button.btn(type='submit') Views
           th
             form(method='get' action='/sort=mdate&page=0')
-              button(type='submit') Last Modified
+              button.btn(type='submit') Last Modified
       tbody
         each thread in threads
           tr
