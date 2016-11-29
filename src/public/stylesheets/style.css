@@ -86,7 +86,6 @@ main {
   width: 5em;
   height: 81px;
   text-decoration: none;
-  border: none;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: background-color, border-radius;
@@ -160,7 +159,6 @@ a{
 }
 
 .searchbar {
-  border: none;
   background: rgb(255,255,255); /* Old browsers */
   background: -moz-radial-gradient(center, ellipse cover, rgb(255,255,255) 46%, rgba(250,180,135,0) 100%);
   background: -webkit-radial-gradient(center, ellipse cover, rgb(255,255,255) 46%, rgba(250,180,135,0) 100%);
@@ -192,6 +190,7 @@ ul {
 }
 
 .pageBtn {
+  background: rgb(117, 201, 165);
 
 }
 
@@ -206,5 +205,6 @@ p.selected {
 }
 
 button, textarea, input {
+  border: none;
   outline: none;
 }
