@@ -20,9 +20,15 @@ button, textarea, input {
 body {
   height: 100%;
   margin: 0;
-  background: -webkit-linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 440px);
-  background: -o-linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 440px);
-  background: linear-gradient(rgba(251,238,152,1) 320px, rgba(254, 247, 206,1) 440px);
+  background: -webkit-linear-gradient(
+    rgba(251,238,152,1) 320px,
+    rgba(254, 247, 206,1) 440px);
+  background: -o-linear-gradient(
+    rgba(251,238,152,1) 320px, 
+    rgba(254, 247, 206,1) 440px);
+  background: linear-gradient(
+    rgba(251,238,152,1) 320px,
+    rgba(254, 247, 206,1) 440px);
   background-repeat: no-repeat;
 }
 
