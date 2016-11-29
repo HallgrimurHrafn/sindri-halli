@@ -245,6 +245,7 @@ p.dot {
 .sub, .name, .title, .comnum, .views, .mdate{
   font-size: 14px;
   height: 48px;
+  cursor: pointer;
 }
 
 .name {
