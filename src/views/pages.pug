@@ -7,10 +7,10 @@ block content2
     br
     -n = 0
     nav
-      while n < 4
+      while n < Pnum
         -x = n + 1
         -id= info
-        -id = id + 'page=' + n
+        -id = info + 'page=' + n
         if n == page
           li
             p= page + 1
