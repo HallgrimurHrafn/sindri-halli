@@ -3,8 +3,13 @@ extends pages
 block content
   h1 Search results for: !{searched}.
   hr
-  each result in results
-    p= result.name + ' ' + result.date
-    p= result.title
-    p= result.paragraph
-    hr
+  table.search
+    tboddy
+      each result in results
+        tr
+          td.search1
+            h2= result.name
+            p= result.date
+          td.search2
+            h1= result.title
+            p !{result.paragraph}
