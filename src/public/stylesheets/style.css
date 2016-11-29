@@ -220,6 +220,7 @@ button.selected {
   background: rgb(40, 199, 141);
   font-size: 19px;
   width: 20px;
+  border-radius: 10px;
 }
 
 p.dot {
