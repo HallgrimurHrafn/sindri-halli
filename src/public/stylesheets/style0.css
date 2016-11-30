@@ -1,3 +1,6 @@
 td.search {
-  height: 250px;
+  height: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
