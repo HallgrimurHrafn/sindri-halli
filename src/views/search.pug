@@ -12,29 +12,29 @@ block content
           if i == 0
             - i++
             tr.colorRow
-              td
+              td.search
                 form(method='get' action=id)
                   button.name(type='submit')= result.name
-              td
+              td.search
                 form(method='get' action=id)
                   button.title(type='submit') !{result.title} !{'<br />'} !{result.paragraph}
               -date = '' + result.date
               -date = date.slice(0,-18)
-              td
+              td.search
                 form(method='get' action=id)
                   button.mdate(type='submit')= date
           else
 
             - i--
             tr
-              td
+              td.search
                 form(method='get' action=id)
                   button.name(type='submit')= result.name
-              td
+              td.search
                 form(method='get' action=id)
                   button.title(type='submit') !{result.title} !{'<br />'} !{result.paragraph}
               -date = '' + result.mdate
               -date = date.slice(0,-18)
-              td
+              td.search
                 form(method='get' action=id)
                   button.mdate(type='submit')= date
