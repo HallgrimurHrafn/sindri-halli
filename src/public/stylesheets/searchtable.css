@@ -2,52 +2,35 @@ table.searched {
   width: 100%;
 }
 
-.searched.name{
+.searched {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0;
   text-align: center;
   cursor: pointer;
+}
+
+.searched.name{
   font-size: 18px;
   height: 20px;
   font-weight: bold;
-  padding: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
 }
 
 .searched.date{
-  text-align: center;
-  cursor: pointer;
   font-size: 14px;
   height: 80px;
-  padding: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
 }
 
 .searched.title{
-  text-align: center;
-  cursor: pointer;
   font-size: 22px;
   font-weight: bold;
-  padding: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
   height: 24px;
-  width: 100%;
 }
 
 .searched.para{
   text-align: left;
-  cursor: pointer;
   font-size: 14px;
   height: 78px;
-  padding: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
 }
