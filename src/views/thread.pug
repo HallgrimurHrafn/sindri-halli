@@ -22,10 +22,8 @@ block content
                   form.searched.date(method='get' action=id)
                     button.searched.date(type='submit') !{date}
                 td.searched.tvo
-                  form.searched.title(method='get' action=id)
-                    button.searched.title(type='submit') !{result.title}
-                  form.searched.para(method='get' action=id)
-                    button.searched.para(type='submit') !{result.paragraph}
+                  form.thread.para(method='get' action=id)
+                    button.thread.para(type='submit') !{result.paragraph}
             else
               - i--
               tr
@@ -35,8 +33,6 @@ block content
                   form.searched.date(method='get' action=id)
                     button.searched.date(type='submit') !{date}
                 td.searched.tvo
-                  //- form.searched.title(method='get' action=id)
-                  //-   button.searched.title(type='submit') !{result.title}
                   form.thread.para(method='get' action=id)
                     button.thread.para(type='submit') !{result.paragraph}
     //-
