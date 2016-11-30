@@ -392,7 +392,14 @@ input[type=checkbox]:not(:checked) ~ .search{
   max-width: 500px;
 }
 
-.thread-title
+.thread {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.thread-title {
+  
+}
 
 .comment {
   max-width: 500px;
