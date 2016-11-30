@@ -2,7 +2,7 @@ table.searched {
   width: 100%;
 }
 
-button.searched.name{
+.searched.name{
   cursor: pointer;
   font-size: 18px;
   height: 20px;
@@ -11,10 +11,10 @@ button.searched.name{
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 100%;
+  width: 25%;
 }
 
-button.searched.date{
+.searched.date{
   cursor: pointer;
   font-size: 14px;
   height: 80px;
@@ -22,10 +22,10 @@ button.searched.date{
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 100%;
+  width: 25%;
 }
 
-button.searched.title{
+.searched.title{
   cursor: pointer;
   font-size: 22px;
   font-weight: bold;
@@ -34,10 +34,10 @@ button.searched.title{
   overflow: hidden;
   white-space: nowrap;
   height: 24px;
-  width: 100%;
+  width: 75%;
 }
 
-button.searched.para{
+.searched.para{
   cursor: pointer;
   font-size: 14px;
   height: 78px;
@@ -45,13 +45,5 @@ button.searched.para{
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 100%;
-}
-
-form.searched.name {
-
-}
-
-form.searched.name {
-
+  width: 75%;
 }
