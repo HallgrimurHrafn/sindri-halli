@@ -335,6 +335,8 @@ p.dot {
 
 .faded-green {
   background: rgba(40, 199, 141, 0.25);
+  width: 100%;
+  height: 100%;
 }
 
 input[type=checkbox] {
