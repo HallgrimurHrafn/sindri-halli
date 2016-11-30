@@ -1,14 +1,14 @@
-@media screen and (max-width: 750px)  {
+@media screen and (max-width: 900px)  {
   .search {
     position: absolute;
     top: 351px;
-    right: 240px;
+    right: 215px;
   }
 
   label {
     position: absolute;
     top: 300px;
-    right: 164px;
+    right: 149px;
   }
 
   main {
