@@ -1,59 +1,60 @@
 extends layout
 
 block menu
-  .menu
-    .nav
-      a(href='/cat=Schemes&sort=mdate&page=0')
-        if title == 'Schemes'
-          button.menuBtn.currentSub(type='submit') Schemes
-        else
+  .center
+    .menu
+      .nav
+        a(href='/cat=Schemes&sort=mdate&page=0')
+          if title == 'Schemes'
+            button.menuBtn.currentSub(type='submit') Schemes
+          else
 
-          button.menuBtn(type='submit') Schemes
-      a(href='/cat=Party&sort=mdate&page=0')
-        if title == 'Party'
-          button.menuBtn.currentSub(type='submit') Party
-        else
+            button.menuBtn(type='submit') Schemes
+        a(href='/cat=Party&sort=mdate&page=0')
+          if title == 'Party'
+            button.menuBtn.currentSub(type='submit') Party
+          else
 
-          button.menuBtn(type='submit') Party
-      a(href='/cat=Tech&sort=mdate&page=0')
-        if title == 'Tech'
-          button.menuBtn.currentSub(type='submit') Tech
-        else
+            button.menuBtn(type='submit') Party
+        a(href='/cat=Tech&sort=mdate&page=0')
+          if title == 'Tech'
+            button.menuBtn.currentSub(type='submit') Tech
+          else
 
-          button.menuBtn(type='submit') Tech
-      a(href='/cat=Videogames&sort=mdate&page=0')
-        if title == 'Videogames'
-          button.menuBtn.currentSub(type='submit') Video games
-        else
+            button.menuBtn(type='submit') Tech
+        a(href='/cat=Videogames&sort=mdate&page=0')
+          if title == 'Videogames'
+            button.menuBtn.currentSub(type='submit') Video games
+          else
 
-          button.menuBtn(type='submit') Video games
+            button.menuBtn(type='submit') Video games
 
 
-    .newThreadDiv
-      -blah = '/newThread&'+title
-      a(href=blah)
-        button.menuBtn.newThreadBtn(type='submit') New Thread
+      .newThreadDiv
+        -blah = '/newThread&'+title
+        a(href=blah)
+          button.menuBtn.newThreadBtn(type='submit') New Thread
 
-    .image
-      label(for='toggle-1')
-      input(type='checkbox', id='toggle-1')
-      .search
-        form(method = 'post' action = '/search=')
-          input.searchbar(
-            type = 'text'
-            name = 'search'
-            pattern = '.{2,64}'
-            required title = 'must be 2-64 characters'
-            placeholder = 'Search'
-            )
-          select.select.searchbar(name = 'type')
-            option(value = 'all' selected) All
-            option(value = 'name') Usernames
-            option(value = 'title') Title
-            option(value = 'paragraph') Text
-          input.hidden(
-            type = 'submit'
-            )
+      .image
+        label(for='toggle-1')
+        input(type='checkbox', id='toggle-1')
+        .search
+          form(method = 'post' action = '/search=')
+            input.searchbar(
+              type = 'text'
+              name = 'search'
+              pattern = '.{2,64}'
+              required title = 'must be 2-64 characters'
+              placeholder = 'Search'
+              )
+            select.select.searchbar(name = 'type')
+              option(value = 'all' selected) All
+              option(value = 'name') Usernames
+              option(value = 'title') Title
+              option(value = 'paragraph') Text
+            input.hidden(
+              type = 'submit'
+              )
 
   //- .menuFade
 
