@@ -209,7 +209,7 @@ function newComment(req, res) {
         .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
     // ef upp kom villa.
-    .catch((error) => { res.render('error', { title: 'test', error }); });
+    .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
 }
 
 

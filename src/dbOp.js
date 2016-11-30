@@ -71,7 +71,7 @@ function newComment1(name, paragraph, threadID) {
   // fyrsta dabase aðgerðin
   const str = 'insert into comments (name, paragraph, threadID) values ($1, $2, $3)';
   // önnur (þriðja í raun) dabase aðgerðin
-  let str2 = '(SELECT date FROM total WHERE threadid = $1 ';
+  let str2 = 'SELECT date FROM total WHERE threadid = $1 ';
   str2 = str2.concat('ORDER BY date desc limit 1');
   // sækjum og skilum gögnum.
   return Promise.all([
