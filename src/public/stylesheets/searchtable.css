@@ -69,5 +69,5 @@ form.searched.title{
 }
 
 .noClick2 {
-  cursor: none;
+  cursor: default;
 }
