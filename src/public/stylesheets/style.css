@@ -395,11 +395,6 @@ input[type=checkbox]:not(:checked) ~ .search{
   position: absolute;
 }
 
-.newThread {
-  margin: auto;
-  max-width: 500px;
-}
-
 .centered-scaled {
   max-width: 1000px;
   margin: auto;
@@ -409,7 +404,7 @@ input[type=checkbox]:not(:checked) ~ .search{
   margin-left: 10px;
 }
 
-.comment {
+.comment .newThread {
   max-width: 500px;
   margin: auto;
   padding-bottom: 50px;
