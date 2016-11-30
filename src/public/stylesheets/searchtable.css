@@ -9,6 +9,8 @@ button.searched.name{
   font-weight: bold;
   padding: 0;
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   width: 100%;
 }
 
@@ -18,6 +20,8 @@ button.searched.date{
   height: 80px;
   padding: 0;
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   width: 100%;
 }
 
@@ -27,6 +31,8 @@ button.searched.title{
   font-weight: bold;
   padding: 0;
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   height: 24px;
   width: 100%;
 }
@@ -37,5 +43,7 @@ button.searched.para{
   height: 78px;
   padding: 0;
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   width: 100%;
 }

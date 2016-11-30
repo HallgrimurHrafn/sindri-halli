@@ -15,12 +15,12 @@ block content
             - i++
             tr.colorRow
               td.searched
-                form(method='get' action=id)
+                form.searched(method='get' action=id)
                   button.searched.name(type='submit') !{result.name}
                   br
                   button.searched.date(type='submit') !{date}
               td.searched
-                form(method='get' action=id)
+                form.searched(method='get' action=id)
                   button.searched.title(type='submit') !{result.title}
                   button.searched.para(type='submit') !{result.paragraph}
           else
