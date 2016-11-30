@@ -1,5 +1,6 @@
 @media screen and (min-width: 1300px)  {
   .image {
-    position: static;
+    position: relative;
+    left: 50px;
   }
 }
