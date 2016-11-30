@@ -15,24 +15,25 @@ block content
             - i++
             tr.colorRow
               td.searched
-                form.searchedeitt(method='get' action=id)
+                form.searched.name(method='get' action=id)
                   button.searched.name(type='submit') !{result.name}
-                  br
+                form.searched.date(method='get' action=id)
                   button.searched.date(type='submit') !{date}
               td.searched
-                form.searchedtvo(method='get' action=id)
+                form.searched.title(method='get' action=id)
                   button.searched.title(type='submit') !{result.title}
+                form.searched.para(method='get' action=id)
                   button.searched.para(type='submit') !{result.paragraph}
           else
             - i--
             tr
               td.searched
-                form.searchedeitt(method='get' action=id)
+                form.searched.name(method='get' action=id)
                   button.searched.name(type='submit') !{result.name}
-                  br
+                form.searched.date(method='get' action=id)
                   button.searched.date(type='submit') !{date}
               td.searched
-                form.searchedtvo(method='get' action=id)
+                form.searched.title(method='get' action=id)
                   button.searched.title(type='submit') !{result.title}
-                  br
+                form.searched.para(method='get' action=id)
                   button.searched.para(type='submit') !{result.paragraph}
