@@ -1,9 +1,7 @@
 # Lokaverkefni
 
 
-## Hallgrímur Hrafn Einarsson hhe6
-## Sindri Bergsson sib61
-
+## Hallgrímur Hrafn Einarsson hhe6 - Sindri Bergsson sib61
 
 ## Uppsetning
 opna þarf cmd/terminal i moppunni sindri-halli og búum til database til að insert-a í.
