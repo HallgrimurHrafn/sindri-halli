@@ -9,32 +9,26 @@ block content
         - i = 0
         each result in results
           -id = '/threadid=' + JSON.stringify(result.threadid) + '&page=0'
+          -date = '' + result.date
+          -date = date.slice(0,-18)
           if i == 0
             - i++
             tr.colorRow
               td.search
                 form(method='get' action=id)
-                  button.name(type='submit')= result.name
+                  button.name(type='submit') !{result.name} !{'<br />'} !{date}
               td.search
                 form(method='get' action=id)
                   button.title(type='submit') !{result.title} !{'<br />'} !{result.paragraph}
-              -date = '' + result.date
-              -date = date.slice(0,-18)
-              td.search
-                form(method='get' action=id)
-                  button.mdate(type='submit')= date
           else
-
             - i--
             tr
               td.search
                 form(method='get' action=id)
-                  button.name(type='submit')= result.name
+                  button.name(type='submit') !{result.name} !{'<br />'} !{date}
               td.search
                 form(method='get' action=id)
                   button.title(type='submit') !{result.title} !{'<br />'} !{result.paragraph}
-              -date = '' + result.mdate
-              -date = date.slice(0,-18)
               td.search
                 form(method='get' action=id)
                   button.mdate(type='submit')= date
