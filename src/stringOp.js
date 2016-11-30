@@ -25,7 +25,6 @@ function splitter(text) {
 function catFix(x, sele) {
   const re = /[&]/;
   const url = x.split(re)[1];
-  // url = url[1];
   let sel = sele;
   if (url === 'Schemes') {
     sel = 1;
