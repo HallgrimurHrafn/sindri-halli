@@ -250,10 +250,11 @@ p.dot {
 
 .sub, .name, .title, .comnum, .views, .mdate{
   font-size: 14px;
-  height: 48px;
+  min-height: 48px;
   cursor: pointer;
   padding: 0 4px;
   overflow: hidden;
+  width: 100%;
 }
 
 .name {
