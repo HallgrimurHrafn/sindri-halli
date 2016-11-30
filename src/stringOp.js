@@ -14,10 +14,27 @@ function spaceremove(text) {
   return strengur.slice(0, -1);
 }
 
+
+// slice(-1) skilar sidasta char i streng
+// charAt(0) skilar fyrsta char i streng
+function exclamationFix(text) {
+  // lögum _!_
+  let re = /\s!\s/;
+  let str = text.split(re);
+  str = str.join(' ');
+  // breytum 'sa!ad ' => '' en !sad => !sad.
+  re = /\w+!\w*/;
+  str = str.split(re);
+  str = str.join('');
+  return spaceremove(str);
+}
+
 // kóðum textan fyrir search engine.
 function splitter(text) {
   // fjarlægjum ranga notkun á bil.
   let str = spaceremove(text);
+  // fjarlægjum rang notuð !
+  str = exclamationFix(str);
   let re = /["]/;
   str = str.split(re);
   const quotes = '( ';
