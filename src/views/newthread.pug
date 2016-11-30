@@ -6,7 +6,7 @@ block content
 
     form(method='post' action='/newthread')
       div
-        input.post(
+        input.post.newThread-name(
           type='text'
           name='name'
           placeholder='Username'
@@ -15,7 +15,7 @@ block content
         )
       br
       div
-        input.post(
+        input.post.newThread-title(
           type='text'
           name='title'
           placeholder='Title'
@@ -24,7 +24,7 @@ block content
         )
       br
       div
-        textarea.post(
+        textarea.post.newThread-text(
           lang='is'
           type='text'
           name='paragraph'

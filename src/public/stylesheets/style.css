@@ -190,6 +190,18 @@ a{
   padding: 3px;
 }
 
+.newThread-name {
+
+}
+
+.newThread-title {
+  width: 100%;
+}
+
+.newThread-text {
+
+}
+
 button {
   padding: 0px;
   cursor: pointer;
