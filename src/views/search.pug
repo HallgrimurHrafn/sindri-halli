@@ -25,9 +25,11 @@ block content
           else
             - i--
             tr
-              td.searched.einn
+              td.searched
                 form(method='get' action=id)
-                  button.name(type='submit') !{result.name} !{'<br />'} !{date}
-              td.searched.tveir
+                  button.searched.name(type='submit') !{result.name}
+                  button.searched.date(type='submit') !{date}
+              td.searched
                 form(method='get' action=id)
-                  button.title(type='submit') !{result.title} !{'<br />'} !{result.paragraph}
+                  button.searched.title(type='submit') !{result.title}
+                  button.searched.para(type='submit') !{result.paragraph}
