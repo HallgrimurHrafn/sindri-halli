@@ -2,9 +2,10 @@
   .search {
     position: absolute;
     top: 351px;
-    right: 240px;
+    left: 537px;
     transition-duration: 1s;
     transition-property: right;
+    padding: 0px 3px 5px 4px;
   }
 
   .image {
