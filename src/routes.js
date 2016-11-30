@@ -196,14 +196,12 @@ function newComment(req, res) {
   // fyrri hluti database vinnslu
   dbOp.newComment1(name, paragraph, threadID)
     .then((results1) => {
-      // tilgangslaus lina svo eslint kvarti ekki yfir notkuninni á =>.
-      const results = results1;
-      // sidari hluti database vinnslu, krefst fyrri hluta til ad virka.
-      return dbOp.newComment2(results, threadID);
-    })
-    .then((results) => {
-      // oll innsetning buinn, refreshum sidunni.
-      res.redirect(req.url);
+      dbOp.newComment2(results1, threadID)
+        .then((results) => {
+          // oll innsetning buinn, refreshum sidunni.
+          res.redirect(req.url);
+        })
+      .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
     // ef upp kom villa.
     .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
