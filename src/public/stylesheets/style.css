@@ -242,7 +242,7 @@ p.dot {
   background: rgba(250,180,135,1);
 }
 
-thead {
+.thead {
   border-bottom: rgba(250,180,135,1)
 }
 
@@ -285,6 +285,7 @@ thead {
 .btn {
   background: rgba(244,139,194,0);
   font-size: 18px;
+  padding: 6px 0px;
   width: 100%;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
