@@ -395,4 +395,5 @@ input[type=checkbox]:not(:checked) ~ .search{
 .comment {
   max-width: 500px;
   margin: auto;
+  padding-bottom: 50px;
 }
