@@ -1,13 +1,9 @@
 /* eslint max-len: ["error", { "ignoreStrings": true }]*/
-/* routes hér */
 const express = require('express');
-const pgp = require('pg-promise')();
 const strOp = require('./stringOp.js');
 const dbOp = require('./dbOp.js');
 
 const router = express.Router();
-const env = process.env.DATABASE_URL;
-const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
 
 
 // NOTE: Hér koma öll function til að laga linka nema search tengd.
@@ -211,18 +207,22 @@ function newComment(req, res) {
 
 // NOTE: hér byrja search aðgerðir.
 
-
-function search(name, req, res, page, type) {
-  const name1 = decodeURIComponent(name);
-  const name2 = strOp.splitter(name1);
-  const titill = ('Search: ').concat(name1);
-  dbOp.searcher(name2, page, type)
+// search fyrir individual columns.
+function search(text, req, res, page, type) {
+  // af koðum textan í url
+  const text1 = decodeURIComponent(text);
+  // kóðum textan svo search vélin virki rétt
+  const text2 = strOp.splitter(text1);
+  const titill = ('Search: ').concat(text1);
+  const info = ('type=').concat(type).concat('&search=').concat(text).concat('&');
+  // gerum database aðgerirnar.
+  dbOp.searcher(text2, page, type)
     .then((results) => {
+      // fáum blaðsíðu fjölda.
       const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
-      const info = ('type=').concat(type).concat('&search=').concat(name).concat('&');
       res.render('search', {
         title: titill,
-        searched: name1,
+        searched: text1,
         results: results[0],
         page,
         Pnum,
@@ -232,13 +232,19 @@ function search(name, req, res, page, type) {
     .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
 }
 
+
+// search aðgerðir sem leita að öllu.
 function searchAll(all, req, res, page) {
+  // afkóðum url textan.
   const all1 = decodeURIComponent(all);
+  // kóðum textann svo leitarvélin skilur hann betur
   const all2 = strOp.splitter(all1);
   const info = ('type=all&search=').concat(all).concat('&');
   const t = ('Search: ').concat(all1);
+  // gerum database aðgerðirnar
   dbOp.allsearch(all2, page)
     .then((results) => {
+      // fáum blaðsíðufj0lda
       const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
       res.render('search', {
         title: t,

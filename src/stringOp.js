@@ -1,4 +1,4 @@
-
+/* eslint max-len: ["error", { "ignoreStrings": true }]*/
 function splitter(text) {
   let re = /["]/;
   let str = text.split(re);
@@ -24,8 +24,8 @@ function splitter(text) {
 
 function catFix(x, sele) {
   const re = /[&]/;
-  let url = x.split(re);
-  url = url[1];
+  const url = x.split(re)[1];
+  // url = url[1];
   let sel = sele;
   if (url === 'Schemes') {
     sel = 1;
@@ -41,20 +41,11 @@ function catFix(x, sele) {
 
 
 function orderCheck(order) {
-  let ord = order;
-  ord = ord.toUpperCase();
-  if (ord === 'MDATE') {
-    ord = 'mdate DESC';
-  } else if (ord === 'COMNUM') {
-    ord = 'comnum DESC';
-  } else if (ord === 'VIEWS') {
-    ord = 'views DESC';
-  } else if (ord === 'NAME') {
-    ord = 'name ASC';
-  } else if (ord === 'TITLE') {
-    ord = 'title ASC';
-  } else if (ord === 'DATE') {
-    ord = 'date DESC';
+  let ord = order.toUpperCase();
+  if (ord === 'COMNUM' || ord === 'VIEWS' || ord === 'DATE' || ord === 'MDATE') {
+    ord = ord.toLowerCase().concat(' DESC');
+  } else if (ord === 'NAME' || ord === 'TITLE') {
+    ord = ord.toLowerCase().concat(' ASC');
   } else {
     ord = 'nope';
   }
