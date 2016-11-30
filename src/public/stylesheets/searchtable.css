@@ -66,3 +66,8 @@ form.searched.title{
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
+.thread.para{
+  text-align: left;
+  font-size: 18px;
+  white-space: normal;
+}
