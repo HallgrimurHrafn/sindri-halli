@@ -14,18 +14,18 @@ block content
           if i == 0
             - i++
             tr.colorRow
-              td.search.1
+              td.search.einn
                 form(method='get' action=id)
                   button.name(type='submit') !{result.name} !{'<br />'} !{date}
-              td.search.2
+              td.search.tveir
                 form(method='get' action=id)
                   button.title(type='submit') !{result.title} !{'<br />'} !{result.paragraph}
           else
             - i--
             tr
-              td.search.1
+              td.search.einn
                 form(method='get' action=id)
                   button.name(type='submit') !{result.name} !{'<br />'} !{date}
-              td.search.2
+              td.search.tveir
                 form(method='get' action=id)
                   button.title(type='submit') !{result.title} !{'<br />'} !{result.paragraph}
