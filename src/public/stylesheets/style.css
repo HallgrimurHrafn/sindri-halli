@@ -264,12 +264,7 @@ p.dot {
 
 
 .btn-title {
-  max-width: 350px;
   text-align: left;
-}
-
-.btn-name, .btn-comnum, .btn-views, .btn-mdate{
-  width: 100%;
 }
 
 .name{
