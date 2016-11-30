@@ -14,12 +14,14 @@ block content
           if i == 0
             - i++
             tr.colorRow
-              td.search.einn
+              td.search
                 form(method='get' action=id)
-                  button.name(type='submit') !{result.name} !{'<br />'} !{date}
-              td.search.tveir
+                  button.search.name(type='submit') !{result.name}
+                  button.search.date(type='submit') !{date}
+              td.search
                 form(method='get' action=id)
-                  button.title(type='submit') !{result.title} !{'<br />'} !{result.paragraph}
+                  button.search.title(type='submit') !{result.title}
+                  button.search.para(type='submit') !{result.paragraph}
           else
             - i--
             tr
