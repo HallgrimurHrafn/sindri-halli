@@ -314,6 +314,7 @@ p.dot {
 
 .select {
   display: inline;
+  font-size: 16px;
 }
 
 .btn {
