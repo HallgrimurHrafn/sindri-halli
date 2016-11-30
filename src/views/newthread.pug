@@ -10,7 +10,7 @@ block content
           type='text'
           name='name'
           placeholder='Username'
-          pattern='.*\S.*.{2,20}'
+          pattern='.*[^ ].*.{2,20}'
           required title='must be 2-20 characters'
         )
       br
@@ -19,7 +19,7 @@ block content
           type='text'
           name='title'
           placeholder='Title'
-          pattern='.*\S.*.{2,50}'
+          pattern='.*[^ ].*.{2,50}'
           required title='must be 2-50 characters'
         )
       br
@@ -30,7 +30,7 @@ block content
           name='paragraph'
           rows='15'
           cols='30'
-          pattern='.{3,10000}'
+          pattern='.*[^ ].*.{3,10000}'
           required title='must be 3-10000 characters'
         )
       div

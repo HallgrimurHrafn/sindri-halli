@@ -65,7 +65,7 @@ block comment
           type='text'
           name='name'
           placeholder='Username'
-          pattern='.*\S.*.{3,20}'
+          pattern='.*[^ ].*.{3,20}'
           required title='must be 3-20 characters'
         )
       br
@@ -76,7 +76,7 @@ block comment
           name='paragraph'
           rows='10'
           cols='30'
-          pattern='.*\S.*.{3,10000}'
+          pattern='.*[^ ].*.{3,10000}'
           required title='must be 3-10000 characters'
         )
       br
