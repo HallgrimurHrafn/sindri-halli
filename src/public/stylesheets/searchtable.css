@@ -2,11 +2,11 @@ table.searched {
   width: 100%;
 }
 
-.eitt {
+td.searched.eitt {
   max-width: 25%;
   min-width: 25%;
 }
-.tvo {
+td.searched.tvo {
   max-width: 75%;
   min-width: 75%;
 }
