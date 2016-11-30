@@ -253,6 +253,7 @@ p.dot {
   height: 48px;
   cursor: pointer;
   padding: 0 4px;
+  overflow: hidden;
 }
 
 .name {
