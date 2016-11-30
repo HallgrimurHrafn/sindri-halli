@@ -1,9 +1,12 @@
 @media screen and (max-width: 900px)  {
   .search {
-    float: none;
     position: absolute;
     top: 351px;
     right: 190px;
+  }
+
+  .image {
+    float: none;
   }
 
   label {
