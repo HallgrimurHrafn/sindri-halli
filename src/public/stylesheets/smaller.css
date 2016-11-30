@@ -2,7 +2,8 @@
   .search {
     position: absolute;
     top: 351px;
-    right: 190px;
+    left: auto;
+    right: -20px;
   }
 
   .image {
