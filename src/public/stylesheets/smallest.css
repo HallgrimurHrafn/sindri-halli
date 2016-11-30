@@ -20,26 +20,3 @@
     float: none;
   }
 }
-
-
-@media screen and (max-width: 590px)  {
-  .search {
-    position: absolute;
-    top: 351px;
-    right: 190px;
-  }
-
-  label {
-    position: absolute;
-    top: 300px;
-    right: 114px;
-  }
-
-  main {
-    padding: 0px;
-  }
-
-  .newThreadDiv {
-    float: none;
-  }
-}
