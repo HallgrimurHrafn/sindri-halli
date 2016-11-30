@@ -1,58 +1,59 @@
 extends pages
 
 block content
-  h1.title= title
+  .thread
+    h1.thread-title= title
 
-  -x = 0
-  .table
-    table.searched
-      tboddy
-        - i = 0
-        each result in comments
-          -id = '/threadid=' + JSON.stringify(result.threadid) + '&page=0'
-          -date = '' + result.date
-          -date = date.slice(0,-18)
-          if i == 0
-            - i++
-            tr.colorRow
-              td.searched.eitt
-                form.searched.name(method='get' action=id)
-                  button.searched.name(type='submit') !{result.name}
-                form.searched.date(method='get' action=id)
-                  button.searched.date(type='submit') !{date}
-              td.searched.tvo
-                form.thread.para(method='get' action=id)
-                  button.thread.para(type='submit') !{result.paragraph}
-          else
-            - i--
-            tr
-              td.searched.eitt
-                form.searched.name(method='get' action=id)
-                  button.searched.name(type='submit') !{result.name}
-                form.searched.date(method='get' action=id)
-                  button.searched.date(type='submit') !{date}
-              td.searched.tvo
-                form.thread.para(method='get' action=id)
-                  button.thread.para(type='submit') !{result.paragraph}
-    //-
-    //- each comment in comments
-    //-   if page == 0 & x == 0
-    //-     h3.OPname= comment.name
-    //-     div.OP
-    //-       p.OPtext !{comment.paragraph}
-    //-       -x = 1
-    //-   else
-    //-
-    //-     div.comment
-    //-     p.username
-    //-       strong= comment.name
-    //-     p.text !{comment.paragraph}
+    -x = 0
+    .table
+      table.searched
+        tboddy
+          - i = 0
+          each result in comments
+            -id = '/threadid=' + JSON.stringify(result.threadid) + '&page=0'
+            -date = '' + result.date
+            -date = date.slice(0,-18)
+            if i == 0
+              - i++
+              tr.colorRow
+                td.searched.eitt
+                  form.searched.name(method='get' action=id)
+                    button.searched.name(type='submit') !{result.name}
+                  form.searched.date(method='get' action=id)
+                    button.searched.date(type='submit') !{date}
+                td.searched.tvo
+                  form.thread.para(method='get' action=id)
+                    button.thread.para(type='submit') !{result.paragraph}
+            else
+              - i--
+              tr
+                td.searched.eitt
+                  form.searched.name(method='get' action=id)
+                    button.searched.name(type='submit') !{result.name}
+                  form.searched.date(method='get' action=id)
+                    button.searched.date(type='submit') !{date}
+                td.searched.tvo
+                  form.thread.para(method='get' action=id)
+                    button.thread.para(type='submit') !{result.paragraph}
+      //-
+      //- each comment in comments
+      //-   if page == 0 & x == 0
+      //-     h3.OPname= comment.name
+      //-     div.OP
+      //-       p.OPtext !{comment.paragraph}
+      //-       -x = 1
+      //-   else
+      //-
+      //-     div.comment
+      //-     p.username
+      //-       strong= comment.name
+      //-     p.text !{comment.paragraph}
 
-      hr
-  br
+        hr
+    br
 
-  -id = '/threadid=' + threadid
-  -id = id + '&page=' + page
+    -id = '/threadid=' + threadid
+    -id = id + '&page=' + page
 
 
 block comment
