@@ -17,19 +17,19 @@ button.searched {
   padding-right: 5px;
 }
 
-button.searched.name {
+form.searched.name {
   width: 25%;
 }
 
-button.searched.date{
+form.searched.date{
   width: 25%;
 }
 
-button.searched.title{
+form.searched.title{
   width: 75%;
 }
 
-button.searched.para{
+form.searched.para{
   width: 75%;
 }
 
