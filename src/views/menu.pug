@@ -39,7 +39,7 @@ block menu
       input(type='checkbox', id='toggle-1')
       .search
         form(method = 'post' action = '/search=')
-          select.select(name = 'type')
+          select.select.searchbar(name = 'type')
             option(value = 'all' selected) All
             option(value = 'name') Usernames
             option(value = 'title') Title
