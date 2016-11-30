@@ -1,39 +1,40 @@
 extends pages
 
 block content
-  h1 Search results for: !{searched}.
-  hr
-  .table
-    table.searched
-      tboddy
-        - i = 0
-        each result in results
-          -id = '/threadid=' + JSON.stringify(result.threadid) + '&page=0'
-          -date = '' + result.date
-          -date = date.slice(0,-18)
-          if i == 0
-            - i++
-            tr.colorRow
-              td.searched.eitt
-                form.searched.name(method='get' action=id)
-                  button.searched.name(type='submit') !{result.name}
-                form.searched.date(method='get' action=id)
-                  button.searched.date(type='submit') !{date}
-              td.searched.tvo
-                form.searched.title(method='get' action=id)
-                  button.searched.title(type='submit') !{result.title}
-                form.searched.para(method='get' action=id)
-                  button.searched.para(type='submit') !{result.paragraph}
-          else
-            - i--
-            tr
-              td.searched.eitt
-                form.searched.name(method='get' action=id)
-                  button.searched.name(type='submit') !{result.name}
-                form.searched.date(method='get' action=id)
-                  button.searched.date(type='submit') !{date}
-              td.searched.tvo
-                form.searched.title(method='get' action=id)
-                  button.searched.title(type='submit') !{result.title}
-                form.searched.para(method='get' action=id)
-                  button.searched.para(type='submit') !{result.paragraph}
+  .centered-scaled
+    h1 Search results for: !{searched}.
+    hr
+    .table
+      table.searched
+        tboddy
+          - i = 0
+          each result in results
+            -id = '/threadid=' + JSON.stringify(result.threadid) + '&page=0'
+            -date = '' + result.date
+            -date = date.slice(0,-18)
+            if i == 0
+              - i++
+              tr.colorRow
+                td.searched.eitt
+                  form.searched.name(method='get' action=id)
+                    button.searched.name(type='submit') !{result.name}
+                  form.searched.date(method='get' action=id)
+                    button.searched.date(type='submit') !{date}
+                td.searched.tvo
+                  form.searched.title(method='get' action=id)
+                    button.searched.title(type='submit') !{result.title}
+                  form.searched.para(method='get' action=id)
+                    button.searched.para(type='submit') !{result.paragraph}
+            else
+              - i--
+              tr
+                td.searched.eitt
+                  form.searched.name(method='get' action=id)
+                    button.searched.name(type='submit') !{result.name}
+                  form.searched.date(method='get' action=id)
+                    button.searched.date(type='submit') !{date}
+                td.searched.tvo
+                  form.searched.title(method='get' action=id)
+                    button.searched.title(type='submit') !{result.title}
+                  form.searched.para(method='get' action=id)
+                    button.searched.para(type='submit') !{result.paragraph}

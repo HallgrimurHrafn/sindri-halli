@@ -396,7 +396,7 @@ input[type=checkbox]:not(:checked) ~ .search{
   max-width: 500px;
 }
 
-.thread {
+.centered-scaled {
   max-width: 1000px;
   margin: auto;
 }
