@@ -18,23 +18,23 @@ block content
               tr.colorRow
                 td.searched.eitt
                   div.searched.name
-                    button.searched.name.noClick2 !{result.name}
+                    p.searched.name !{result.name}
                   div.searched.date
-                    button.searched.date.noClick2 !{date}
+                    p.searched.date !{date}
                 td.searched.tvo
                   div.thread.para
-                    button.thread.para.noClick2 !{result.paragraph}
+                    p.thread.para !{result.paragraph}
             else
               - i--
               tr
                 td.searched.eitt
                   div.searched.name
-                    button.searched.name.noClick2 !{result.name}
+                    p.searched.name !{result.name}
                   div.searched.date
-                    button.searched.date.noClick2 !{date}
+                    p.searched.date !{date}
                 td.searched.tvo
                   form.thread.para
-                    button.thread.para.noClick2 !{result.paragraph}
+                    p.thread.para !{result.paragraph}
       //-
       //- each comment in comments
       //-   if page == 0 & x == 0
