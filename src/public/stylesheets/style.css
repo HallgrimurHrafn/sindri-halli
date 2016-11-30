@@ -404,7 +404,7 @@ input[type=checkbox]:not(:checked) ~ .search{
   margin-left: 10px;
 }
 
-.comment .newThread {
+.comment, .newThread {
   max-width: 500px;
   margin: auto;
   padding-bottom: 50px;
