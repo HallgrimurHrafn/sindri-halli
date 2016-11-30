@@ -5,6 +5,7 @@
     left: 537px;
     transition-duration: 1s;
     transition-property: right;
+    background: rgb(250, 180, 135);
     padding: 0px 3px 5px 4px;
   }
 
