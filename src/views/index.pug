@@ -32,26 +32,26 @@ block content
             - i++
             tr.colorRow
               if title == 'Front'
-                td
+                td.sub
                   form(method='get' action=id)
-                    button.sub(type='submit')= thread.sub
-              td
+                    button.btn-sub(type='submit')= thread.sub
+              td.name
                 form(method='get' action=id)
-                  button.name(type='submit')= thread.name
-              td
+                  button.btn-name(type='submit')= thread.name
+              td.title
                 form(method='get' action=id)
-                  button.title(type='submit')= thread.title
-              td
+                  button.btn-title(type='submit')= thread.title
+              td.comnum
                 form(method='get' action=id)
-                  button.comnum(type='submit')= thread.comnum
-              td
+                  button.btn-comnum(type='submit')= thread.comnum
+              td.views
                 form(method='get' action=id)
-                  button.views(type='submit')= thread.views
+                  button.btn-views(type='submit')= thread.views
               -date = '' + thread.mdate
               -date = date.slice(0,-18)
-              td
+              td.mdate
                 form(method='get' action=id)
-                  button.mdate(type='submit')= date
+                  button.btn-mdate(type='submit')= date
           else
 
             - i--

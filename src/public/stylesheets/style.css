@@ -253,7 +253,7 @@ p.dot {
   border-bottom: rgba(250,180,135,1)
 }
 
-.sub, .name, .title, .comnum, .views, .mdate{
+.btn-sub, .btn-name, .btn-title, .btn-comnum, .btn-views, .btn-mdate{
   font-size: 14px;
   min-height: 48px;
   cursor: pointer;
@@ -262,23 +262,29 @@ p.dot {
   width: 100%;
 }
 
-.name {
-  max-width: 170px;
-}
 
-.title {
+.btn-title {
   max-width: 350px;
   text-align: left;
 }
 
-.comnum {
-  max-width: 100px;
+.btn-name, .btn-comnum, .btn-views, .btn-mdate{
+  width: 100%;
 }
 
+.name{
+  max-width: 170px;
+}
+
+.title{
+  max-width: 350px;
+}
+.comnum {
+  width: 100px;
+}
 .views {
   max-width: 59px;
 }
-
 .mdate {
   max-width: 160px;
 }
