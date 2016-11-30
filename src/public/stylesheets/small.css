@@ -4,4 +4,10 @@
     top: 250;
     right: 50;
   }
+
+  label {
+    position: absolute;
+    top: 200;
+    right: 50;
+  }
 }
