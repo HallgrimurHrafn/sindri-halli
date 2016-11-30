@@ -187,6 +187,7 @@ a{
 .post {
   background: #ffffff;
   border: inset 2px rgba(251,238,152,1);
+  padding: 3px;
 }
 
 button {
