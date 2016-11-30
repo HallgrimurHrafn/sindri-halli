@@ -206,10 +206,10 @@ function newComment(req, res) {
           // oll innsetning buinn, refreshum sidunni.
           res.redirect(req.url);
         })
-        .catch((error) => { res.render('error', { title: 'her', error }); });
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
     // ef upp kom villa.
-    .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
+    .catch((error) => { res.render('error', { title: 'test', error }); });
 }
 
 
