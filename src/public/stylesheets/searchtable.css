@@ -71,3 +71,6 @@ form.searched.title{
 .noClick2 {
   cursor: default;
 }
+button.thread {
+  padding: 10px;
+}
