@@ -13,7 +13,7 @@ block pagenumbers
         while n < Pnum
           -id = info + 'page=' + n
           if n == page
-            button.selected(type='button')= n + 1
+            button.selected.noClick2(type='button')= n + 1
           else
 
             a(href=(id))
