@@ -85,4 +85,5 @@ form.searched.title{
 p.thread {
   padding: 10px;
   text-align: justify;
+  cursor: text;
 }
