@@ -18,12 +18,12 @@ td.searched.eitt {
   margin: 0;
 }
 
-button.searched {
+button.searched, p.searched {
   padding-left: 5px;
   padding-right: 5px;
 }
 
-form.searched.name {
+form.searched.name div.searched.name {
   width: 100%;
   padding-top: 9px;
   max-width: 100%;
