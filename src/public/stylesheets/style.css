@@ -7,7 +7,7 @@ html {
   background-color: rgba(254, 247, 206,1);
 }
 
-p {
+p, h1, h3 {
   font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif;
 }
 
