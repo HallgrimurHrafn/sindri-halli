@@ -29,7 +29,16 @@ form.searched.name {
   max-width: 100%;
 }
 
-div.searched.name
+div.searched.name{
+  width: 100%;
+  padding-top: 9px;
+  max-width: 100%;
+}
+
+p.searched {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
 form.searched.title{
   padding-top: 9px;
