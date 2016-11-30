@@ -1,5 +1,5 @@
 const $ = require('jquery');
 
-$('.newThreadDiv').hover(function () {
+$('.newThreadDiv').hover(() => {
   $(this).parent('div').addClass('menuFade');
 });
