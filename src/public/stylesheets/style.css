@@ -364,7 +364,10 @@ label {
 
 
 .image{
-  float: right;
+  position: absolute;
+  top: 300px;
+  right: 165px;
+  /*float: right;*/
   display: inline-block;
   height: 81px;
   vertical-align: middle;
