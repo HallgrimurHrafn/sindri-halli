@@ -26,6 +26,7 @@ button.searched {
 form.searched.name {
   width: 100%;
   padding-top: 9px;
+  max-width: 100%;
 }
 
 form.searched.date{
@@ -50,6 +51,7 @@ button.searched.para{
   font-size: 18px;
   height: 20px;
   font-weight: bold;
+  max-width: 100%;
 }
 
 .searched.date{
