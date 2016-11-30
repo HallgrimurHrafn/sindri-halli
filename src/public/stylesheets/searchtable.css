@@ -8,6 +8,7 @@
 button.searched.name{
   cursor: pointer;
   font-size: 18px;
+  height: 20px;
   font-weight: bold;
   min-height: 48px;
   padding: 0;
@@ -31,6 +32,7 @@ button.searched.title{
   min-height: 48px;
   padding: 0;
   text-overflow: ellipsis;
+  height: 24px;
   width: 100%;
 }
 
