@@ -60,11 +60,7 @@ form.searched.title{
   text-align: left;
   font-size: 18px;
   height: 120px;
-  display: -webkit-box;
   white-space: normal;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
 }
 .thread.para{
   text-align: left;
