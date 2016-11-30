@@ -1,9 +1,6 @@
-/*td.searched {
-  height: 150px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}*/
+table.searched {
+  width: 100%;
+}
 
 button.searched.name{
   cursor: pointer;
