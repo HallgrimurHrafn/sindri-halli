@@ -214,6 +214,10 @@ button {
   cursor: default;
 }
 
+.noClick2 {
+  cursor: default;
+}
+
 .table {
   clear: both;
 }
@@ -398,7 +402,7 @@ input[type=checkbox]:not(:checked) ~ .search{
 }
 
 .thread-title {
-  
+
 }
 
 .comment {

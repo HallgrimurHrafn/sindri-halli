@@ -18,23 +18,23 @@ block content
               tr.colorRow
                 td.searched.eitt
                   form.searched.name(method='get' action=id)
-                    button.searched.name(type='submit') !{result.name}
+                    button.searched.name.noClick2(type='submit') !{result.name}
                   form.searched.date(method='get' action=id)
-                    button.searched.date(type='submit') !{date}
+                    button.searched.date.noClick2(type='submit') !{date}
                 td.searched.tvo
                   form.thread.para(method='get' action=id)
-                    button.thread.para(type='submit') !{result.paragraph}
+                    button.thread.para.noClick2(type='submit') !{result.paragraph}
             else
               - i--
               tr
                 td.searched.eitt
                   form.searched.name(method='get' action=id)
-                    button.searched.name(type='submit') !{result.name}
+                    button.searched.name.noClick2(type='submit') !{result.name}
                   form.searched.date(method='get' action=id)
-                    button.searched.date(type='submit') !{date}
+                    button.searched.date.noClick2(type='submit') !{date}
                 td.searched.tvo
                   form.thread.para(method='get' action=id)
-                    button.thread.para(type='submit') !{result.paragraph}
+                    button.thread.para.noClick2(type='submit') !{result.paragraph}
       //-
       //- each comment in comments
       //-   if page == 0 & x == 0
