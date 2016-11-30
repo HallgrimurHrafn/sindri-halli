@@ -250,7 +250,7 @@ p.dot {
   font-size: 14px;
   height: 48px;
   cursor: pointer;
-  padding: 2px;
+  padding: 0 4px;
 }
 
 .name {
