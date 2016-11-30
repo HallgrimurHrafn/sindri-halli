@@ -12,3 +12,7 @@ td.search.einn {
 td.search.tveir {
   width: inherit;
 }
+
+table.search {
+  width: 80%;
+}
