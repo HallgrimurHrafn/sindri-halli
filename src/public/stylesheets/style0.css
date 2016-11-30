@@ -6,7 +6,9 @@ td.search {
 }
 
 td.search.einn {
+  width: inherit;
 }
 
 td.search.tveir {
+  width: inherit;
 }
