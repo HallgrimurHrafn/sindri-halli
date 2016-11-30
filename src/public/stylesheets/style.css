@@ -355,3 +355,7 @@ input[type=checkbox]:not(:checked) ~ .search{
   opacity: 0;
   margin-right: 0px;
 }
+
+.newThread {
+  max-width: 1000px;
+}
