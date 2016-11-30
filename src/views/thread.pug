@@ -1,7 +1,7 @@
 extends pages
 
 block content
-  .centered-scaled
+  .centered-scale
     h1.thread-title= title
 
     -x = 0
@@ -18,23 +18,23 @@ block content
               tr.colorRow
                 td.searched.eitt
                   div.searched.name
-                    p.searched.name !{result.name}
+                    button.searched.name !{result.name}
                   div.searched.date
-                    p.searched.date !{date}
+                    button.searched.date !{date}
                 td.searched.tvo
                   div.thread.para
-                    p.thread.para !{result.paragraph}
+                    button.thread.para !{result.paragraph}
             else
               - i--
               tr
                 td.searched.eitt
                   div.searched.name
-                    p.searched.name !{result.name}
+                    button.searched.name !{result.name}
                   div.searched.date
-                    p.searched.date !{date}
+                    button.searched.date !{date}
                 td.searched.tvo
                   form.thread.para
-                    p.thread.para !{result.paragraph}
+                    button.thread.para !{result.paragraph}
       //-
       //- each comment in comments
       //-   if page == 0 & x == 0
