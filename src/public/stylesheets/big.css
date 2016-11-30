@@ -2,5 +2,6 @@
   .image {
     position: relative;
     left: 50px;
+    top: 0px;
   }
 }
