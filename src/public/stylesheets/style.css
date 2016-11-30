@@ -7,6 +7,10 @@ html {
   background-color: rgba(254, 247, 206,1);
 }
 
+p {
+  font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif;
+}
+
 button, textarea, input {
   border: none;
   outline: none;
