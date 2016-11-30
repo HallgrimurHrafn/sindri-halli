@@ -333,6 +333,10 @@ p.dot {
   border-radius: 10px;
 }
 
+.faded-green {
+  background: rgba(40, 199, 141, 0.25);
+}
+
 input[type=checkbox] {
   position: absolute;
   left: -9999px;
