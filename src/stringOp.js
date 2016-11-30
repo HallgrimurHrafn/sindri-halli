@@ -1,19 +1,24 @@
 /* eslint max-len: ["error", { "ignoreStrings": true }]*/
 
 
-// kóðum textan fyrir search engine.
-function splitter(text) {
+function spaceremove(text) {
   // fjarlægjum ranga notkun á bil.
-  let re = /[\s]/;
-  let str = text.split(re);
+  const re = /[\s]/;
+  const str = text.split(re);
   let strengur = '';
   str.forEach((t) => {
     if (t !== '') {
       strengur = strengur.concat(t).concat(' ');
     }
   });
-  str = strengur.slice(0, -1);
-  re = /["]/;
+  return strengur.slice(0, -1);
+}
+
+// kóðum textan fyrir search engine.
+function splitter(text) {
+  // fjarlægjum ranga notkun á bil.
+  let str = spaceremove(text);
+  let re = /["]/;
   str = str.split(re);
   const quotes = '( ';
   let parts;
