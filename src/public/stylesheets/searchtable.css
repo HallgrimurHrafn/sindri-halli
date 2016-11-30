@@ -6,9 +6,6 @@ table.searched {
 td.searched.eitt {
   width: 25%;
 }
-td.searched.tvo {
-  width: 75%;
-}
 
 .searched {
   white-space: nowrap;
