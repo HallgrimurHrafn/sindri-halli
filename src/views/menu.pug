@@ -29,11 +29,6 @@ block menu
           button.menuBtn(type='submit') Video games
 
 
-    .newThreadDiv
-      -blah = '/newThread&'+title
-      a(href=blah)
-        button.menuBtn.newThreadBtn(type='submit') New Thread
-
     .image
       label(for='toggle-1')
       input(type='checkbox', id='toggle-1')
@@ -54,6 +49,12 @@ block menu
           input.hidden(
             type = 'submit'
             )
+
+
+    .newThreadDiv
+      -blah = '/newThread&'+title
+      a(href=blah)
+        button.menuBtn.newThreadBtn(type='submit') New Thread
   br
 
 
