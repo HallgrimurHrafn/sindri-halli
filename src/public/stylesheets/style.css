@@ -318,19 +318,18 @@ p.dot {
 }
 
 .btn {
-  background: rgb(40, 199, 141);
-  opacity: 0.2;
+  background: rgba(40, 199, 141, 0.2);
   font-size: 18px;
   padding: 6px 0px;
   width: 100%;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  -webkit-transition-property: opacity, border-radius;
-  transition-property: opacity, border-radius;
+  -webkit-transition-property: background-color, border-radius;
+  transition-property: background-color, border-radius;
 }
 
 .btn:hover{
-  opacity: 1;
+  background: rgba(40, 199, 141, 1);
   border-radius: 10px;
 }
 
