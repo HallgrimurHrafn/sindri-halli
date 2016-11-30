@@ -3,12 +3,16 @@
     position: absolute;
     top: 351px;
     right: 240px;
+    transition-duration: 1s;
+    transition-property: right;
   }
 
   label {
     position: absolute;
     top: 300px;
     right: 164px;
+    transition-duration: 1s;
+    transition-property: right;
   }
 
 }
