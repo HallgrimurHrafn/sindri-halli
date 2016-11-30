@@ -57,7 +57,7 @@ button.searched.para{
 
 .searched.date{
   font-size: 15px;
-  height: 73px;
+  height: 123px;
 }
 
 .searched.title{
@@ -72,5 +72,5 @@ button.searched.para{
 .searched.para{
   text-align: left;
   font-size: 18px;
-  height: 78px;
+  height: 120px;
 }
