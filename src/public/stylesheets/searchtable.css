@@ -7,6 +7,10 @@ td.searched.eitt {
   width: 25%;
 }
 
+td.eitt {
+  width: 25%;
+}
+
 .searched {
   white-space: nowrap;
   overflow: hidden;
