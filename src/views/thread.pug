@@ -56,25 +56,26 @@ block content
 
 
 block comment
-  h3 Leave a comment below
-  form(method='post' action=id)
-    div
-      input.post(
-        type='text'
-        name='name'
-        placeholder='Username'
-        pattern='.{2,64}'
-        required title='must be 2-64 characters'
-      )
-    div
-      textarea.post(
-        lang='is'
-        type='text'
-        name='paragraph'
-        rows='10'
-        cols='30'
-        pattern='.{3,10000}'
-        required title='must be 3-10000 characters'
-      )
-    div
-      button.btn(type='submit') Comment
+  .comment
+    h3 Leave a comment below
+    form(method='post' action=id)
+      div
+        input.post(
+          type='text'
+          name='name'
+          placeholder='Username'
+          pattern='.{2,64}'
+          required title='must be 2-64 characters'
+        )
+      div
+        textarea.post(
+          lang='is'
+          type='text'
+          name='paragraph'
+          rows='10'
+          cols='30'
+          pattern='.{3,10000}'
+          required title='must be 3-10000 characters'
+        )
+      div
+        button.btn(type='submit') Comment
