@@ -201,7 +201,7 @@ function newComment(req, res) {
   dbOp.newComment1(name, paragraph, threadID)
     .then((results) => {
       const str = 'UPDATE threads SET comnum = $1, mdate = $2 where id = $3';
-      db.none(str, [results[1].count, results[2], threadID])
+      db.none(str, [results[1].count, results[2].date, threadID])
         .then((none) => {
           // oll innsetning buinn, refreshum sidunni.
           res.redirect(req.url);
