@@ -25,5 +25,6 @@
     -webkit-flex-wrap: nowrap; /* Safari 6.1+ */
     display: flex;
     flex-wrap: nowrap;
+    width: 670px;
   }
 }
