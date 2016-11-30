@@ -88,10 +88,7 @@ function newComment2(results, threadID) {
   // database aðgerðin
   const str = 'UPDATE threads SET comnum = $1, mdate = $2 where id=$3';
   // sækjum og skilum gögnum. látum gömlu niðurstöðurnar líka fylgja.
-  return Promise.all([
-    results,
-    db.none(str, [results[1].count - 1, results[2].date, threadID]),
-  ]);
+  return db.none(str, [results[1].count - 1, results[2].date, threadID]);
 }
 
 
