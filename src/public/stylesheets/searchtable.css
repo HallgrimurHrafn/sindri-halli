@@ -28,19 +28,21 @@ button.searched {
 }
 
 form.searched.name {
-  width: 25%;
+  width: 100%;
+  padding-top: 9px;
 }
 
 form.searched.date{
-  width: 25%;
+  width: 100%;
 }
 
 form.searched.title{
-  width: 75%;
+  width: 100%;
+  padding-top: 9px;
 }
 
 form.searched.para{
-  width: 75%;
+  width: 100%;
 }
 
 button.searched.para{
@@ -63,7 +65,7 @@ button.searched.para{
   padding-top: 3px;
   font-size: 22px;
   font-weight: bold;
-  height: 24px;
+  height: 30px;
 }
 
 .searched.para{
