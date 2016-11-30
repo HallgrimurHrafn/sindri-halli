@@ -347,7 +347,7 @@ p.dot {
 }
 
 .green {
-  background: rgba(40, 199, 141, 1);
+  background: rgba(40, 199, 141, 0.7);
   width: 100%;
   height: 100%;
 }
