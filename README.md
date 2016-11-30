@@ -34,15 +34,11 @@ Pug skrárnar vinna saman á 4 stigum með extends:
 ______________________________________
 
 
-layout -> error
-
-       -> menu -> newthread
-
-               -> pages     -> index
-
-                            -> thread
-
-                            -> search
+-> layout -> error
+          -> menu -> newthread
+                  -> pages     -> index
+                               -> thread
+                               -> search
 ______________________________________
 
 #### javascript kerfið.
