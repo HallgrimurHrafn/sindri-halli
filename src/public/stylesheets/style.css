@@ -262,15 +262,16 @@ p.dot {
   width: 100%;
 }
 
-
 .btn-title {
   text-align: left;
 }
 
+.sub {
+  max-width: 105px;
+}
 .name{
   max-width: 170px;
 }
-
 .title{
   max-width: 350px;
 }
