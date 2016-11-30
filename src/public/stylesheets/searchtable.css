@@ -48,16 +48,16 @@ button.searched.para{
 
 .searched.name{
   padding-top: 3px;
-  font-size: 18px;
-  height: 24px;
+  font-size: 20px;
+  height: 27px;
   font-weight: bold;
   max-width: 100%;
   width: 100%;
 }
 
 .searched.date{
-  font-size: 14px;
-  height: 80px;
+  font-size: 15px;
+  height: 73px;
 }
 
 .searched.title{
@@ -71,6 +71,6 @@ button.searched.para{
 
 .searched.para{
   text-align: left;
-  font-size: 14px;
+  font-size: 18px;
   height: 78px;
 }
