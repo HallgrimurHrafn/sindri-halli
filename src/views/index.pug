@@ -10,34 +10,34 @@ block content
             th
               button.noClick.faded-green Category
           th
-            if sort == name
+            if sort == 'name'
               button.noClick.green
             else
 
               form(method='get' action='/sort=name&page=0')
                 button.btn(type='submit') User
           th
-            if sort == title
+            if sort == 'title'
               button.noClick.green
             else
 
               form(method='get' action='/sort=title&page=0')
                 button.btn(type='submit') Title
           th
-            if sort == comnum
+            if sort == 'comnum'
               button.noClick.green
             else
               form(method='get' action='/sort=comnum&page=0')
                 button.btn(type='submit') Comments
           th
-            if sort == views
+            if sort == 'views'
               button.noClick.green
             else
-              
+
               form(method='get' action='/sort=views&page=0')
                 button.btn(type='submit') Views
           th
-            if sort == mdate
+            if sort == 'mdate'
               button.noClick.green
             else
 
