@@ -28,14 +28,14 @@ block content
           lang='is'
           type='text'
           name='paragraph'
-          rows='10'
+          rows='15'
           cols='30'
           pattern='.{3,10000}'
           required title='must be 3-10000 characters'
         )
       div
         p.select Category:
-        select.select(name='sub')
+        select.post.select(name='sub')
           if (sel==1)
             option(value='Schemes' selected) Schemes
           else
