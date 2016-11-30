@@ -1,0 +1,17 @@
+@media screen and (max-width: 675px)  {
+  .search {
+    position: absolute;
+    top: 351px;
+    right: 240px;
+  }
+
+  label {
+    position: absolute;
+    top: 300px;
+    right: 164px;
+  }
+
+  .newThreadDiv {
+    float: left;
+  }
+}
