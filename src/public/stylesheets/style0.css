@@ -1,6 +1,14 @@
 td.search {
   height: 80px;
   white-space: nowrap;
-  overflow: scroll;
+  overflow: hidden;
   text-overflow: ellipsis;
+}
+
+td.search.1 {
+  width: 66%;
+}
+
+td.search.2 {
+  width: 33%;
 }
