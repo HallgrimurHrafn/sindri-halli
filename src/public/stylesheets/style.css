@@ -342,13 +342,9 @@ label {
 }
 
 .search {
-  text-align: center;
-  display: inline-block;
   height: 21px;
-  width: 250px;
   margin-top: 30px;
   margin-right: 20px;
-  vertical-align: middle;
   float: left;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4  s;
