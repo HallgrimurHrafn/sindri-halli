@@ -17,7 +17,24 @@ button.searched {
   padding-right: 5px;
 }
 
+button.searched.name {
+  width: 25%;
+}
+
+button.searched.date{
+  width: 25%;
+}
+
+button.searched.title{
+  width: 75%;
+}
+
+button.searched.para{
+  width: 75%;
+}
+
 .searched.name{
+  padding-top: 3px;
   font-size: 18px;
   height: 20px;
   font-weight: bold;
@@ -29,6 +46,7 @@ button.searched {
 }
 
 .searched.title{
+  padding-top: 3px;
   font-size: 22px;
   font-weight: bold;
   height: 24px;
