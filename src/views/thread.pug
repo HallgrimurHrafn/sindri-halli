@@ -6,7 +6,7 @@ block content
 
     -x = 0
     .table
-      table.searched
+      table.searched.noClick2
         tbody
           - i = 0
           each result in comments
@@ -16,12 +16,12 @@ block content
             if i == 0
               - i++
               tr.colorRow
-                td.searched.eitt.noClick2
+                td.eitt.noClick2
                   div.searched.name.noClick2
                     p.searched.name.noClick2 !{result.name}
                   div.searched.date.noClick2
                     p.searched.date.noClick2 !{date}
-                td.searched.tvo.noClick2
+                td.tvo.noClick2
                   div.thread.para.noClick2
                     p.thread.para.noClick2 !{result.paragraph}
             else
