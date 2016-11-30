@@ -266,6 +266,7 @@ button.selected {
   font-size: 19px;
   width: 20px;
   border-radius: 10px;
+  padding-bottom: 1px;
 }
 
 p.dot {
