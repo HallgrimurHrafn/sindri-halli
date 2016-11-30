@@ -1,4 +1,4 @@
-@media screen and (max-width: 590px)  {
+@media screen and (max-width: 660px)  {
   .search {
     position: absolute;
     top: 351px;
@@ -7,7 +7,7 @@
   }
 
   label {
-    position: absolute;
+    position: static;
     top: 300px;
     right: 114px;
   }
