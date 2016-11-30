@@ -81,13 +81,14 @@ function newComment1(name, paragraph, threadID) {
   ]);
 }
 
+
 // síðari hluti kommenta kerfisins.
 // þessi er háður niðurstöðum fyrra kerfisins svo hann er sér.
-function newComment2(results, threadID) {
+function newComment2(data1, data2, threadID) {
   // database aðgerðin
-  const str = 'UPDATE threads SET comnum = $1, mdate = $2 where id=$3';
+  const str = 'UPDATE threads SET comnum = $1, mdate = $2 where id = $3';
   // sækjum og skilum gögnum. látum gömlu niðurstöðurnar líka fylgja.
-  return db.none(str, [results[1].count, results[2].date, threadID]);
+  return db.none(str, [data1.count, data2.date, threadID]);
 }
 
 

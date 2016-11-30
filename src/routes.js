@@ -5,6 +5,10 @@ const dbOp = require('./dbOp.js');
 
 const router = express.Router();
 
+const pgp = require('pg-promise')();
+
+const env = process.env.DATABASE_URL;
+const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/sh');
 
 // NOTE: Hér koma öll function til að laga linka nema search tengd.
 
@@ -195,13 +199,14 @@ function newComment(req, res) {
   const threadID = x[1];
   // fyrri hluti database vinnslu
   dbOp.newComment1(name, paragraph, threadID)
-    .then((results1) => {
-      dbOp.newComment2(results1, threadID)
-        .then((results) => {
+    .then((results) => {
+      const str = 'UPDATE threads SET comnum = $1, mdate = $2 where id = $3';
+      db.none(str, [results[1].count, results[2], threadID])
+        .then((none) => {
           // oll innsetning buinn, refreshum sidunni.
           res.redirect(req.url);
         })
-      .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
     })
     // ef upp kom villa.
     .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
