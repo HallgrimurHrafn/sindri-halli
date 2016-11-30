@@ -153,15 +153,7 @@ a{
   transition-property: border-radius;
 }
 
-.menuFade {
-  position: absolute;
-  right: 50px;
-  top: 300px;
-  height: 81px;
-  width: 115px;
-}
-
-.newThreadDiv:hover < .menu {
+.newThreadDiv:hover .menu {
   background: rgb(250,180,135); /* Old browsers */
   background: -webkit-linear-gradient(left,
     rgba(250,180,135,0) 0%,
