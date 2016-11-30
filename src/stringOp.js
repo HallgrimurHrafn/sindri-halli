@@ -1,7 +1,20 @@
 /* eslint max-len: ["error", { "ignoreStrings": true }]*/
+
+
+// kóðum textan fyrir search engine.
 function splitter(text) {
-  let re = /["]/;
+  // fjarlægjum ranga notkun á bil.
+  let re = /[\s]/;
   let str = text.split(re);
+  let strengur = '';
+  str.forEach((t) => {
+    if (t !== '') {
+      strengur = strengur.concat(t).concat(' ');
+    }
+  });
+  str = strengur.slice(0, -1);
+  re = /["]/;
+  str = str.split(re);
   const quotes = '( ';
   let parts;
   let counter = 0;
