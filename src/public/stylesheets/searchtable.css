@@ -10,7 +10,6 @@ button.searched.name{
   font-size: 18px;
   height: 20px;
   font-weight: bold;
-  min-height: 48px;
   padding: 0;
   text-overflow: ellipsis;
   width: 100%;
@@ -19,7 +18,7 @@ button.searched.name{
 button.searched.date{
   cursor: pointer;
   font-size: 14px;
-  min-height: 48px;
+  height: 80px;
   padding: 0;
   text-overflow: ellipsis;
   width: 100%;
@@ -29,7 +28,6 @@ button.searched.title{
   cursor: pointer;
   font-size: 22px;
   font-weight: bold;
-  min-height: 48px;
   padding: 0;
   text-overflow: ellipsis;
   height: 24px;
@@ -39,7 +37,7 @@ button.searched.title{
 button.searched.para{
   cursor: pointer;
   font-size: 14px;
-  min-height: 48px;
+  height: 78px;
   padding: 0;
   text-overflow: ellipsis;
   width: 100%;
