@@ -73,4 +73,5 @@ button.searched.para{
   text-align: left;
   font-size: 18px;
   height: 120px;
+  white-space: normal;
 }
