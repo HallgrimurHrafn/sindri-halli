@@ -1,11 +1,11 @@
-/*td.search {
+/*td.searched {
   height: 150px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }*/
 
-button.search.name{
+button.searched.name{
   cursor: pointer;
   font-size: 14px;
   min-height: 48px;
@@ -14,7 +14,7 @@ button.search.name{
   width: 30%;
 }
 
-button.search.date{
+button.searched.date{
   cursor: pointer;
   font-size: 14px;
   min-height: 48px;
@@ -23,7 +23,7 @@ button.search.date{
   width: 30%;
 }
 
-button.search.title{
+button.searched.title{
   cursor: pointer;
   font-size: 14px;
   min-height: 48px;
@@ -32,7 +32,7 @@ button.search.title{
   width: 70%;
 }
 
-button.search.para{
+button.searched.para{
   cursor: pointer;
   font-size: 14px;
   min-height: 48px;
