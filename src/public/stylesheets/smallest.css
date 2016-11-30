@@ -1,17 +1,21 @@
-@media screen and (max-width: 675px)  {
+@media screen and (max-width: 590px)  {
   .search {
     position: absolute;
     top: 351px;
-    right: 240px;
+    right: 190px;
   }
 
   label {
     position: absolute;
-    top: 351px;
-    right: 164px;
+    top: 300px;
+    right: 114px;
   }
 
   main {
-    padding: 0;
+    padding: 0px;
+  }
+
+  .newThreadDiv {
+    float: none;
   }
 }
