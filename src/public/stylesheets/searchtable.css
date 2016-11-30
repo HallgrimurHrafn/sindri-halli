@@ -3,13 +3,18 @@ table.searched {
 }
 
 .searched {
-  text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 100%;
   padding: 0;
   text-align: center;
   cursor: pointer;
+}
+
+button.searched {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .searched.name{
