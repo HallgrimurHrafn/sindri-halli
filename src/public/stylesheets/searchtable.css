@@ -29,21 +29,8 @@ form.searched.name {
   max-width: 100%;
 }
 
-form.searched.date{
-  width: 100%;
-}
-
 form.searched.title{
-  width: 100%;
   padding-top: 9px;
-}
-
-form.searched.para{
-  width: 100%;
-}
-
-button.searched.para{
-
 }
 
 .searched.name{
@@ -74,4 +61,7 @@ button.searched.para{
   font-size: 18px;
   height: 120px;
   white-space: normal;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
