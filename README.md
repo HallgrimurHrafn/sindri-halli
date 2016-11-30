@@ -30,15 +30,11 @@ Næst má gera npm install og svo npm start.
 
 ## Pug
 Pug skrárnar vinna saman á 4 stigum með extends:
-  1        2        3           4
-______________________________________
-
-
+```
 -> layout -> error
           -> menu -> newthread
                   -> pages     -> index
                                -> thread
                                -> search
-______________________________________
-
+```
 #### javascript kerfið.
