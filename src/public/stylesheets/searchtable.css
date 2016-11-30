@@ -12,7 +12,7 @@ td.eitt {
 }
 
 .searched {
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
@@ -51,7 +51,7 @@ form.searched.title{
 .searched.name{
   padding-top: 3px;
   font-size: 20px;
-  height: 27px;
+  /*height: 27px;*/
   font-weight: bold;
   max-width: 100%;
   width: 100%;
