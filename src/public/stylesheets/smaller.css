@@ -1,7 +1,7 @@
-@media screen and (max-width: 1055px)  {
+@media screen and (max-width: 770px)  {
   .search {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 300;
+    right: 250;
   }
 }
