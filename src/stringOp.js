@@ -96,6 +96,15 @@ function indexPrep(x) {
   return url;
 }
 
+function Searching(type, text) {
+  let str = ('/');
+  const TYPE = type.toUpperCase();
+  if (TYPE === 'NAME' || TYPE === 'PARAGRAPH' || TYPE === 'TITLE' || TYPE === 'ALL') {
+    str = ('/type=').concat(type).concat('&search=').concat(text).concat('&page=0');
+  }
+  return str;
+}
+
 module.exports = {
   splitter,
   catFix,
@@ -103,4 +112,5 @@ module.exports = {
   subPrep,
   threadPrep,
   indexPrep,
+  Searching,
 };

@@ -263,35 +263,39 @@ function searchAll(all, req, res, page) {
     .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
 }
 
+
+// les inn gögn frá body og sendir þig á viðeigandi search link.
 function searching(req, res) {
-  let type = req.body.type;
+  const type = req.body.type;
   const text = req.body.search;
-  let str = '/type=';
-  str = str.concat(type).concat('&search=').concat(text).concat('&page=0');
-  type = type.toUpperCase();
-  if (type === 'NAME' || type === 'PARAGRAPH' || type === 'TITLE' || type === 'ALL') {
-    res.redirect(str);
-  } else {
-    res.redirect('/');
-  }
+  const str = strOp.Searching(type, text);
+  res.redirect(str);
 }
 
+
+// skoðar search beiðnina, ef hún er af réttu formati er beiðnin send áfram
+// háð upplýsingum hennar en annars er notanda beint aftur á forsíðu.
 function searchprep(req, res) {
+  // sækjum breytur úr url
   const url = req.url;
   const re = /[=&]/;
   const str = url.split(re);
   const type = str[1];
   const TYPE = type.toUpperCase();
   const searched = str[3];
-  let page = str[5];
-  page = parseInt(page, 10);
+  const page = parseInt(str[5], 10);
+  // er siðan rétt?
   if (isNaN(page)) {
+    // ef ekki, forsíða.
     res.redirect('/');
+    // search fyrir einn hlut
   } else if (TYPE === 'NAME' || TYPE === 'PARAGRAPH' || TYPE === 'TITLE') {
     search(searched, req, res, page, TYPE.toLowerCase());
+    // search fyrir alla hluti
   } else if (TYPE === 'ALL') {
     searchAll(searched, req, res, page);
   } else {
+    // ekkert af þessu? FORSÍÐA
     res.redirect('/');
   }
 }
@@ -306,7 +310,8 @@ router.get('/cat=*&sort=*&page=*', getSub);
 router.get('/cat=*', DirectToSub);
 router.post('/search=*', searching);
 router.get('/type=*&search=*&page=*', searchprep);
-// VERDUR AD VERA NEDSTUR
+
+// VERÐUR AÐ VERA NEÐST
 router.get('/*', DirectToIndex);
 
 module.exports = router;
