@@ -1,9 +1,9 @@
-td.search {
+/*td.search {
   height: 150px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+}*/
 
 button.search.name{
   cursor: pointer;
