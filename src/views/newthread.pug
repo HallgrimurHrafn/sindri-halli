@@ -1,57 +1,58 @@
 extends menu
 
 block content
-  h1 New Thread
+  div.newThread
+    h1 New Thread
 
-  form(method='post' action='/newthread')
-    div
-      input.post(
-        type='text'
-        name='name'
-        placeholder='Username'
-        pattern='.{2,64}'
-        required title='must be 2-64 characters'
-      )
-    div
-      input.post(
-        type='text'
-        name='title'
-        placeholder='Title'
-        pattern='.{3,50}'
-        required title='must be 2-100 characters'
-      )
-    div
-      textarea.post(
-        lang='is'
-        type='text'
-        name='paragraph'
-        rows='10'
-        cols='30'
-        pattern='.{3,10000}'
-        required title='must be 3-10000 characters'
-      )
-    div
-      p.select Category:
-      select.select(name='sub')
-        if (sel==1)
-          option(value='Schemes' selected) Schemes
-        else
+    form(method='post' action='/newthread')
+      div
+        input.post(
+          type='text'
+          name='name'
+          placeholder='Username'
+          pattern='.{2,64}'
+          required title='must be 2-64 characters'
+        )
+      div
+        input.post(
+          type='text'
+          name='title'
+          placeholder='Title'
+          pattern='.{3,50}'
+          required title='must be 2-100 characters'
+        )
+      div
+        textarea.post(
+          lang='is'
+          type='text'
+          name='paragraph'
+          rows='10'
+          cols='30'
+          pattern='.{3,10000}'
+          required title='must be 3-10000 characters'
+        )
+      div
+        p.select Category:
+        select.select(name='sub')
+          if (sel==1)
+            option(value='Schemes' selected) Schemes
+          else
 
-          option(value='Schemes') Schemes
-        if (sel==2)
-          option(value='Party' selected) Party
-        else
+            option(value='Schemes') Schemes
+          if (sel==2)
+            option(value='Party' selected) Party
+          else
 
-          option(value='Party') Party
-        if (sel==3)
-          option(value='Tech' selected) Tech
-        else
+            option(value='Party') Party
+          if (sel==3)
+            option(value='Tech' selected) Tech
+          else
 
-          option(value='Tech') Tech
-        if (sel==4)
-          option(value='Videogames' selected) Videogames
-        else
+            option(value='Tech') Tech
+          if (sel==4)
+            option(value='Videogames' selected) Videogames
+          else
 
-          option(value='Videogames') Videogames
-    div
-      button.btn(type='submit') Express yourself
+            option(value='Videogames') Videogames
+      div
+        button.btn(type='submit') Express yourself

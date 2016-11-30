@@ -131,7 +131,7 @@ a{
 }
 
 
-.newThread {
+.newThreadBtn {
   background: rgb(244, 139, 194);
   -webkit-transition-property: border-radius;
   transition-property: border-radius;
