@@ -14,12 +14,12 @@ block content
           if i == 0
             - i++
             tr.colorRow
-              td.searched
+              td.searched.eitt
                 form.searched.name(method='get' action=id)
                   button.searched.name(type='submit') !{result.name}
                 form.searched.date(method='get' action=id)
                   button.searched.date(type='submit') !{date}
-              td.searched
+              td.searched.tvo
                 form.searched.title(method='get' action=id)
                   button.searched.title(type='submit') !{result.title}
                 form.searched.para(method='get' action=id)
@@ -27,12 +27,12 @@ block content
           else
             - i--
             tr
-              td.searched
+              td.searched.eitt
                 form.searched.name(method='get' action=id)
                   button.searched.name(type='submit') !{result.name}
                 form.searched.date(method='get' action=id)
                   button.searched.date(type='submit') !{date}
-              td.searched
+              td.searched.tvo
                 form.searched.title(method='get' action=id)
                   button.searched.title(type='submit') !{result.title}
                 form.searched.para(method='get' action=id)
