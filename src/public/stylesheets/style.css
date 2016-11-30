@@ -376,6 +376,7 @@ label {
 
 input[type=checkbox]:not(:checked) ~ .search{
   visibility: hidden;
+  position:absolute;
   opacity: 0;
   margin-right: 0px;
 }
