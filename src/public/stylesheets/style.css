@@ -65,6 +65,11 @@ h1.pageheader {
 
 main {
   padding: 0 50px;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: padding;
+  transition-property: padding;
+
 }
 
 .menu {
