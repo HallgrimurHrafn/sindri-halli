@@ -10,7 +10,7 @@ button.search.name{
   font-size: 14px;
   min-height: 48px;
   padding: 0 4px;
-  overflow: hidden;
+  text-overflow: ellipsis;
   width: 30%;
 }
 
@@ -19,7 +19,7 @@ button.search.date{
   font-size: 14px;
   min-height: 48px;
   padding: 0 4px;
-  overflow: hidden;
+  text-overflow: ellipsis;
   width: 30%;
 }
 
@@ -28,7 +28,7 @@ button.search.title{
   font-size: 14px;
   min-height: 48px;
   padding: 0;
-  overflow: hidden;
+  text-overflow: ellipsis;
   width: 70%;
 }
 
@@ -37,6 +37,6 @@ button.search.para{
   font-size: 14px;
   min-height: 48px;
   padding: 0;
-  overflow: hidden;
+  text-overflow: ellipsis;
   width: 70%;
 }
