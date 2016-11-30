@@ -254,24 +254,24 @@ p.dot {
 }
 
 .name {
-  width: 170px;
+  max-width: 170px;
 }
 
 .title {
-  width: 350px;
+  max-width: 350px;
   text-align: left;
 }
 
 .comnum {
-  width: 100px;
+  max-width: 100px;
 }
 
 .views {
-  width: 59px;
+  max-width: 59px;
 }
 
 .mdate {
-  width: 160px;
+  max-width: 160px;
 }
 
 .colorRow {
