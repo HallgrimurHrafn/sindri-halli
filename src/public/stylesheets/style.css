@@ -69,6 +69,7 @@ main {
 
 .menu {
   max-width: 1200px;
+  margin: auto;
   background: rgb(250,180,135); /* Old browsers */
   background: -webkit-linear-gradient(left,
     rgba(250,180,135,0) 0%,
