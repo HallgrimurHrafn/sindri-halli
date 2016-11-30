@@ -10,20 +10,39 @@ block content
             th
               button.noClick.faded-green Category
           th
-            form(method='get' action='/sort=name&page=0')
-              button.btn(type='submit') User
+            if sort == name
+              button.noClick.green
+            else
+
+              form(method='get' action='/sort=name&page=0')
+                button.btn(type='submit') User
           th
-            form(method='get' action='/sort=title&page=0')
-              button.btn(type='submit') Title
+            if sort == title
+              button.noClick.green
+            else
+
+              form(method='get' action='/sort=title&page=0')
+                button.btn(type='submit') Title
           th
-            form(method='get' action='/sort=comnum&page=0')
-              button.btn(type='submit') Comments
+            if sort == comnum
+              button.noClick.green
+            else
+              form(method='get' action='/sort=comnum&page=0')
+                button.btn(type='submit') Comments
           th
-            form(method='get' action='/sort=views&page=0')
-              button.btn(type='submit') Views
+            if sort == views
+              button.noClick.green
+            else
+              
+              form(method='get' action='/sort=views&page=0')
+                button.btn(type='submit') Views
           th
-            form(method='get' action='/sort=mdate&page=0')
-              button.btn(type='submit') Last Modified
+            if sort == mdate
+              button.noClick.green
+            else
+
+              form(method='get' action='/sort=mdate&page=0')
+                button.btn(type='submit') Last Modified
       tbody
         -i = 0
         each thread in threads
