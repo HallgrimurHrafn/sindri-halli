@@ -53,6 +53,32 @@ function DirectToIndex(req, res) {
 // NOTE: Hér byrja get að ferðir.
 
 
+// Get faum forsiduna
+function getIndex(req, res) {
+  const re = /[=&]/;
+  const x = req.url.split(re);
+  const page = x[3];
+  const ord = strOp.orderCheck(x[1]);
+  const info = ('/sort=').concat(x[1]).concat('&');
+  if (!isNaN(page)) {
+    if (ord !== 'nope') {
+      dbOp.indexx(ord, page)
+        .then((results) => {
+          const Pnum = Math.floor((results[1].count - 1) / 20) + 1;
+          res.render('index', {
+            title: 'Front',
+            threads: results[0],
+            Pnum,
+            page,
+            info,
+          });
+        })
+        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
+    } else { res.redirect('/'); }
+  } else { indexprep(x, req, res); }
+}
+
+
 // sækir þræði af gerðinni sub. page fyrir blaðsíðu númer.
 function getSub(req, res) {
   // lesum ur url
@@ -71,7 +97,7 @@ function getSub(req, res) {
       dbOp.getSub(sub, page, ord)
         .then((results) => {
           // reiknum bladsidu fjolda
-          const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
+          const Pnum = Math.floor((results[1].count - 1) / 20) + 1;
           res.render('index', {
             title: sub,
             threads: results[0],
@@ -116,31 +142,6 @@ function getThread(req, res) {
   } else {
     getThreadPrep(req, res, x);
   }
-}
-
-// Get faum forsiduna
-function index(req, res) {
-  const re = /[=&]/;
-  const x = req.url.split(re);
-  const page = x[3];
-  const ord = strOp.orderCheck(x[1]);
-  const info = ('/sort=').concat(x[1]).concat('&');
-  if (!isNaN(page)) {
-    if (ord !== 'nope') {
-      dbOp.indexx(ord, page)
-        .then((results) => {
-          const Pnum = Math.floor((results[1].count - 1) / 10) + 1;
-          res.render('index', {
-            title: 'Front',
-            threads: results[0],
-            Pnum,
-            page,
-            info,
-          });
-        })
-        .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
-    } else { res.redirect('/'); }
-  } else { indexprep(x, req, res); }
 }
 
 
@@ -291,7 +292,7 @@ function searchprep(req, res) {
   }
 }
 
-router.get('/sort=*&page=*', index);
+router.get('/sort=*&page=*', getIndex);
 router.post('/newthread(&*)?', newThread);
 router.get('/newthread(&*)?', createThread);
 router.get('/threadID=*&page=*', getThread);
