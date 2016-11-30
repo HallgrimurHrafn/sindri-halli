@@ -2,7 +2,7 @@
 const pgp = require('pg-promise')();
 
 const env = process.env.DATABASE_URL;
-const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/test');
+const db = pgp(env || 'postgres://postgres:hallgrimur@localhost/sh');
 
 // dbOp. stytting af database Opperations.
 
