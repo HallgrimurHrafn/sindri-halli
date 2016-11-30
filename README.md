@@ -36,4 +36,8 @@ layout -> error
                             -> search
 ```
 
+## css
+style.css geymir allar stílingar sem eru óháðar skjástærð
+hinar css skrárnar geyma stílingar sem nota media queries
+
 #### javascript kerfið.
