@@ -57,6 +57,7 @@ function DirectToIndex(req, res) {
 function getIndex(req, res) {
   const re = /[=&]/;
   const x = req.url.split(re);
+  const sort = x[1].toLowerCase();
   const page = x[3];
   const ord = strOp.orderCheck(x[1]);
   const info = ('/sort=').concat(x[1]).concat('&');
@@ -64,13 +65,14 @@ function getIndex(req, res) {
     if (ord !== 'nope') {
       dbOp.indexx(ord, page)
         .then((results) => {
-          const Pnum = Math.floor((results[1].count - 1) / 20) + 1;
+          const Pnum = Math.floor((results[1].count - 1) / 15) + 1;
           res.render('index', {
             title: 'Front',
             threads: results[0],
             Pnum,
             page,
             info,
+            sort,
           });
         })
         .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });
@@ -87,6 +89,7 @@ function getSub(req, res) {
   // veljum mikilvaeg variables ur url
   const page = x[5];
   const sub = x[1];
+  const sort = x[3].toLowerCase();
   const ord = strOp.orderCheck(x[3]);
   const info = ('/cat=').concat(sub).concat('&sort=').concat(x[3]).concat('&');
   // tryggja ad page number se ekki rugl og thad sem sub verdur ad vera jafnt og
@@ -97,13 +100,14 @@ function getSub(req, res) {
       dbOp.getSub(sub, page, ord)
         .then((results) => {
           // reiknum bladsidu fjolda
-          const Pnum = Math.floor((results[1].count - 1) / 20) + 1;
+          const Pnum = Math.floor((results[1].count - 1) / 15) + 1;
           res.render('index', {
             title: sub,
             threads: results[0],
             Pnum,
             page,
             info,
+            sort,
           });
         })
         .catch((error) => { res.render('error', { title: 'oohh shiet', error }); });

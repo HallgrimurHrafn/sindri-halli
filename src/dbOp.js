@@ -23,7 +23,7 @@ function indexx(ord, page) {
   const str1 = ('SELECT * FROM threads ORDER BY ').concat(ord).concat(' LIMIT $1 offset $2');
   // önnur database aðgerðin
   const str2 = 'SELECT COUNT(*) FROM (SELECT id FROM threads ) AS test';
-  return Promise.all([db.any(str1, [20, (page * 20)]), db.one(str2)]);
+  return Promise.all([db.any(str1, [15, (page * 15)]), db.one(str2)]);
 }
 
 
@@ -37,7 +37,7 @@ function getSub(sub, page, ord) {
   let str2 = 'SELECT COUNT(*) FROM ';
   str2 = str2.concat('(SELECT id FROM threads WHERE sub = $1) AS test');
   // sækjum og skilum gögnum
-  return Promise.all([db.any(str, [sub, 20, (page * 20)]), db.one(str2, sub)]);
+  return Promise.all([db.any(str, [sub, 15, (page * 15)]), db.one(str2, sub)]);
 }
 
 
