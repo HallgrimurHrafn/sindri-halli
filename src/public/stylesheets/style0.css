@@ -11,7 +11,7 @@ button.search.name{
   min-height: 48px;
   padding: 0 4px;
   overflow: hidden;
-  width: 100%;
+  width: 30%;
 }
 
 button.search.date{
@@ -20,7 +20,7 @@ button.search.date{
   min-height: 48px;
   padding: 0 4px;
   overflow: hidden;
-  width: 100%;
+  width: 30%;
 }
 
 button.search.title{
@@ -29,7 +29,7 @@ button.search.title{
   min-height: 48px;
   padding: 0 4px;
   overflow: hidden;
-  width: 100%;
+  width: 70%;
 }
 
 button.search.para{
@@ -38,5 +38,5 @@ button.search.para{
   min-height: 48px;
   padding: 0 4px;
   overflow: hidden;
-  width: 100%;
+  width: 70%;
 }
